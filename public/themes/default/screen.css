@@ -1,3 +1,7 @@
+body {
+    background:url('images/concrete_seamless.png');
+}
+
 .jumbotron {
     text-align: center;
     margin: 60px 0;
