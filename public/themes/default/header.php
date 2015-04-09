@@ -27,3 +27,4 @@ Assets::add_js($inline, 'inline');
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico">
 </head>
 <body>
+<?php echo theme_view('_sitenav');
