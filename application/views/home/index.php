@@ -1,5 +1,5 @@
 <div class="jumbotron" text-align="center">
-	<h1>Welcome to Bonfire</h1>
+	<h1>AngularBonfire</h1>
 
 	<p class="lead">Kickstart your CodeIgniter applications and save yourself 100s of hours of development time.<br/>That means you make more money.</p>
 
