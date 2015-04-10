@@ -49,6 +49,7 @@ application/modules/**/.hg/*
 application/modules/*
 # Except the following modules:#
 !application/modules/users
+!application/modules/ability
 
 # Remove PHPStorm Project folders
 bonfire/.ideas
