@@ -41,15 +41,28 @@
             // Template::render();
         }
 
-        public function get_all(){
+        // This function uses the details of the current logged in user
+        public function get_private_abilites(){
             
             $user_id = $this->current_user->id; 
             
-            $abilities = $this->ability_model->dostuff($user_id);
+            $abilities = $this->ability_model->get_user_abilities($user_id);
 
             print_r($abilities);
             return $abilities;
         }
+
+        // example of function that accepts url params
+        public function get_public_abilites($user_id=NULL){
+            
+            // $user_id = $this->current_user->id; 
+            
+            $abilities = $this->ability_model->get_user_abilities($user_id);
+
+            print_r($abilities);
+            return $abilities;
+        }
+
 
 
     }

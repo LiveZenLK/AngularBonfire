@@ -33,7 +33,7 @@
             ),
         );
 
-        public function dostuff($user_id=NULL) {
+        public function get_user_abilities($user_id=NULL) {
             
             $abilities = $this->db->
                     where('user_id', $user_id)->
