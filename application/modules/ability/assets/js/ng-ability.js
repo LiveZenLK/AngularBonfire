@@ -6,7 +6,7 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
   factory.getAll = function () {
 	  var deferred = $q.defer();
 
-  	$http.get(AngularBonfireUrl+'/ability/get_private_abilites').then(function(resp) {
+  	$http.get(AngularBonfireUrl+'/ability/get_private_abilites_json').then(function(resp) {
     	deferred.resolve(resp.data);
  	});
     	// deferred.resolve('resp.data');

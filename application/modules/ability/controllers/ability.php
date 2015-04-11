@@ -62,9 +62,10 @@
             $abilities = $this->ability_model->get_user_abilities($user_id);
 
             return $abilities;
+
         }
 
-        // This function uses the details of the current logged in user
+        // Kinda hacked together response to avoid using an external library
         public function get_private_abilites_json(){
             
             $user_id = $this->current_user->id; 
@@ -72,7 +73,7 @@
             $abilities = $this->ability_model->get_user_abilities($user_id);
 
             $abilities = json_encode($abilities);
-            return $abilities;
+            echo $abilities; die;
         }
 
         // example of function that accepts url params
