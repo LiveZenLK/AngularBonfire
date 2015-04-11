@@ -26,5 +26,5 @@ Assets::add_js($inline, 'inline');
     <?php echo Assets::css(); ?>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico">
 </head>
-<body>
+<body ng-app>
 <?php echo theme_view('_sitenav');
