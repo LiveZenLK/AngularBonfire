@@ -43,6 +43,12 @@
 
         }
 
+        public function add_ability($data=NULL){
+
+            $this->db->insert('abilities', $data); 
+            // print_r($data);die;
+
+        }
 
 
 
@@ -50,9 +56,6 @@
 
 
 
- //    public function create_ability(){
-
- //    }
 
     // public function update_ability(){
 

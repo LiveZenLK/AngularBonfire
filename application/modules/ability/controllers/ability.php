@@ -28,24 +28,35 @@
                 'ability'     => 3,    //location code (ex GB)
                 'active'      => 1, //where to go back when the transaction is done.
             );
-
-            $abilities = array();
-
-            // array_push($abilities, $mock_ability);
-            // Template::set('abilities', $abilities);
-            // print_r($abilities);
-            // print_r($user_id);
-            // Template::set('user', $user);
-            // Template::render();
         }
 
         public function template(){
-              // $data = array();
-              // $data['abilities'] = $this->get_private_abilites();
+
             Assets::add_module_js('ability', 'ng-ability.js');
             $this->load->view('ability/template');
-            // include_once()
-            // Template::render();
+
+        }
+
+        public function add($data=NULL){
+
+            // $mock_ability = json_decode($data);
+
+            // throws a php error if not logged in - kinda agile security
+            $user_id = $this->current_user->id; 
+
+            $mock_ability = array(
+                'name'        => 'MongoDB', //paypal email address
+                'description' => 'Used with express backend',   //paypal currency
+                'rating'     => 3,    //location code (ex GB)
+                'active'      => 1, //where to go back when the transaction is done.
+            );
+            
+            // add current logged in user id to incoming data
+            $mock_ability['user_id'] = $user_id;
+
+            $this->ability_model->add_ability($mock_ability);
+
+            // $this->load->view('ability/list');
         }
 
         public function ability_list(){
