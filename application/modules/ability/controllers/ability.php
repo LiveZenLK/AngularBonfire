@@ -20,7 +20,6 @@
         public function index($direction=FALSE)
         {
 
-            // Assets::add_css('rake-space.css');
             $mock_ability = array(
                 'ability_id'  => 7000,
                 'user_id'     => 2,
@@ -32,41 +31,41 @@
 
             $abilities = array();
 
-            array_push($abilities, $mock_ability);
+            // array_push($abilities, $mock_ability);
             // Template::set('abilities', $abilities);
-            print_r($abilities);
+            // print_r($abilities);
             // print_r($user_id);
             // Template::set('user', $user);
             // Template::render();
         }
 
-        public function show(){
-              $data = array();
-              $data['abilities'] = $this->get_private_abilites();
-            $this->load->view('ability/show', $data);
+        public function template(){
+              // $data = array();
+              // $data['abilities'] = $this->get_private_abilites();
             Assets::add_module_js('ability', 'ng-ability.js');
+            $this->load->view('ability/template');
             // include_once()
             // Template::render();
         }
 
-        public function ngpartial(){
+        public function ability_list(){
 
-            $this->load->view('ability/ngpartial');
+            $this->load->view('ability/list');
         }
 
         // This function uses the details of the current logged in user
-        public function get_private_abilites(){
+        // public function get_profile_abilites(){
             
-            $user_id = $this->current_user->id; 
+        //     $user_id = $this->current_user->id; 
             
-            $abilities = $this->ability_model->get_user_abilities($user_id);
+        //     $abilities = $this->ability_model->get_user_abilities($user_id);
 
-            return $abilities;
+        //     return $abilities;
 
-        }
+        // }
 
         // Kinda hacked together response to avoid using an external library
-        public function get_private_abilites_json(){
+        public function get_profile_abilites_json(){
             
             $user_id = $this->current_user->id; 
             

@@ -6,10 +6,9 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
   factory.getAll = function () {
 	  var deferred = $q.defer();
 
-  	$http.get(AngularBonfireUrl+'/ability/get_private_abilites_json').then(function(resp) {
+  	$http.get(AngularBonfireUrl+'/ability/get_profile_abilites_json').then(function(resp) {
     	deferred.resolve(resp.data);
  	});
-    	// deferred.resolve('resp.data');
 
   	return deferred.promise;
   };
@@ -32,14 +31,14 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
 var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	'$scope', 
 	'$state', 
-	'NgAbilityFactory', // the new bit
+	'NgAbilityFactory', 
 	function($scope, $state
 		, NgAbilityFactory
 		) {
 
 	$scope.abilities = {};
 
-	$state.go('home');
+	$state.go('list');
 	
 	$scope.init = function(){
 
@@ -56,20 +55,17 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 AngularBonfire.config(['$stateProvider', '$urlRouterProvider', 
     function ($stateProvider, $urlRouterProvider ) {
 	    
-		var home = { 
-		    name: 'home',  //mandatory
-	    	// url: '/',
-		    // templateUrl: 'application/home/home-layout.html',
+		var list = { 
+		    name: 'list', 
 		    views:{
             	'content':{
-		    		templateUrl: AngularBonfireUrl+'/ability/ngpartial'
-                	// controller: 'ProfileCtrl'
+		    		templateUrl: AngularBonfireUrl+'/ability/ability_list'
             	}
             }
 		};
 
 		$stateProvider
-	  		.state(home)
+	  		.state(list)
 		;
 }]);
 

@@ -47,7 +47,7 @@ $fieldData = array(
                 <!-- <div class="form-actions"> -->
 
 
-                    <?php echo Modules::run('ability/show', 1); ?>
+                    <?php echo Modules::run('ability/template', 1); ?>
                     <!-- foreach ability as current.abilility -->
                     <!-- <h3><span class="ability-name">Chess</span></h3> -->
                     <!-- <p><span class="ability-description">Enjoy, can't stratagise.</span></p> -->
