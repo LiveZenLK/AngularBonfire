@@ -43,16 +43,18 @@ $fieldData = array(
             <?php echo form_close(); ?>
         </div>
         <div class="span6">
-            <?php echo form_open($this->uri->uri_string(), array('class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
-                <div class="form-actions">
+            <!-- <?php //echo form_open($this->uri->uri_string(), array('class' => 'form-horizontal', 'autocomplete' => 'off')); ?> -->
+                <!-- <div class="form-actions"> -->
 
+
+                    <?php echo Modules::run('ability/show', 1); ?>
                     <!-- foreach ability as current.abilility -->
-                    <h3><span class="ability-name">Chess</span></h3>
-                    <p><span class="ability-description">Enjoy, can't stratagise.</span></p>
-                    <p>Rating: <span class="abiltiy-rating">3</span></p>
-                    <p><span class="abiltiy-active">No/Yes</span></p>
-                </div>
-            <?php echo form_close(); ?>
+                    <!-- <h3><span class="ability-name">Chess</span></h3> -->
+                    <!-- <p><span class="ability-description">Enjoy, can't stratagise.</span></p> -->
+                    <!-- <p>Rating: <span class="abiltiy-rating">3</span></p> -->
+                    <!-- <p><span class="abiltiy-active">No/Yes</span></p> -->
+                <!-- </div> -->
+            <?php //echo form_close(); ?>
         </div>
     </div>
 </section>

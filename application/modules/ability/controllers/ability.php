@@ -41,6 +41,14 @@
             // Template::render();
         }
 
+        public function show(){
+              $data = array();
+              $data['abilities'] = $this->get_private_abilites();
+            $this->load->view('ability/show', $data);
+            // include_once()
+            // Template::render();
+        }
+
         // This function uses the details of the current logged in user
         public function get_private_abilites(){
             
@@ -48,15 +56,13 @@
             
             $abilities = $this->ability_model->get_user_abilities($user_id);
 
-            print_r($abilities);
             return $abilities;
         }
 
         // example of function that accepts url params
         public function get_public_abilites($user_id=NULL){
-            
-            // $user_id = $this->current_user->id; 
-            
+
+            // should really call a different method from above to filter out private abilities            
             $abilities = $this->ability_model->get_user_abilities($user_id);
 
             print_r($abilities);
