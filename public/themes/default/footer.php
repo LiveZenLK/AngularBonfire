@@ -12,8 +12,9 @@
     <script>window.jQuery || document.write('<script src="<?php echo js_path(); ?>jquery-1.7.2.min.js"><\/script>');</script>
 
 
-    <script src="<?php echo js_path(); ?>angular.js"></script>
-    <script src="<?php echo js_path(); ?>ng-system.js"></script>
+    <script src="<?php //echo js_path(); ?>angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
