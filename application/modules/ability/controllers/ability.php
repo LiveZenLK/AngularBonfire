@@ -12,6 +12,8 @@
             $this->set_current_user();
 
             $this->load->model('ability_model');
+
+            Assets::add_js('codeigniter-csrf.js');
              
         }
 
@@ -39,22 +41,24 @@
 
         public function add($data=NULL){
 
-            // $mock_ability = json_decode($data);
+            $mock_ability = json_decode($data);
+            print_r($mock_ability);
+            // $user_id = $this->current_user->id; 
 
-            // throws a php error if not logged in - kinda agile security
-            $user_id = $this->current_user->id; 
-
-            $mock_ability = array(
-                'name'        => 'MongoDB', //paypal email address
-                'description' => 'Used with express backend',   //paypal currency
-                'rating'     => 3,    //location code (ex GB)
-                'active'      => 1, //where to go back when the transaction is done.
-            );
+            // // $mock_ability = array(
+            //     // 'name'        => 'MongoDB', //paypal email address
+            //     // 'description' => 'Used with express backend',   //paypal currency
+            //     // 'rating'     => 3,    //location code (ex GB)
+            //     // 'active'      => 1, //where to go back when the transaction is done.
+            // // );
             
-            // add current logged in user id to incoming data
-            $mock_ability['user_id'] = $user_id;
+            // // add current logged in user id to incoming data
+            // $mock_ability['user_id'] = $user_id;
 
-            $this->ability_model->add_ability($mock_ability);
+            // $this->ability_model->add_ability($mock_ability);
+
+            // // validations should go here
+            // return true;
 
             // $this->load->view('ability/list');
         }

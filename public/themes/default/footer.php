@@ -12,7 +12,9 @@
     <script>window.jQuery || document.write('<script src="<?php echo js_path(); ?>jquery-1.7.2.min.js"><\/script>');</script>
 
 
-    <script> var AngularBonfireUrl = '<?php echo site_url(); ?>'; </script>
+    <script> var AngularBonfireUrl = '<?php echo site_url(); ?>' </script>
+    <script> var csrfTokenName     = '<?php echo $this->security->get_csrf_token_name(); ?>' </script>
+    <script> var csrfTokenValue    = '<?php echo $this->security->get_csrf_hash(); ?>' </script>
     <!-- // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script> -->
     <script src="<?php echo js_path(); ?>angular.js"></script>
     <script src="<?php echo js_path(); ?>angular-ui-router.js"></script>
