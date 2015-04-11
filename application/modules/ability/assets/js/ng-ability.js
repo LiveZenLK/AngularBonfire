@@ -1,7 +1,5 @@
 
-var NgAbility = angular.module('NgAbility', []);
-
-NgAbility.controller('NgAbility', ['$scope', function($scope) {
+var NgAbility = AngularBonfire.controller('NgAbility', ['$scope', function($scope) {
 
 
   	$scope.user ={
