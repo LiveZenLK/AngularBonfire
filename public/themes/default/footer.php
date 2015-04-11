@@ -14,6 +14,7 @@
 
     <script src="<?php //echo js_path(); ?>angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+    <script src="<?php echo js_path(); ?>angular-ui-router.js"></script>
     <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
 
 
