@@ -21,7 +21,6 @@
         {
 
             // Assets::add_css('rake-space.css');
-            // Assets::add_module_js('piece', 'user-management.js');
             $mock_ability = array(
                 'ability_id'  => 7000,
                 'user_id'     => 2,
@@ -45,6 +44,7 @@
               $data = array();
               $data['abilities'] = $this->get_private_abilites();
             $this->load->view('ability/show', $data);
+            Assets::add_module_js('ability', 'ng-ability.js');
             // include_once()
             // Template::render();
         }
