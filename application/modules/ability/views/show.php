@@ -22,6 +22,13 @@
 <div ng-controller="NgAbility">
 {{user}}
 </div>
+
+<div ui-view="content">
+    <!-- sidebar view -->
+    ui view content
+</div>
+
+
 <!-- <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
 [ <a href="" ng-click="todoList.archive()">archive</a> ]
 <ul class="unstyled">
