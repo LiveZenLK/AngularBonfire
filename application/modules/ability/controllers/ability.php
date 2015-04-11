@@ -49,6 +49,11 @@
             // Template::render();
         }
 
+        public function ngpartial(){
+
+            $this->load->view('ability/ngpartial');
+        }
+
         // This function uses the details of the current logged in user
         public function get_private_abilites(){
             

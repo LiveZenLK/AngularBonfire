@@ -22,7 +22,7 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
 		    // templateUrl: 'application/home/home-layout.html',
 		    views:{
             	'content':{
-		    		template: 'application/home/home-layout.html'
+		    		templateUrl: AngularBonfireUrl+'/ability/ngpartial'
                 	// controller: 'ProfileCtrl'
             	}
             }
