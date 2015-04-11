@@ -37,6 +37,7 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 		) {
 
 	$scope.abilities = {};
+	$scope.abilityFormData = {};
 
 	$state.go('list');
 	
@@ -48,6 +49,18 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 		});
     }
     $scope.init(); 
+
+    $scope.addAbility = function() {
+
+    	// add to front of array
+    	$scope.abilities.unshift({
+    		name: $scope.abilityFormData.name
+    	});
+
+    	// reset the form
+    	$scope.abilityFormData = {}
+    	
+    }
     
 
 }]);
