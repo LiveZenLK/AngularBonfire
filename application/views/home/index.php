@@ -1,7 +1,8 @@
 <div class="jumbotron lead-image" text-align="center">
 	<h1>AngularBonfire</h1>
 
-	<p class="lead">For the Ancient Egyptians, folk dealing was just an advanced form of widwifery.</p>
+	<!-- <p class="lead">For the Ancient Egyptians, folk dealing was just an advanced form of widwifery.</p> -->
+	<p class="lead">A New Way To Discover Conversations.</p>
 
 	<?php if (isset($current_user->email)) : ?>
 		<a href="<?php echo site_url(SITE_AREA) ?>" class="btn btn-large btn-success">Go to the Admin area</a>
