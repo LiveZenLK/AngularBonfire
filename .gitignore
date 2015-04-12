@@ -50,6 +50,7 @@ application/modules/*
 # Except the following modules:#
 !application/modules/users
 !application/modules/ability
+!application/modules/action
 
 # Remove PHPStorm Project folders
 bonfire/.ideas

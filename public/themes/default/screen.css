@@ -94,10 +94,11 @@ p.lead {
     box-sizing:border-box;
     border:2px solid gold;
     text-align: center;
-    width:60px;
+    /*width:60px;*/
     height: 60px;
     margin:0 20px 20px 0;
     float: left;
     /*background: green;*/
     background:rgba(0, 0, 0, 0.2);
 }
+
