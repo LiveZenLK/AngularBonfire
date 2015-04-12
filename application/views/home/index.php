@@ -1,20 +1,27 @@
-<div class="jumbotron" text-align="center">
+<div class="jumbotron lead-image" text-align="center">
 	<h1>AngularBonfire</h1>
 
-	<p class="lead">Kickstart your CodeIgniter applications and save yourself 100s of hours of development time.<br/>That means you make more money.</p>
+	<p class="lead">For the Ancient Egyptians, folk dealing was just an advanced form of widwifery.</p>
 
 	<?php if (isset($current_user->email)) : ?>
 		<a href="<?php echo site_url(SITE_AREA) ?>" class="btn btn-large btn-success">Go to the Admin area</a>
 	<?php else :?>
-		<a href="<?php echo site_url(LOGIN_URL); ?>" class="btn btn-large btn-primary"><?php echo lang('bf_action_login'); ?></a>
+		<a href="<?php echo site_url(LOGIN_URL); ?>" class="btn btn-large btn-info">test@gmail.com : testtest</a>
 	<?php endif;?>
 
-	<br/><br/><a href="<?php echo site_url('/docs') ?>" class="btn btn-large btn-info">Browse the Docs</a>
+	<!-- <br/><br/><a href="<?php echo site_url('/docs') ?>" class="btn btn-large btn-info">Browse the Docs</a> -->
 </div>
 
 <hr />
 
 <div class="row-fluid">
+	<div class="span6">
+		<h4>Now with Angular JS</h4>
+
+		<p>This fork adds a sitewide capability to the core module system, allowing you to use as much Angular as you need.</p>
+
+		<p>Works seemlessly sideby side with existing php views and controllers. Also included is a simplied user registration process.</p>
+	</div>
 
 	<div class="span6">
 		<h4>A Solid Base</h4>
@@ -24,6 +31,10 @@
 		<p>We use Twitter's <a href="">Bootstrap</a> front-end framework and <a href="http://jquery.com/">jQuery</a> as the basis of the CSS and Javascript.</p>
 	</div>
 
+</div>
+
+<div class="row-fluid">
+
 	<div class="span6">
 		<h4>A Growing Community</h4>
 
@@ -31,10 +42,6 @@
 
 		<p>Bugs and feature discussion also happen on GitHub's <a href="https://github.com/ci-bonfire/Bonfire/issues?direction=desc&labels=0.7&sort=created&state=open">issue tracker</a>. This is the best place to report bugs and discuss new features.</p>
 	</div>
-</div>
-
-<div class="row-fluid">
-
 	<div class="span6">
 		<h4>Built-in Flexibility</h4>
 
