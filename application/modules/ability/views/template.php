@@ -16,6 +16,3 @@
 <span class="done-{{todo.done}}">{{todo.text}}</span>
 </li>
 </ul> -->
-
-</div>
-</section> 

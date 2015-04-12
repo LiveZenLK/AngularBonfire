@@ -10,7 +10,8 @@ $fieldData = array(
 
 ?>
 <section id="profile">
-	<h1 class="page-header"><?php echo lang('us_edit_profile'); ?></h1>
+<?php /*
+<!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- <!-- 	<h1 class="page-header"><?php echo lang('us_edit_profile'); ?></h1>
     <?php if ($validation_errors) : ?>
     <div class="alert alert-error">
         <?php echo $validation_errors; ?>
@@ -19,14 +20,26 @@ $fieldData = array(
     <?php if (isset($user) && $user->role_name == 'Banned') : ?>
     <div data-dismiss="alert" class="alert alert-error">
         <?php echo lang('us_banned_admin_note'); ?>
-    </div>
     <?php endif; ?>
+    </div>
     <div class="alert alert-info">
         <h4 class="alert-heading"><?php echo lang('bf_required_note'); ?></h4>
         <?php if (isset($password_hints)) { echo $password_hints; } ?>
-    </div>
+    </div> --> --> --> --> --> --> --> --> --> --> --> --> --> --> -->
+*/?>
     <div class="row-fluid">
-    	<div class="span6">
+        <div class="span6">
+            <h4>ACTIONS</h4>
+            <?php echo Modules::run('action/template', 1); ?>
+        </div>
+        <div class="span6">
+            <h4>ABILITIES</h4>
+            <?php //echo Modules::run('ability/template', 1); ?>
+        </div>
+    </div>
+<?php /*
+    <div class="row-fluid">
+        <div class="span12">
             <?php echo form_open($this->uri->uri_string(), array('class' => 'form-horizontal', 'autocomplete' => 'off')); ?>
                 <div class="form-actions">
                 <?php Template::block('user_fields', 'user_fields', $fieldData); ?>
@@ -42,19 +55,6 @@ $fieldData = array(
                 </div>
             <?php echo form_close(); ?>
         </div>
-        <div class="span6">
-            <!-- <?php //echo form_open($this->uri->uri_string(), array('class' => 'form-horizontal', 'autocomplete' => 'off')); ?> -->
-                <!-- <div class="form-actions"> -->
-
-
-                    <?php echo Modules::run('ability/template', 1); ?>
-                    <!-- foreach ability as current.abilility -->
-                    <!-- <h3><span class="ability-name">Chess</span></h3> -->
-                    <!-- <p><span class="ability-description">Enjoy, can't stratagise.</span></p> -->
-                    <!-- <p>Rating: <span class="abiltiy-rating">3</span></p> -->
-                    <!-- <p><span class="abiltiy-active">No/Yes</span></p> -->
-                <!-- </div> -->
-            <?php //echo form_close(); ?>
-        </div>
     </div>
+*/?>
 </section>
