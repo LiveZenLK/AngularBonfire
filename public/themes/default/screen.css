@@ -95,6 +95,7 @@ p.lead {
     border:2px solid gold;
     text-align: center;
     /*width:60px;*/
+    padding:15px;
     height: 60px;
     margin:0 20px 20px 0;
     float: left;

@@ -28,14 +28,14 @@ $fieldData = array(
     </div> --> --> --> --> --> --> --> --> --> --> --> --> --> --> -->
 */?>
     <div class="row-fluid">
-        <div class="span6">
-            <h4>ACTIONS</h4>
+        <div class="span12">
             <?php echo Modules::run('action/template', 1); ?>
         </div>
-        <div class="span6">
-            <h4>ABILITIES</h4>
-            <?php //echo Modules::run('ability/template', 1); ?>
-        </div>
+
+        <?php //echo Modules::run('ability/template', 1); ?>
+
+        <?php echo Modules::run('ability/ability_list', 1); ?>
+
     </div>
 <?php /*
     <div class="row-fluid">

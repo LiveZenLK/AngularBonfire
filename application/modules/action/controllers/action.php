@@ -69,6 +69,12 @@
             $this->load->view('action/list');
         }
 
+        public function interest(){
+
+Modules::run('ability/list', 1);
+            // $this->load->view('action/interest');
+        }
+
         // This function uses the details of the current logged in user
         // public function get_profile_abilites(){
             

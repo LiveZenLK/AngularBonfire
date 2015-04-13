@@ -17,35 +17,35 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
 
   factory.addAbility = function (dataObject) {
   	
-  	var deferred = $q.defer();
+//   	var deferred = $q.defer();
   	
-  // 	$http.post(AngularBonfireUrl+'/ability/add/'+dataObject).then(function(resp) {
- 	// });
+//   // 	$http.post(AngularBonfireUrl+'/ability/add/'+dataObject).then(function(resp) {
+//  	// });
 
-		    var post_data = {
-		        'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
-		        // I don't think anyone has ever found a neat way of doing this without inline js
-		        csrfTokenName : csrfTokenValue
-		    }
-		    // so far we have an object we can 'POST' to our form which contains a security token
+// 		    var post_data = {
+// 		        'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
+// 		        // I don't think anyone has ever found a neat way of doing this without inline js
+// 		        csrfTokenName : csrfTokenValue
+// 		    }
+// 		    // so far we have an object we can 'POST' to our form which contains a security token
 
 
 
-$.ajax({
-   url: AngularBonfireUrl+'/ability/add',
-   type: "post",
-   data: post_data,
-   success: function(){
-     // alert("success");
-    	deferred.resolve("success");
-   },
-   error:function(){
-     // alert("failure");
-    	deferred.resolve("failure");
-   }
-});
+// $.ajax({
+//    url: AngularBonfireUrl+'/ability/add',
+//    type: "post",
+//    data: post_data,
+//    success: function(){
+//      // alert("success");
+//     	deferred.resolve("success");
+//    },
+//    error:function(){
+//      // alert("failure");
+//     	deferred.resolve("failure");
+//    }
+// });
   		
-  	return deferred.promise;
+//   	return deferred.promise;
   };
   
   factory.updateAbility = function (id, dataObject) {
@@ -71,9 +71,9 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	$scope.abilityFormData = {};
 
 	// add csrf token from globals set in footer on page load 
-	$scope.abilityFormData[csrfTokenName] = csrfTokenValue
+	// $scope.abilityFormData[csrfTokenName] = csrfTokenValue
 
-	$state.go('list');
+	// $state.go('list');
 	
 	$scope.init = function(){
 
@@ -84,17 +84,17 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
     }
     $scope.init(); 
 
-    $scope.addAbility = function() {
+  //   $scope.addAbility = function() {
 
-    			    var post_data = {
-		        // 'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
-		        // I don't think anyone has ever found a neat way of doing this without inline js
-		        'ci_csrf_token' : ci_csrf_token()
-		    }
-		    console.log('padpfsdfp',post_data)
-		    // so far we have an object we can 'POST' to our form which contains a security token
-  $.post(AngularBonfireUrl+'/ability/add',
-   { 'ci_csrf_token'  : ci_csrf_token() });
+  //   			    var post_data = {
+		//         // 'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
+		//         // I don't think anyone has ever found a neat way of doing this without inline js
+		//         'ci_csrf_token' : ci_csrf_token()
+		//     }
+		//     console.log('padpfsdfp',post_data)
+		//     // so far we have an object we can 'POST' to our form which contains a security token
+  // $.post(AngularBonfireUrl+'/ability/add',
+  //  { 'ci_csrf_token'  : ci_csrf_token() });
 
 
 // $.ajax({
@@ -128,27 +128,27 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
   //   		$scope.abilityFormData = {}
 		// });
     	
-    }
+// }
     
 
 }]);
 
-AngularBonfire.config(['$stateProvider', '$urlRouterProvider', 
-    function ($stateProvider, $urlRouterProvider ) {
+// AngularBonfire.config(['$stateProvider', '$urlRouterProvider', 
+//     function ($stateProvider, $urlRouterProvider ) {
 	    
-		var list = { 
-		    name: 'list', 
-		    views:{
-            	'content':{
-		    		templateUrl: AngularBonfireUrl+'/ability/ability_list'
-            	}
-            }
-		};
+// 		var list = { 
+// 		    name: 'list', 
+// 		    views:{
+//             	'content':{
+// 		    		templateUrl: AngularBonfireUrl+'/ability/ability_list'
+//             	}
+//             }
+// 		};
 
-		$stateProvider
-	  		.state(list)
-		;
-}]);
+// 		$stateProvider
+// 	  		.state(list)
+// 		;
+// }]);
 
 
 

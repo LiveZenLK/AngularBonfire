@@ -1,23 +1,32 @@
 <section ng-controller="NgActionCtrl">
-<aside class="interface">
-    <a class="action {{action.image}}" ng-repeat="action in actions" ng-click="doAction(action.action_name)">
+    <div class="row-fluid">
+        <div class="span4">
+        	<!-- sidebar view -->
+            <h4>ACTIONS</h4>
+			<aside class="interface">
+    			<h4><a class="action {{action.image}}" ng-repeat="action in actions" ng-click="doAction(action.action_name)">
 
-        <h6><span class="action-name">{{action.action_name}}</span></h6>
-        <!-- <p><span class="action-description">{{action.description}}</span></p> -->
-        <!-- <p>Rating: <span class="abiltiy-rating"><?php// echo $action->rating;?></span></p> -->
-        <!-- <p><span class="abiltiy-active">{{action.active}}</span></p> -->
-    </a>
-</aside>
-    <div ui-view="list">
+        			<span class="action-name">{{action.action_name}}</span>
+        			<!-- <p><span class="action-description">{{action.description}}</span></p> -->
+        			<!-- <p>Rating: <span class="abiltiy-rating"><?php// echo $action->rating;?></span></p> -->
+        			<!-- <p><span class="abiltiy-active">{{action.active}}</span></p> -->
+    			</a></h4>
+			</aside>
+            <!-- <h4>ABILITIES</h4> -->
+    		<!-- <div ui-view="list"> -->
+    		<!-- </div> -->
+        </div>
+        <div class="span8">
+                    
 
-    </div>
-    <div ui-view="content">
-        <!-- sidebar view -->
-        ui view content
+
+    		<div ui-view="content">
+        		ui view content
+			
+    		</div>
+        </div>
     </div>
 </section>
-
-
 
 <!-- <section ng-app="todoApp"> 
  <span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>

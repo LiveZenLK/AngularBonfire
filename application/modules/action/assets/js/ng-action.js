@@ -164,8 +164,9 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
 		    name: 'action_interest', 
 		    views:{
             	'content':{
-		    		// templateUrl: AngularBonfireUrl+'/action/action_interest'
-            template: 'action interest'
+		    		templateUrl: AngularBonfireUrl+'/action/interest'
+            // templateUrl: AngularBonfireUrl+'/ability/ability_list'
+            // template: 'action interest'
             	},
               'list':{
             templateUrl: AngularBonfireUrl+'/action/action_list'
