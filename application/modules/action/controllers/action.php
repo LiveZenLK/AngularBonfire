@@ -71,8 +71,8 @@
 
         public function interest(){
 
-Modules::run('ability/list', 1);
             // $this->load->view('action/interest');
+            echo Modules::run('ability/ability_list', 1); 
         }
 
         // This function uses the details of the current logged in user

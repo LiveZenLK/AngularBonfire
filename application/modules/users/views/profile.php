@@ -34,7 +34,7 @@ $fieldData = array(
 
         <?php //echo Modules::run('ability/template', 1); ?>
 
-        <?php echo Modules::run('ability/ability_list', 1); ?>
+        <?php //echo Modules::run('ability/ability_list', 1); ?>
 
     </div>
 <?php /*

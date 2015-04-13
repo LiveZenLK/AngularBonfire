@@ -62,9 +62,9 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
 var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	'$scope', 
 	'$state', 
-	'NgAbilityFactory', 
+	// 'NgAbilityFactory', 
 	function($scope, $state
-		, NgAbilityFactory
+		// , NgAbilityFactory
 		) {
 
 	$scope.abilities = {};
@@ -74,13 +74,15 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	// $scope.abilityFormData[csrfTokenName] = csrfTokenValue
 
 	// $state.go('list');
+
+  console.log('sdfds');
 	
 	$scope.init = function(){
 
-		NgAbilityFactory.getAll().then(function(data) {
-		    console.log(data);
-		    $scope.abilities = data;
-		});
+		// NgAbilityFactory.getAll().then(function(data) {
+		//     console.log(data);
+		//     $scope.abilities = data;
+		// });
     }
     $scope.init(); 
 
