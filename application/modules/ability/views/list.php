@@ -1,4 +1,3 @@
-<!-- <a href="#" ng-click="add()" class="btn btn-success">Add</a> -->
 <section ng-controller="NgAbilityCtrl">
     <div class="row-fluid">
     	<div class="span6">

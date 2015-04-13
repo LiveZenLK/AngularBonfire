@@ -15,7 +15,7 @@
 
             Assets::add_js('codeigniter-csrf.js');
              
-            Assets::add_module_js('ability', 'ng-ability.js');
+            // Assets::add_module_js('ability', 'ng-ability.js');
         }
 
         //--------------------------------------------------------------------
@@ -62,10 +62,13 @@
 
             // $this->load->view('ability/list');
         }
-
-        public function ability_list(){
+        public function ngassets(){
  
             Assets::add_module_js('ability', 'ng-ability.js');
+        }
+        public function nglist(){
+ 
+            // Assets::add_module_js('ability', 'ng-ability.js');
             $this->load->view('ability/list');
         }
 

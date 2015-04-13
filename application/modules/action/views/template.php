@@ -1,3 +1,6 @@
+<!-- This is the routing component -->
+
+
 <section ng-controller="NgActionCtrl">
     <div class="row-fluid">
         <div class="span4">

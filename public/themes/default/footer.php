@@ -19,6 +19,8 @@
     <script src="<?php echo js_path(); ?>angular.js"></script>
     <script src="<?php echo js_path(); ?>angular-ui-router.js"></script>
     <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
+    <script src="<?php echo js_path(); ?>ng-action.js"></script>
+    <script src="<?php echo js_path(); ?>ng-ability.js"></script>
 
 
     <?php echo Assets::js(); ?>
