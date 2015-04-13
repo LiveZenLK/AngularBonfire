@@ -17,35 +17,20 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
 
   factory.addAbility = function (dataObject) {
   	
-//   	var deferred = $q.defer();
-  	
-//   // 	$http.post(AngularBonfireUrl+'/ability/add/'+dataObject).then(function(resp) {
-//  	// });
+  	var deferred = $q.defer();
 
-// 		    var post_data = {
-// 		        'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
-// 		        // I don't think anyone has ever found a neat way of doing this without inline js
-// 		        csrfTokenName : csrfTokenValue
-// 		    }
-// 		    // so far we have an object we can 'POST' to our form which contains a security token
+    var post_data = {
+        'form_data': dataObject, 
+        // I don't think anyone has ever found a neat way of doing this without inline js
+        'ci_csrf_token'  : ci_csrf_token(),
+    }
+	
+	// so far we have an object we can 'POST' to our form which contains a security token
+	$.post(AngularBonfireUrl+'/ability/add', post_data).done(function(){
+   		deferred.resolve('done');
+   	});
 
-
-
-// $.ajax({
-//    url: AngularBonfireUrl+'/ability/add',
-//    type: "post",
-//    data: post_data,
-//    success: function(){
-//      // alert("success");
-//     	deferred.resolve("success");
-//    },
-//    error:function(){
-//      // alert("failure");
-//     	deferred.resolve("failure");
-//    }
-// });
-  		
-//   	return deferred.promise;
+  	return deferred.promise;
   };
   
   factory.updateAbility = function (id, dataObject) {
@@ -70,12 +55,9 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	$scope.abilities = {};
 	$scope.abilityFormData = {};
 
-	// add csrf token from globals set in footer on page load 
-	// $scope.abilityFormData[csrfTokenName] = csrfTokenValue
 
-	// $state.go('list');
 
-  console.log('sdfds');
+  	console.log('sdfds');
 	
 	$scope.init = function(){
 
@@ -86,17 +68,17 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
     }
     $scope.init(); 
 
-  //   $scope.addAbility = function() {
+    $scope.addAbility = function() {
 
-  //   			    var post_data = {
-		//         // 'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
-		//         // I don't think anyone has ever found a neat way of doing this without inline js
-		//         'ci_csrf_token' : ci_csrf_token()
-		//     }
-		//     console.log('padpfsdfp',post_data)
-		//     // so far we have an object we can 'POST' to our form which contains a security token
+    		// 	    var post_data = {
+		    //     // 'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
+		    //     // I don't think anyone has ever found a neat way of doing this without inline js
+		    //     'ci_csrf_token' : ci_csrf_token()
+		    // }
+		    // console.log('padpfsdfp',post_data)
+		    // so far we have an object we can 'POST' to our form which contains a security token
   // $.post(AngularBonfireUrl+'/ability/add',
-  //  { 'ci_csrf_token'  : ci_csrf_token() });
+  //  { 'ci_csrf_token'  : ci_csrf_token(), 'formData' : $scope.abilityFormData });
 
 
 // $.ajax({
@@ -113,10 +95,10 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 //    }
 // });
 
-  //   	console.log($scope.abilityFormData);
+    	console.log($scope.abilityFormData);
     	
   //   	// add to front of array
-  //   	$scope.abilities.unshift($scope.abilityFormData);
+    	$scope.abilities.unshift($scope.abilityFormData);
 
   //   	var post_data = {
 		//     'form_data': $scope.abilityFormData, //formData, // we can now send it along with our request
@@ -124,13 +106,14 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 		// }
 
 
-  //   	NgAbilityFactory.addAbility(post_data).then(function(data) {
-		//     console.log('saved', data);
-  //   		// reset the form
-  //   		$scope.abilityFormData = {}
-		// });
+    	NgAbilityFactory.addAbility($scope.abilityFormData).then(function(data) {
+
+		    console.log('saved', data);
+    		// reset the form
+    		$scope.abilityFormData = {}
+		});
     	
-// }
+	}
     
 
 }]);

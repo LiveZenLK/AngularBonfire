@@ -21,7 +21,7 @@
 
 		<p>This fork adds a sitewide capability to the core module system, allowing you to use as much Angular as you need.</p>
 
-		<p>Works seemlessly sideby side with existing php views and controllers. Also included is a simplied user registration process.</p>
+		<p>Works seemlessly sideby side with existing php views and controllers. Also included is a simplified user registration process.</p>
 	</div>
 
 	<div class="span6">
