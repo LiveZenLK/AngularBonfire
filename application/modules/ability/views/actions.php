@@ -1,3 +1,4 @@
+<section ng-controller="NgAbilityCtrl">
     	<div class="span6">
 			<form ng-submit="addAbility()">
 
@@ -8,3 +9,4 @@
 
 			</form>
     	</div>
+</section>

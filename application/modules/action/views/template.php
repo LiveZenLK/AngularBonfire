@@ -33,14 +33,26 @@
             </aside>
 
         </div>
-        <div class="span8">
+        <div class="span4">
                     
 
 
-    		<div ui-view="content">
-        		ui view content
-			
-    		</div>
+            <div ui-view="content">
+                ui view content
+            
+            </div>
+        </div>
+        <div class="span4">
+            <h4>Friends</h4>    
+            <aside class="interface">
+            </aside>
+
+
+            <!-- <div ui-view="content"> -->
+                <!-- ui view content -->
+            
+            <!-- </div> -->
+
         </div>
     </div>
 </section>
