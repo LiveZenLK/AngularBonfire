@@ -46,7 +46,8 @@
         public function add_ability($data=NULL){
 
             $this->db->insert('abilities', $data); 
-            // print_r($data);die;
+            
+            return true;
 
         }
 

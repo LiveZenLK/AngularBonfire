@@ -39,33 +39,33 @@
 
         }
 
-        public function add($data=NULL){
+        public function add(){
 
-            $mock_ability = json_decode($data);
-            print_r($mock_ability);
-            // $user_id = $this->current_user->id; 
+            // print_r($mock_ability);
+            $user_id = $this->current_user->id; 
 
-            // // $mock_ability = array(
-            //     // 'name'        => 'MongoDB', //paypal email address
-            //     // 'description' => 'Used with express backend',   //paypal currency
-            //     // 'rating'     => 3,    //location code (ex GB)
-            //     // 'active'      => 1, //where to go back when the transaction is done.
-            // // );
+            // print_r($data);die;
+            $data = $this->input->post();
+            // $data = json_decode($data);
+            $data = $data['form_data'];
+
+            $mock_ability = array(
+                'name'        => $data['name'], //paypal email address
+                'description' => 'Used with express backend',   //paypal currency
+                'rating'     => 3,    //location code (ex GB)
+                'active'      => 1, //where to go back when the transaction is done.
+            );
             
             // // add current logged in user id to incoming data
-            // $mock_ability['user_id'] = $user_id;
+            $mock_ability['user_id'] = $user_id;
 
-            // $this->ability_model->add_ability($mock_ability);
+            $outcome = $this->ability_model->add_ability($mock_ability);
 
             // // validations should go here
-            // return true;
+            return $outcome;
+        }
 
-            // $this->load->view('ability/list');
-        }
-        public function ngassets(){
- 
-            Assets::add_module_js('ability', 'ng-ability.js');
-        }
+
         public function nglist(){
  
             // Assets::add_module_js('ability', 'ng-ability.js');

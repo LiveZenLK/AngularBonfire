@@ -21,7 +21,7 @@ body {
     padding: 14px 24px;
 }
 .jumbotron.lead-image {
-    background:red url('images/everythingatnight.jpg') bottom;
+    background:red url('images/earlyprototype2.jpg') bottom;
 }
 
 p.lead {
@@ -30,7 +30,7 @@ p.lead {
 }
 
 
-#login {
+.login {
     max-width: 300px;
     padding: 19px 29px 14px 29px;
     margin: 20px auto 20px;
@@ -43,6 +43,8 @@ p.lead {
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
+
+
 #login h2 {
     font-size: 31.5px;
     line-height: 40px;
@@ -103,6 +105,7 @@ p.lead {
     background:rgba(0, 0, 0, 0.2);
 }
 
+<<<<<<< HEAD
 .repeater {
 background: #16201E;
 padding: 10px;
@@ -137,37 +140,74 @@ color: white;
     display: none;
 }
 .ng-hide.ng-hide-add { /* stops disapearing instantly */
+=======
+/*
+ * .slide.ng-enter { }        /&#42; starting animations for enter &#42;/
+ * .slide.ng-enter.ng-enter-active { } /&#42; terminal animations for enter &#42;/
+ * .slide.ng-leave { }        /&#42; starting animations for leave &#42;/
+ * .slide.ng-leave.ng-leave-active { } /&#42; terminal animations for leave &#42;/
+*/
+/*/ Animation Stuff/ */
+.ng-enter { /* prevents flahes */
+    display: none;
+}
+.ng-enter.ng-enter-active { /* stops disapearing instantly */
+>>>>>>> master
     display: block;
 }
 /* when hiding the thing */
 
+<<<<<<< HEAD
 .thing-appearing.ng-hide-remove         { 
+=======
+.thing-appearing.ng-leave-active        { 
+>>>>>>> master
     -webkit-backface-visibility: hidden;
     -webkit-animation-name: dostuff;
     -webkit-animation-duration: .75s;
 }
+<<<<<<< HEAD
 .thing-appearing.ng-hide-add       { 
+=======
+.thing-appearing.ng-enter-active       { 
+>>>>>>> master
     backface-visibility: hidden;
     -webkit-animation-name: dothereverse;
     -webkit-animation-duration: .75s;
 }
+<<<<<<< HEAD
 .edit-field.ng-hide-remove         { 
+=======
+.edit-field.ng-leave-active        { 
+>>>>>>> master
     -webkit-backface-visibility: hidden;
     -webkit-animation-name: dostuff;
     -webkit-animation-duration: .75s;
 }
+<<<<<<< HEAD
 .edit-field.ng-hide-add       { 
+=======
+.edit-field.ng-enter-active       { 
+>>>>>>> master
     backface-visibility: hidden;
     -webkit-animation-name: dothereverse;
     -webkit-animation-duration: .75s;
 }
 
+<<<<<<< HEAD
 .thing-leaving.ng-hide-remove        { 
+=======
+.thing-leaving.ng-leave-active       { 
+>>>>>>> master
         backface-visibility: hidden;
     -webkit-animation-name: dostuff;
     -webkit-animation-duration: .75s;
 }
+<<<<<<< HEAD
 .thing-leaving.ng-hide-add        { 
+=======
+.thing-leaving.ng-enter-active        { 
+>>>>>>> master
         backface-visibility: hidden;
     -webkit-animation-name: dothereverse;
     -webkit-animation-duration: .75s;
