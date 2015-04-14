@@ -73,7 +73,7 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	// add csrf token from globals set in footer on page load 
 	// $scope.abilityFormData[csrfTokenName] = csrfTokenValue
 
-	// $state.go('list');
+	$state.go('action_interest');
 
   console.log('sdfds');
 	
