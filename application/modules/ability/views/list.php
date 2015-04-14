@@ -1,7 +1,7 @@
 <section ng-controller="NgAbilityCtrl">
     <div class="row-fluid">
-    	<div class="span6">
-    		<h3>Abilities</h3>
+    	<div class="span12">
+    		<h4>INTERESTS</h4>
     	</div>
 
     </div>

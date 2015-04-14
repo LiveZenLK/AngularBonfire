@@ -1,21 +1,5 @@
  <?php echo Modules::run('join/now', 1); ?>
 
-
-<div class="jumbotron lead-image" text-align="center">
-	<h1>AngularBonfire</h1>
-
-	<!-- <p class="lead">For the Ancient Egyptians, folk dealing was just an advanced form of widwifery.</p> -->
-	<p class="lead">A New Way To Discover Conversations.</p>
-
-	<?php if (isset($current_user->email)) : ?>
-		<a href="<?php echo site_url(SITE_AREA) ?>" class="btn btn-large btn-success">Go to the Admin area</a>
-	<?php else :?>
-		<a href="<?php echo site_url(LOGIN_URL); ?>" class="btn btn-large btn-info">test@gmail.com : testtest</a>
-	<?php endif;?>
-
-	<!-- <br/><br/><a href="<?php echo site_url('/docs') ?>" class="btn btn-large btn-info">Browse the Docs</a> -->
-</div>
-
 <hr />
 
 <div class="row-fluid">

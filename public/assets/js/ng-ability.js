@@ -72,35 +72,12 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 
     $scope.addAbility = function() {
 
-    		// 	    var post_data = {
-		    //     // 'form_data': {'name':'reasonable use of globals'},//formData, //formData, // we can now send it along with our request
-		    //     // I don't think anyone has ever found a neat way of doing this without inline js
-		    //     'ci_csrf_token' : ci_csrf_token()
-		    // }
-		    // console.log('padpfsdfp',post_data)
-		    // so far we have an object we can 'POST' to our form which contains a security token
-  // $.post(AngularBonfireUrl+'/ability/add',
-  //  { 'ci_csrf_token'  : ci_csrf_token(), 'formData' : $scope.abilityFormData });
-
-
-// $.ajax({
-//    url: AngularBonfireUrl+'/ability/add',
-//    type: "post",
-//    data: {csrfTokenName : csrfTokenValue},   //   post_data,
-//    success: function(){
-//      alert("success");
-//     	// deferred.resolve("success");
-//    },
-//    error:function(){
-//      alert("failure");
-//     	// deferred.resolve("failure");
-//    }
-// });
 
     	console.log($scope.abilityFormData);
     	
-  //   	// add to front of array
-    	$scope.abilities.unshift($scope.abilityFormData);
+    	// add to front of array
+    	 $scope.abilities.unshift($scope.abilityFormData);
+      // $scope.$refresh();
 
   //   	var post_data = {
 		//     'form_data': $scope.abilityFormData, //formData, // we can now send it along with our request
