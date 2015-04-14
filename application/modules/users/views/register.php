@@ -15,16 +15,16 @@ p.already-registered {
 }
 </style>
 <section id="register">
-    <h1 class="page-header"><?php echo lang('us_sign_up'); ?></h1>
-    <?php if ($validation_errors) : ?>
-	<div class="alert alert-error fade in">
-		<?php echo $validation_errors; ?>
-	</div>
-    <?php endif; ?>
-    <div class="alert alert-info fade in">
-        <h4 class="alert-heading"><?php echo lang('bf_required_note'); ?></h4>
-        <?php if (isset($password_hints)) { echo $password_hints; } ?>
-    </div>
+    <!-- <h1 class="page-header"><?php // echo lang('us_sign_up'); ?></h1> -->
+    <?php //if ($validation_errors) : ?>
+	<!-- <div class="alert alert-error fade in"> -->
+		<?php //echo $validation_errors; ?>
+	<!-- </div> -->
+    <?php //endif; ?>
+    <!-- <div class="alert alert-info fade in"> -->
+        <!-- <h4 class="alert-heading"><?php //echo lang('bf_required_note'); ?></h4> -->
+        <?php //if (isset($password_hints)) { echo $password_hints; } ?>
+    <!-- </div> -->
     <div class="row-fluid">
         <div class="span12">
             <?php echo form_open( site_url(REGISTER_URL), array('class' => "form-horizontal", 'autocomplete' => 'off')); ?>
@@ -43,8 +43,8 @@ p.already-registered {
                 </div>
             <?php echo form_close(); ?>
             <p class='already-registered'>
-                <?php echo lang('us_already_registered'); ?>
-                <?php echo anchor(LOGIN_URL, lang('bf_action_login')); ?>
+                <?php //echo lang('us_already_registered'); ?>
+                <?php //echo anchor(LOGIN_URL, lang('bf_action_login')); ?>
             </p>
         </div>
     </div>

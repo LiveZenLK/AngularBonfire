@@ -30,7 +30,7 @@ p.lead {
 }
 
 
-#login {
+.login {
     max-width: 300px;
     padding: 19px 29px 14px 29px;
     margin: 20px auto 20px;
@@ -43,6 +43,8 @@ p.lead {
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
+
+
 #login h2 {
     font-size: 31.5px;
     line-height: 40px;
@@ -101,5 +103,137 @@ p.lead {
     float: left;
     /*background: green;*/
     background:rgba(0, 0, 0, 0.2);
+}
+
+/*
+ * .slide.ng-enter { }        /&#42; starting animations for enter &#42;/
+ * .slide.ng-enter.ng-enter-active { } /&#42; terminal animations for enter &#42;/
+ * .slide.ng-leave { }        /&#42; starting animations for leave &#42;/
+ * .slide.ng-leave.ng-leave-active { } /&#42; terminal animations for leave &#42;/
+*/
+/*/ Animation Stuff/ */
+.ng-enter { /* prevents flahes */
+    display: none;
+}
+.ng-enter.ng-enter-active { /* stops disapearing instantly */
+    display: block;
+}
+/* when hiding the thing */
+
+.thing-appearing.ng-leave-active        { 
+    -webkit-backface-visibility: hidden;
+    -webkit-animation-name: dostuff;
+    -webkit-animation-duration: .75s;
+}
+.thing-appearing.ng-enter-active       { 
+    backface-visibility: hidden;
+    -webkit-animation-name: dothereverse;
+    -webkit-animation-duration: .75s;
+}
+.edit-field.ng-leave-active        { 
+    -webkit-backface-visibility: hidden;
+    -webkit-animation-name: dostuff;
+    -webkit-animation-duration: .75s;
+}
+.edit-field.ng-enter-active       { 
+    backface-visibility: hidden;
+    -webkit-animation-name: dothereverse;
+    -webkit-animation-duration: .75s;
+}
+
+.thing-leaving.ng-leave-active       { 
+        backface-visibility: hidden;
+    -webkit-animation-name: dostuff;
+    -webkit-animation-duration: .75s;
+}
+.thing-leaving.ng-enter-active        { 
+        backface-visibility: hidden;
+    -webkit-animation-name: dothereverse;
+    -webkit-animation-duration: .75s;
+}
+
+
+
+.animated.flip {
+
+  -webkit-animation-name: flip;
+          animation-name: flip;
+}
+
+@-webkit-keyframes dostuff {
+/*  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }*/
+
+
+/*@-webkit-keyframes flipInX {*/
+  0% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+/*    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;*/
+    opacity: 0;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
+/*    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;*/
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 40deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 40deg);
+   
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+  }
+
+  100% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+     opacity: 1;
+  }
+}
+
+@-webkit-keyframes dothereverse {
+
+  0% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+/*    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;*/
+    opacity: 1;
+  }
+
+  40% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+/*    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;*/
+  }
+
+  60% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
+   
+  }
+
+  80% {
+    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
+  }
+
+  100% {
+        -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+            transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+
+     opacity: 0;
+  }
 }
 

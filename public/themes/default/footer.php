@@ -18,9 +18,11 @@
     <!-- // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script> -->
     <script src="<?php echo js_path(); ?>angular.js"></script>
     <script src="<?php echo js_path(); ?>angular-ui-router.js"></script>
+    <script src="<?php echo js_path(); ?>angular-animate.js"></script>
     <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
     <script src="<?php echo js_path(); ?>ng-action.js"></script>
     <script src="<?php echo js_path(); ?>ng-ability.js"></script>
+    <script src="<?php echo js_path(); ?>ng-join.js"></script>
 
 
     <?php echo Assets::js(); ?>

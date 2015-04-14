@@ -1,3 +1,6 @@
+ <?php echo Modules::run('join/now', 1); ?>
+
+
 <div class="jumbotron lead-image" text-align="center">
 	<h1>AngularBonfire</h1>
 
