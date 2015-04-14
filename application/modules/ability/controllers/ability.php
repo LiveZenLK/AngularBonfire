@@ -72,6 +72,18 @@
             $this->load->view('ability/list');
         }
 
+        public function ngactions(){
+ 
+            // Assets::add_module_js('ability', 'ng-ability.js');
+            $this->load->view('ability/actions');
+        }
+
+        public function ngstatus(){
+ 
+            // Assets::add_module_js('ability', 'ng-ability.js');
+            $this->load->view('ability/status');
+        }
+
         // This function uses the details of the current logged in user
         // public function get_profile_abilites(){
             

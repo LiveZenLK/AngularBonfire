@@ -34,7 +34,14 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
             name: 'action_interest', 
             views:{
                 'content':{
-                templateUrl: AngularBonfireUrl+'/ability/nglist'
+                templateUrl: AngularBonfireUrl+'/ability/nglist',
+                },
+                'status':{
+                templateUrl: AngularBonfireUrl+'/ability/ngstatus'
+                },
+                'actions':{
+                templateUrl: AngularBonfireUrl+'/ability/ngactions',
+                controller: 'NgAbilityCtrl'
                 }
             }
             //   'list':{
