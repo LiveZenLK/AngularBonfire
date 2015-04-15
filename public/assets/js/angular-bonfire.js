@@ -5,6 +5,7 @@ console.log('angular-bonfire.js');
 var AngularBonfire = angular.module('AngularBonfire', 
 	[
 	'ui.router',
-	'ngAnimate'
+	'ngAnimate',
+	'NgJoinCtrl'
 	// ,'ngResource','ngAnimate','ui.bootstrap','ngRoute','firebase'
 	]);

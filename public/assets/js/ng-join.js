@@ -18,9 +18,16 @@
 //   return factory
 // });
 
-var NgAbilityCtrl = AngularBonfire.controller('NgJoinCtrl', [
+var NgJoinCtrl = angular.module('NgJoinCtrl', ['ngAnimate']);
+
+
+
+// var NgJoinCtrl = AngularBonfire.
+
+NgJoinCtrl.controller('NgJoinCtrl', [
 	'$scope', 
 	'$state', 
+	// 'ngAnimate',
   // 'ngAnimate',
 	// 'NgJoinFactory', 
 	function($scope, $state

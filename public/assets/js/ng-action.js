@@ -11,9 +11,9 @@ var NgActionCtrl = AngularBonfire.controller('NgActionCtrl', [
       "action_name" : "interest",
       "image" : "action-lend.png"
     },{
-    //   "action_name" : "conversation",
-    //   "image" : "action-lend.png"
-    // },{
+      "action_name" : "items",
+      "image" : "action-lend.png"
+    },{
       "action_name" : "character",
       "image" : "action-lend.png"
     }
@@ -50,17 +50,19 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
             //   }
           };
 
-    // var action_conversation = { 
-    //     name: 'action_conversation', 
-    //     views:{
-    //           'content':{
-    //         templateUrl: AngularBonfireUrl+'/action/action_conversation'
-    //           },
-    //           'list':{
-    //         templateUrl: AngularBonfireUrl+'/action/action_list'
-    //           }
-    //         }
-    // };
+    var action_items = { 
+        name: 'action_items', 
+        views:{
+              'content':{
+            template: 'items content'    // 
+            // templateUrl: AngularBonfireUrl+'/belonging/ngcontent'
+              },
+              'status':{
+                template: 'items status'
+            // templateUrl: AngularBonfireUrl+'/belonging/nglist'
+              }
+            }
+    };
 
         var action_character = { 
         name: 'action_character', 
@@ -75,6 +77,7 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
 
         $stateProvider
         .state(action_interest) // namespacing is important here since we extending the sidewide AngularBonfire object
+        .state(action_items) // namespacing is important here since we extending the sidewide AngularBonfire object
         // .state(action_list) // namespacing is important here since we extending the sidewide AngularBonfire object
             .state(action_character) // namespacing is important here since we extending the sidewide AngularBonfire object
         ;
