@@ -23,6 +23,7 @@
     <script src="<?php echo js_path(); ?>ng-action.js"></script>
     <script src="<?php echo js_path(); ?>ng-ability.js"></script>
     <script src="<?php echo js_path(); ?>ng-join.js"></script>
+    <script src="<?php echo js_path(); ?>level/test.js"></script>
 
 
     <?php echo Assets::js(); ?>

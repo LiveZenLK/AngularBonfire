@@ -64,3 +64,9 @@ vendor/*
 
 # Ignore any sparks that have been loaded
 sparks/*
+
+# Ignore local node_modules 
+node_modules/*
+
+# Ignore installed bower components
+public/assets/js/bower_components/*

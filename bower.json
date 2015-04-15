@@ -1,0 +1,8 @@
+{
+  "name": "AngularBonfire",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.4",
+    "fontawesome": "~4.3.0"
+  }
+}
