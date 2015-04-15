@@ -135,7 +135,7 @@ color: white;
 .thing-leaving {
     /*background: red;*/
     font-size: 17px;
-    padding: 4px 0;
+    /*padding: 4px 0;*/
 }
 
 
@@ -148,24 +148,29 @@ color: white;
 /*
 /* prevents flashes */
 .ng-hide { 
-    display: none;
+    /*display: none;*/
 }
 .ng-hide.ng-hide-add.ng-hide-add-active  { /* stops disapearing instantly */
-    display: block;
+    /*display: block;*/
 }
 /* when hiding the thing */
 
-.thing-appearing.ng-hide-add     { 
+.thing-appearing.ng-hide-add.ng-hide-remove-active       { 
     display:block!important;
-    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /*-moz-backface-visibility: hidden;*/
     -webkit-animation-name: dostuff;
+    -moz-animation-name: dostuff;
     -webkit-animation-duration: .75s;
+    -moz-animation-duration: .75s;
 }
 .thing-appearing.ng-hide-add.ng-hide-add-active     { 
     display:block!important
     backface-visibility: hidden;
     -webkit-animation-name: dothereverse;
+    -moz-animation-name: dothereverse;
     -webkit-animation-duration: .75s;
+    -moz-animation-duration: .75s;
 }
 /*.edit-field.nng-hide-remove.ng-hide-remove-active       { 
     -webkit-backface-visibility: hidden;
@@ -178,7 +183,7 @@ color: white;
     -webkit-animation-duration: .75s;
 }*/
 
-/*.thing-leaving.ng-hide-remove.ng-hide-remove-active       { 
+.thing-leaving.ng-hide-remove.ng-hide-remove-active       { 
     display:block!important
         backface-visibility: hidden;
     -webkit-animation-name: dostuff;
@@ -188,14 +193,14 @@ color: white;
 }
 .thing-leaving.ng-hide-add.ng-hide-add-active       { 
     display:block!important
-        backface-visibility: hidden;
+    backface-visibility: hidden;
     -webkit-animation-name: dothereverse;
-    -webkit-animation-name: dothereverse;
+    -moz-animation-name: dothereverse;
     -webkit-animation-duration: .75s;
-    -webkit-animation-duration: .75s;
-}*/
+    -moz-animation-duration: .75s;
+}
 
-.animate-show {
+/*.animate-show {
   line-height: 20px;
   opacity: 1;
   padding: 10px;
@@ -212,15 +217,15 @@ color: white;
     animation-duration: .75s;    
 }
 .animate-show.ng-hide-remove.ng-hide-remove-active {
-  /*-webkit-transition: all linear 0.5s;*/
-  /*transition: all linear 0.5s;*/
       -webkit-animation-name: dothereverse;
       -moz-animation-name: dothereverse;
       animation-name: dothereverse;
     -webkit-animation-duration: .75s;
     -moz-animation-duration: .75s;
     animation-duration: .75s;
-}
+}*/
+  /*transition: all linear 0.5s;*/
+  /*-webkit-transition: all linear 0.5s;*/
 
 .animate-show.ng-hide {
     /*display:block!important;*/
@@ -315,69 +320,64 @@ color: white;
 
 /*    -webkit-transition-timing-function: ease-in;
             transition-timing-function: ease-in;*/
+/*    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;*/
 @-webkit-keyframes dothereverse {
 
   0% {
         -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
-        -moz-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
-        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
-    opacity: 1;
+                transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        opacity: 1;
   }
 
   40% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-/*    -webkit-transition-timing-function: ease-in;
-            transition-timing-function: ease-in;*/
   }
 
   60% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
-    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
    
   }
 
   80% {
     -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
-    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
   }
 
   100% {
         -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
-        -moz-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
-            transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+                transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
 
-     opacity: 0;
+        opacity: 0;
   }
 }
 
+/*    -webkit-transition-timing-function: ease-in;
+            transition-timing-function: ease-in;*/
 
 @-moz-keyframes dothereverse {
 
   0% {
         -moz-transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
-        transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
-    opacity: 1;
+            transform: perspective(400px) rotate3d(1, 0, 0, 0deg);
+        opacity: 1;
   }
 
   40% {
-    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+        -moz-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-/*    -webkit-transition-timing-function: ease-in;
-            transition-timing-function: ease-in;*/
   }
 
   60% {
-    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
+        -moz-transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -40deg);
    
   }
 
   80% {
-    -moz-transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
+        -moz-transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -60deg);
   }
 
@@ -385,19 +385,19 @@ color: white;
         -moz-transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
             transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
 
-     opacity: 0;
+        opacity: 0;
   }
 }
 
 .fixed-for {
 
     height:30px;
-    position: relative;
+    /*position: relative;*/
 }
 
 .blah {
-    position: absolute;
-    top:0;
+    /*position: absolute;*/
+    /*top:0;*/
     height:400px;
     width: 100%;
 }
