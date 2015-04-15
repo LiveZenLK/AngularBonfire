@@ -1,0 +1,1 @@
+<p>Belongings Status - nothing happening</p>

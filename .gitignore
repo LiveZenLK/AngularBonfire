@@ -52,6 +52,7 @@ application/modules/*
 !application/modules/ability
 !application/modules/action
 !application/modules/join
+!application/modules/belonging
 
 
 # Remove PHPStorm Project folders
