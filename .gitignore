@@ -51,6 +51,8 @@ application/modules/*
 !application/modules/users
 !application/modules/ability
 !application/modules/action
+!application/modules/join
+
 
 # Remove PHPStorm Project folders
 bonfire/.ideas
