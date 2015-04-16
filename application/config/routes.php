@@ -65,6 +65,16 @@ Route::prefix(SITE_AREA, function(){
     Route::context('settings');
 });
 
+// Profile
+Route::any('users', 'profile/index');
+Route::any('profile/(:any)', 'profile/show/$1');
+
+
+// Profile
+
+
+// Account 
+
 
 $route[SITE_AREA]	= 'admin/home';
 
