@@ -1,4 +1,5 @@
- <?php echo Modules::run('join/now', 1); ?>
+<?php echo Modules::run('join/cta', 1); ?>
+ 
 
 <hr />
 
