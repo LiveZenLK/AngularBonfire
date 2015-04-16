@@ -49,11 +49,14 @@ application/modules/**/.hg/*
 application/modules/*
 # Except the following modules:#
 !application/modules/users
-!application/modules/ability
 !application/modules/action
+!application/modules/account
 !application/modules/join
+
+!application/modules/ability
 !application/modules/belonging
 !application/modules/profile
+!application/modules/item
 
 
 # Remove PHPStorm Project folders

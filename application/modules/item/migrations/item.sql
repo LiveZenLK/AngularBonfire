@@ -1,0 +1,12 @@
+CREATE TABLE `bf_items` (
+	`item_id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` INT(11) NULL DEFAULT NULL,
+	`cost` INT(11) NULL DEFAULT NULL,
+	`image` VARCHAR(50) NULL DEFAULT NULL COMMENT 'Chess',
+	PRIMARY KEY (`item_id`),
+	INDEX `Index 2` (`cost`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4
+;
