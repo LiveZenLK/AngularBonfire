@@ -1,7 +1,7 @@
 <!-- This is the routing component -->
 
 
-<section ng-controller="NgActionCtrl">
+<section ng-controller="NgAccountCtrl">
     <div class="row-fluid">
         <div class="span4">
         	<!-- sidebar view -->

@@ -5,7 +5,9 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 ## Current Features
 
 - Standard Bonfire Features
-- ng router
+- Join Module - Home page registration using ngAnimate 
+- Ability Module - Add player abilities/interests via ng view
+- Action Module - ui-router via codeignitor routes
 
 ## EXPERIMENTAL TODO
 
@@ -16,12 +18,19 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 - Add instant message feature
 
 ## TODO
+- Blog Feature
+- Belonging Module (owned by user) / Item Module (all available)
 - Create Profile Page Layout
 - 'Add Friend' Functionality
 - Add Update/Delete to Abilities
-- Rename 'actions' to 'profilelayout'
+- Rename 'actions' to 'account'
 - Make animation on signup/join feature less kludgy
 - Create Items / Belongings feature
+- refactor profile view so it no longer overloads default users module
+
+## NICE TO HAVE
+- Proper migrations - not just sql queries
+- Cleaner controllers 
 
 ## EVENTUALLY
 - Add notifications feature 
