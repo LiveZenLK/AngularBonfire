@@ -22,7 +22,8 @@ body {
 }
 .jumbotron.lead-image {
     background:red url('images/earlyprototype2.jpg') bottom;
-    min-height: 400px;
+    height: 300px;
+    overflow: hidden;
 }
 
 p.lead {
@@ -239,8 +240,8 @@ color: white;
 
 .check-element {
   padding: 10px;
-  border: 1px solid black;
-  background: white;
+/*  border: 1px solid black;
+  background: white;*/
 }
 
 /*@-webkit-keyframes thing {
@@ -398,15 +399,16 @@ color: white;
 .blah {
     /*position: absolute;*/
     /*top:0;*/
-    height:400px;
+    height:300px;
     width: 100%;
+    box-sizing:border-box;
 }
 
 .one {
-    background: red;
+    /*background: red;*/
 }
 .two {
-    background: blue;
+    /*background: blue;*/
 }
 
 

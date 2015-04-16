@@ -39,6 +39,10 @@
 
         }
 
+        public function cta() {
+            $this->load->view('join/cta');
+        }
+
         public function now() {
 
                    // Are users allowed to register?
@@ -88,7 +92,7 @@
         // Generate password hint messages.
         $this->user_model->password_hints();
 
-            echo 'now';
+            // echo 'now';
             $this->load->view('join/now');
 
         }
