@@ -66,7 +66,7 @@
     <script src="<?php echo js_path(); ?>angular-ui-router.js"></script>
     <script src="<?php echo js_path(); ?>angular-animate.js"></script>
     <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
-    <script src="<?php echo js_path(); ?>ng-action.js"></script>
+    <script src="<?php echo js_path(); ?>ng-account.js"></script>
     <script src="<?php echo js_path(); ?>ng-ability.js"></script>
     <script src="<?php echo js_path(); ?>ng-join.js"></script>
     <script src="<?php echo js_path(); ?>level/test.js"></script>

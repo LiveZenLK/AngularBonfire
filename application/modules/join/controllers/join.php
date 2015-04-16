@@ -39,6 +39,7 @@
 
         }
 
+        //
         public function cta() {
             $this->load->view('join/cta');
         }

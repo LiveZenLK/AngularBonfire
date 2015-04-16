@@ -18,6 +18,7 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 - Add instant message feature
 
 ## TODO
+- Signin redirects to wrong page
 - Blog Feature
 - Belonging Module (owned by user) / Item Module (all available)
 - Create Profile Page Layout
@@ -36,7 +37,8 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 - Add notifications feature 
 - Write PHP Unit tests
 - write Angular Unit tests
-- Add actions feature / write some frackin game logic
+- Add actions feature / write some frackin game logic // SubHabit [Addaction]
+
 
 
 

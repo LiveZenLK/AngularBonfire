@@ -20,6 +20,11 @@
 
         public function show($username=''){
 
+            // totally should be in a modal except I believe that not to be agile
+            $abilities = $this->getAbilities
+        }
+
+        private function getAbilities($username){
 
             // get user abilties
             $sql = "SELECT name, description, rating, e.active 
@@ -30,13 +35,8 @@
 
             $query = $this->db->query($sql, array($username))->result(); 
             $abilities = json_encode($query);
-            print_r($abilities);
-
-
+            
+            return $abilties;
         }
-        
-        // public function show_all()
-        // {
 
-        // }
     }

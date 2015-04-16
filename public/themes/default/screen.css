@@ -96,6 +96,9 @@ p.lead {
     color: #222;
 }
 
+
+/*// ACCOUNT MODULE*/
+
 .interface{
     background:rgba(0, 0, 0, 0.2);
     float: left;
@@ -104,7 +107,7 @@ p.lead {
     width:340px;
     margin-bottom:40px;
 }
-.action {
+.account-menu {
     box-sizing:border-box;
     border:2px solid gold;
     text-align: center;
@@ -113,9 +116,10 @@ p.lead {
     height: 60px;
     margin:0 20px 20px 0;
     float: left;
-    /*background: green;*/
     background:rgba(0, 0, 0, 0.2);
+    cursor:pointer
 }
+
 
 
 /*/ Animation Stuff/ */
