@@ -1,3 +1,4 @@
+// console.log('ng-abiltiy');
 AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
   //this runs the first time the service is injected
   //this creates the service
@@ -6,43 +7,60 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
 
   factory.getAll = function () {
 
-  	var deferred = $q.defer();
+  	var deferred = $q.defer()
   	
   	$http.get(AngularBonfireUrl+'/ability/get_profile_abilites_json').then(function(resp) {
-    	deferred.resolve(resp.data);
- 	});
+    	
+      deferred.resolve(resp.data)
+ 	  })
 
-  	return deferred.promise;
-  };
+  	return deferred.promise
+  }
 
   factory.addAbility = function (dataObject) {
   	
-  	var deferred = $q.defer();
+  	var deferred = $q.defer()
 
     var post_data = {
-        'form_data': dataObject, 
-        // I don't think anyone has ever found a neat way of doing this without inline js
-        'ci_csrf_token'  : ci_csrf_token(),
+        'form_data'     : dataObject, 
+        'ci_csrf_token' : ci_csrf_token()
     }
 	
-	// so far we have an object we can 'POST' to our form which contains a security token
-	$.post(AngularBonfireUrl+'/ability/add', post_data).done(function(){
-   		deferred.resolve('done');
-   	});
+  	// so far we have an object we can 'POST' to our form which contains a security token
+  	$.post(AngularBonfireUrl+'/ability/add', post_data).done(function(){
+     		
+        deferred.resolve('done')
+    })
 
-  	return deferred.promise;
-  };
+  	return deferred.promise
+  }
   
   factory.updateAbility = function (id, dataObject) {
 
-  };
+    var deferred = $q.defer();
+
+    var post_data = {
+      'item_ref'      : id,
+      'form_data'     : dataObject, 
+      'ci_csrf_token' : ci_csrf_token()
+    }
+  
+    // so far we have an object we can 'POST' to our form which contains a security token
+    $.post(AngularBonfireUrl+'/ability/update', post_data).done(function(sdf){
+        console.log('saved', sdf)
+        deferred.resolve('done')
+    })
+
+    return deferred.promise
+
+  }
 
   factory.deleteAbility = function (id) {
-
-  };
+  }
 
   return factory
-});
+
+})
 
 var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	'$scope', 
@@ -55,64 +73,50 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	$scope.abilities = {};
 	$scope.abilityFormData = {};
 
-
-	$state.go('action_interest');
-
-
-  	console.log('sdfds');
-	
 	$scope.init = function(){
 
 		NgAbilityFactory.getAll().then(function(data) {
 		    console.log(data);
 		    $scope.abilities = data;
 		});
-    }
-    $scope.init(); 
+  }
+  $scope.init(); 
 
-    $scope.addAbility = function() {
+  $scope.addAbility = function() {
 
-
-    	console.log($scope.abilityFormData);
+    console.log($scope.abilityFormData)
     	
-    	// add to front of array
-    	 $scope.abilities.unshift($scope.abilityFormData);
-      // $scope.$refresh();
+  	// add to front of array
+  	$scope.abilities.unshift($scope.abilityFormData)
 
-  //   	var post_data = {
-		//     'form_data': $scope.abilityFormData, //formData, // we can now send it along with our request
-		//     csrfTokenName: csrfTokenValue  // I think setting these as globals in the footer is okay
-		// }
+    NgAbilityFactory.addAbility($scope.abilityFormData).then(function(data) {
 
+		  console.log('saved', data)
+    	// reset the form
+    	$scope.abilityFormData = {}
+		})
+  }
 
-    	NgAbilityFactory.addAbility($scope.abilityFormData).then(function(data) {
+  $scope.updateAbility = function(ability) {
+    // Note, we are retrieving full ability object 
+    // due to way form is submitted using ng-click(ng-model)
+    // rather than ng-submit on the form element. 
+    // We need to remove the user id from the post, 
+    // so people cant  manipulate other users data.
+    var id   = ability.id
+    var dataObject = {
+      name        : ability.name,
+      description : ability.description
+    } 
 
-		    console.log('saved', data);
-    		// reset the form
-    		$scope.abilityFormData = {}
-		});
-    	
-	}
-    
+    NgAbilityFactory.addAbility(id, dataObject).then(function(data) {
 
-}]);
+      alert('saved')
+    })
+  }  
 
-// AngularBonfire.config(['$stateProvider', '$urlRouterProvider', 
-//     function ($stateProvider, $urlRouterProvider ) {
-	    
-// 		var list = { 
-// 		    name: 'list', 
-// 		    views:{
-//             	'content':{
-// 		    		templateUrl: AngularBonfireUrl+'/ability/ability_list'
-//             	}
-//             }
-// 		};
+}])
 
-// 		$stateProvider
-// 	  		.state(list)
-// 		;
-// }]);
 
 
 

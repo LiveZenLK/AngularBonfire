@@ -2,6 +2,7 @@
 
 Experiments in building out Angular JS interface onto the Bonfire framework.
 
+/less is more but software as a service is better
 ## Current Features
 
 - Standard Bonfire Features
@@ -23,13 +24,15 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 - Belonging Module (owned by user) / Item Module (all available)
 - Create Profile Page Layout
 - 'Add Friend' Functionality
-- Add Update/Delete to Abilities
-- Rename 'actions' to 'account'
+- ~~Add Update to Abilities~~
+- Add Delete to Abilities
+- ~~Rename 'actions' to 'account'~~
 - Make animation on signup/join feature less kludgy
 - Create Items / Belongings feature
 - refactor profile view so it no longer overloads default users module
 
 ## NICE TO HAVE
+- Animation on Ability edit screen
 - Proper migrations - not just sql queries
 - Cleaner controllers 
 
