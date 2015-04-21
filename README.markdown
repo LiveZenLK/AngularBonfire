@@ -2,7 +2,6 @@
 
 Experiments in building out Angular JS interface onto the Bonfire framework.
 
-/less is more but software as a service is better
 ## Current Features
 
 - Standard Bonfire Features
@@ -12,7 +11,7 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 
 ## EXPERIMENTAL TODO
 
-- ~~Add language support~~
+- ~~Add language support~~ the system now works with codeignitor lang()
 - add two way data binding to to ng controllers multiple ui-router views
 - write ajax validation for unique username when lose focus on sign up form
 - add gulp build to move ng files into module folders
@@ -42,6 +41,12 @@ Experiments in building out Angular JS interface onto the Bonfire framework.
 - write Angular Unit tests
 - Add actions feature / write some frackin game logic // SubHabit [Addaction]
 
+# Getting Started
+
+Assuming you have nodejs or at least the ability to google it run 
+
+-install gulp
+npm install -g gulp 
 
 
 

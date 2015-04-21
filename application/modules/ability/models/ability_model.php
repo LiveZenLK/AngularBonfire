@@ -51,6 +51,16 @@
 
         }
 
+        public function update_ability($data=NULL){
+                        $abilities = $this->db->
+                    where('user_id', $user_id)->
+                    get('abilities')->result();
+            $this->db->insert('abilities', $data); 
+            
+            return true;
+
+        }
+
 
 
 }
