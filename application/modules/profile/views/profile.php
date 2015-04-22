@@ -7,15 +7,10 @@
     <div class="row">
       <nav class="col-12 col-desktop-3">
         <h3 class="na v-title"><?php echo $username;?>'s Interests</h3>
-        <ul class="vertical-nav list-unstyled">
-          <li class="active article-title"><a href="#">Article Title 1</a></li>
-          <li class="active article-title"><a href="#">Article Title 2</a></li>
-          <li class="active article-title"><a href="#">Article Title 3</a></li>
-          <li class="active article-title"><a href="#">Article Title 4</a></li>
-          <li class="active article-title"><a href="#">Article Title 5</a></li>
-          <li class="active article-title"><a href="#">Article Title 6</a></li>
-          <li class="active article-title"><a href="#">Article Title 7</a></li>
-          <li class="active article-title"><a href="#">Article Title 8</a></li>
+
+        <ul ng-controller="FirstCtrl" class="vertical-nav list-unstyled">
+        <li><h4>{{name}}</h4></li>
+          <h4>li ng-repeat="thing as t" class="active article-title" a href="#" {{t.name}} /a/li - -></h4>
         </ul>
 		<?php echo Modules::run('profile/widget', 1); ?>
       </nav>
