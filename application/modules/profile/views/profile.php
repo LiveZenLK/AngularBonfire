@@ -6,8 +6,7 @@
   <section class="container">
     <div class="row">
       <nav class="col-12 col-desktop-3">
-        <h3 class="nav-title"><?php echo $username;?>'s Interests</h3>
-<?php echo Modules::run('profile/widget', 1); ?>
+        <h3 class="na v-title"><?php echo $username;?>'s Interests</h3>
         <ul class="vertical-nav list-unstyled">
           <li class="active article-title"><a href="#">Article Title 1</a></li>
           <li class="active article-title"><a href="#">Article Title 2</a></li>
@@ -18,13 +17,14 @@
           <li class="active article-title"><a href="#">Article Title 7</a></li>
           <li class="active article-title"><a href="#">Article Title 8</a></li>
         </ul>
+		<?php echo Modules::run('profile/widget', 1); ?>
       </nav>
 
 
 
       <main class="col-12 col-desktop-9">
         <div class="home-page-image">
-<?php print_r($abilities);?>
+			<?php print_r($abilities);?>
 
           <article class="current-article">
             <img src="img/hiviz.png" alt="Man in hi-viz vest"/>

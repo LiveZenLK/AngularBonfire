@@ -137,4 +137,21 @@ Within our template we could then include a partial from another method of our c
 <?php print_r($data); ?>
 
 
+Since we will be handling most of the profiles functionality using angular lets make out new widget do something useful. Codeignitor has some built functionality to check if a visitor is logged in. Lets put a holding place for a contact form inside here. This way only registered users can submit the form, we handle this feature seperately and get on with displaying the view.
+
+``
+//modules/profile/views/widget.php
+<hr/>
+<h4>Contact This User</h4>
+<?php if (empty($current_user)) : ?>
+	You must be <a href="<?php echo site_url(); ?>">registered</li> to do this. 
+    <li>
+<?php else : ?>
+    Add friend
+<?php endif; ?>
+<hr/>
+```
+
+
+
 
