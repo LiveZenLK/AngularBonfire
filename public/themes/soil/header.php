@@ -1,3 +1,4 @@
+
 <?php
 
 Assets::add_css(array('base.css', 'soil.css'));
@@ -29,6 +30,21 @@ Assets::add_css(array('base.css', 'soil.css'));
 	<!-- <link href="<?php echo base_url(); ?>css/soil.css"> -->
 </head>
 <body ng-app="AngularBonfire">
+<div class="wrapper">
+  <header class="container">
+    <div class="row fix-header-alignment"> 
+    <div class="header">
+      <div class="col-12 col-desktop-6">
+        <h2 class="company-name">SOIL</h2>
+        <h3 class="page-context"><span class="standout">code</span> test</h3>
+      </div>
+      <div class="col-12 col-desktop-6">
+        <h1 class="slogan">Slogan goes <span class="standout">here</span></h1>
+        <img src="img/logo.png" class="logo"/>
+    </div><!-- end header -->
+      </div>
+    </div>
+  </header>
 <?php //echo theme_view('_sitenav');
 
 

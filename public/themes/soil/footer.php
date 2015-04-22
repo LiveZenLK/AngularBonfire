@@ -1,58 +1,8 @@
 
     <?php if ( ! isset($show) || $show == true) : ?>
-<div class="wrapper">
-  <header class="container">
-    <div class="row fix-header-alignment"> 
-    <div class="header">
-      <div class="col-12 col-desktop-6">
-        <h2 class="company-name">SOIL</h2>
-        <h3 class="page-context"><span class="standout">code</span> test</h3>
-      </div>
-      <div class="col-12 col-desktop-6">
-        <h1 class="slogan">Slogan goes <span class="standout">here</span></h1>
-        <img src="img/logo.png" class="logo"/>
-    </div><!-- end header -->
-      </div>
-    </div>
-  </header>
-
-  <section class="container">
-    <div class="row">
-      <nav class="col-12 col-desktop-3">
-        <h3 class="nav-title">In this issue:</h3>
-        <ul class="vertical-nav list-unstyled">
-          <li class="active article-title"><a href="#">Article Title 1</a></li>
-          <li class="active article-title"><a href="#">Article Title 2</a></li>
-          <li class="active article-title"><a href="#">Article Title 3</a></li>
-          <li class="active article-title"><a href="#">Article Title 4</a></li>
-          <li class="active article-title"><a href="#">Article Title 5</a></li>
-          <li class="active article-title"><a href="#">Article Title 6</a></li>
-          <li class="active article-title"><a href="#">Article Title 7</a></li>
-          <li class="active article-title"><a href="#">Article Title 8</a></li>
-        </ul>
-      </nav>
 
 
 
-      <main class="col-12 col-desktop-9">
-        <div class="home-page-image">
-
-          <article class="current-article">
-            <img src="img/hiviz.png" alt="Man in hi-viz vest"/>
-            <!-- <div class="wrap-content"> -->
-              <h1 class="article-title">Test article title</h1>
-              <h4 class="article-author">By Joe Bloggs</h4>
-              <hr/>
-              <p class="article-intro">Etiam no ipsum nec tellus iaculis convallis. Nulla ac augue eget risus porttitor aliquest sed elementum neque. Pellentesque nibh nulla, interdum eget pellentesque eget, tempus sit amet ante.</p>
-              <p class="article-paragraph">Integer nec sapien purus . Nulla non linero id tortor volutpat egestas no vitae risus. 
-              Nullam aliquet porttitor massa, in pharetra est dapibus... <a href="test-article-title.php" alt="go to article">read the full article &gt;</a></p>
-            <!-- </div> -->
-          </article>
-        
-        </div>          
-      </main>
-    </div>
-  </section>
 
   <aside class="container">
     <div class="row additional">
