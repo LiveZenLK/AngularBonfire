@@ -26,9 +26,21 @@
             $abilities = $this->getAbilities($username);
             // $abilities = json_encode($abilities);
 
-            print_r($abilities);
-            $viewdata = array('abilities' => $abilities);
-            $this->load->view('profile/profile', $viewdata);
+            // print_r($abilities);
+            /*//AJAX VIEW
+            // $viewdata = array('abilities' => $abilities);
+            // $this->load->view('profile/profile', $viewdata);
+            */
+            Template::set('username', $username);
+            Template::set('abilities', $abilities);
+
+            Template::set_view('profile');
+            Template::render();
+        }
+
+        public function widget(){
+            $viewdata = array('data' => 'hello widget');
+            $this->load->view('profile/widget', $viewdata);
         }
 
         private function getAbilities($username){

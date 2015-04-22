@@ -40,7 +40,7 @@ Which we have mapped against the si.te/profile/$username route so that it follow
 
 ```
 // application/config/routes.php
-Route::any('profile/(:any)', 'profile/show/$1');
+Route::any('profile/(:any)', 'profile/show/$1'); // fallback to index function if no second param is passed
 ```
 
 We are going to skip moving our business logic into the model at this time and go for a big ol messy controller so we only have to deal with one file while we build things out
@@ -72,6 +72,69 @@ This is kinda cool and sort of works, the query does what it says and returns th
 
 ```
 <h1>A php template</h1>
-<?php print_r($abiltites); ?>
+<?php print_r($abilitites); ?>
 ```
+
+Because of some particularity of codeignitor that I will never understand because I have never seen a job advertising for a codeignitor dev the template requires us to correct the show() method of our controller to the following format
+
+```
+            $viewdata = array('abilities' => $abilities);
+            $this->load->view('profile/profile', $viewdata); 
+```
+
+This would be kinda useful if we wanted to pass mulitple data sets to the view, and while I still not understand how it works under the hood i can now appriciate the design decision.
+
+This is great if we want to fetch the view via ajax but if we want everything wrapped in the proper codeignitor template we must instead use
+
+```
+            Template::set('abilities', $abilities);
+
+            Template::set_view('profile');
+            Template::render();
+```
+
+Within our template we could then include a partial from another method of our controller. This could be useful later if we wanted a section of our profile to use angular for interactivity say, or even to load some functionality from a different module altogether. Our completed code might look like
+
+```
+// modules/profile/controller/profile.php
+
+        public function show($username='testtest'){ // doesn't really accept arguments
+        // echo $username; die;
+            // totally should be in a modal except I believe that not to be agile
+            $abilities = $this->getAbilities($username);
+            // $abilities = json_encode($abilities);
+
+            // print_r($abilities);
+            /*//AJAX VIEW
+            // $viewdata = array('abilities' => $abilities);
+            // $this->load->view('profile/profile', $viewdata);
+            */
+            Template::set('username', $username);
+            Template::set('abilities', $abilities);
+
+            Template::set_view('profile');
+            Template::render();
+        }
+
+        public function widget(){
+            $viewdata = array('data' => 'hello widget');
+            $this->load->view('profile/widget', $viewdata);
+        }
+
+```
+
+```
+// modules/profile/views/profile.php
+<h1><?php echo $username;?>'s Profile</h1>
+
+<!-- // Load the Account section routing module -->
+<?php echo Modules::run('profile/widget', 1); ?>
+
+<?php print_r($abilities);?>
+
+//modules/profile/views/widget.php
+<h1>Profile Widget</h1>
+<?php print_r($data); ?>
+
+
 
