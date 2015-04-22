@@ -118,7 +118,7 @@ $config['template.use_mobile_themes'] = false;
 //------------------------------------------------------------------------------
 // This is the folder name that contains the default theme to use when
 // 'template.use_mobile_themes' is set to true.
-$config['template.default_theme']	= 'angularbonfire/';
+$config['template.default_theme']	= 'soil/';
 
 //------------------------------------------------------------------------------
 // ADMIN THEME

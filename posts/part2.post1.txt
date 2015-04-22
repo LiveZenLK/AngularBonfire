@@ -12,5 +12,5 @@ Once our api is configured we will need to construct an angular service to retur
 
 This factory (which is still a service) will called in the init function of our controller and the json object it returns assigened to a variable on the scope. The controller will then be able to animate an ng-repeat list of the persons interests when we visit their profile. For this we will probably try out an animation library since this series mostly concerns plumbing and not interior design. 
 
-
+Somewhere along the way we do some hacky stuff with codeignitor to present our view.
 
