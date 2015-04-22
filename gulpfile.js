@@ -62,6 +62,8 @@ gulp.task('ng-bonfire', function() {
 	.pipe(concat('angular-bonfire.js'))
 	.pipe(gulp.dest(path.template + '/js'));
 })
+        // .pipe(ngAnnotate())
+        // .pipe(uglify())
 
 // Watch scss folder for changes
 gulp.task('watch', function() {

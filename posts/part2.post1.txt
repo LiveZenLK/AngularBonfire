@@ -1,4 +1,4 @@
-The Plan
+#The Plan
 
 Okay, so we have our new theme set up. In the last article we set a gulpfile asset pipeline to compile our angular dependancies, the theme files which will act as the main angular module for the user facing part of the app. Finally any codeignitor modules we add will automatically have the js from their ng folder added to the pipeline. This is set up recursively so that it's up to the module developer how they structure their angular code.
 
@@ -13,4 +13,65 @@ Once our api is configured we will need to construct an angular service to retur
 This factory (which is still a service) will called in the init function of our controller and the json object it returns assigened to a variable on the scope. The controller will then be able to animate an ng-repeat list of the persons interests when we visit their profile. For this we will probably try out an animation library since this series mostly concerns plumbing and not interior design. 
 
 Somewhere along the way we do some hacky stuff with codeignitor to present our view.
+
+#What Happened
+
+first of we discovered we had much of the backend code already written, that we where having a serious crisis of confidence about the direction the app was going in, and that we where not using the standard bonfire routing. Inside we have a controller in application/modules/profile/controllers/profile.php
+
+```
+    class Profile extends Front_Controller
+    {
+
+        public function __construct()
+        {
+            parent::__construct();
+
+            $this->load->model('users/user_model');
+
+
+        }
+
+        // si.te/profile/$username
+        public function show($username='testtest'){ 
+        ...
+```
+
+Which we have mapped against the si.te/profile/$username route so that it follows a reasonably standard convention for usernames (A more refined site might have si.te/$username but that creates some additional complications at this stage) and this tells the application that rather than using the standard routing for modules 'si.te/modulename/method' we can avoid having the confusing extra step in the url path. The argument (or param, I think param is more correct), of our url is thusly passed to the show method of our profile controller. 
+
+```
+// application/config/routes.php
+Route::any('profile/(:any)', 'profile/show/$1');
+```
+
+We are going to skip moving our business logic into the model at this time and go for a big ol messy controller so we only have to deal with one file while we build things out
+
+```
+            $abilities = $this->getAbilities($username);
+            // $abilities = json_encode($abilities);
+
+            print_r($abilities);
+            $this->load->view('profile/profile', $abilities);
+        }
+
+        private function getAbilities($username){
+
+            // get user abilties
+            $sql = "SELECT name, description, rating, e.active 
+                FROM bf_users e 
+                LEFT JOIN bf_abilities t
+                ON e.id=t.user_id
+                where e.username = ?;";
+
+            $query = $this->db->query($sql, array($username))->result(); 
+            
+            return $query;
+        }
+```
+
+This is kinda cool and sort of works, the query does what it says and returns the array of ability(interest,item,whatever) data objects. Where it falls down is when passing it to the view. The module/profile/views/profile.php 
+
+```
+<h1>A php template</h1>
+<?php print_r($abiltites); ?>
+```
 

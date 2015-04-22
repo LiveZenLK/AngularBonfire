@@ -1,14 +1,14 @@
 'use strict';
-console.log(angular, 'angular-bonfire.js');
+// console.log(angular, 'angular-bonfire.js');
 
 // Declare app level module which depends on filters, and services
-// var AngularBonfire = angular.module('AngularBonfire', 
-// 	[
-// 	'ui.router',
-// 	'ngAnimate',
-// 	// 'NgJoinCtrl'
-// 	// ,'ngResource','ngAnimate','ui.bootstrap','ngRoute','firebase'
-// 	]);
+var AngularBonfire = angular.module('AngularBonfire', 
+	[
+	'ngAnimate'
+	// 'ui.router'
+	// 'NgJoinCtrl'
+	// ,'ngResource','ngAnimate','ui.bootstrap','ngRoute','firebase'
+	]);
 
 // // console.log('ng-abiltiy');
 // AngularBonfire.factory("ProfileFactory", function($http, $q) {

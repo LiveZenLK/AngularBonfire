@@ -18,12 +18,17 @@
 
         }
 
-        public function show($username=''){
 
+        // si.te/profile/$username
+        public function show($username='testtest'){ // doesn't really accept arguments
+        // echo $username; die;
             // totally should be in a modal except I believe that not to be agile
             $abilities = $this->getAbilities($username);
-            $abilities = json_encode($abilities);
-            echo $abilities;
+            // $abilities = json_encode($abilities);
+
+            print_r($abilities);
+            $viewdata = array('abilities' => $abilities);
+            $this->load->view('profile/profile', $viewdata);
         }
 
         private function getAbilities($username){
