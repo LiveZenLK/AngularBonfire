@@ -30022,4 +30022,4 @@ console.log(angular, 'angular-bonfire.js');
 
 console.log('soil js')
 
-console.log(your module js)
+console.log('your module js')

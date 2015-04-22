@@ -1,1 +1,1 @@
-console.log(your module js)
+console.log('your module js')

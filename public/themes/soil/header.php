@@ -2,11 +2,11 @@
 
 Assets::add_css(array('base.css', 'soil.css'));
 
-Assets::add_js('bootstrap.min.js');
+// Assets::add_js('bootstrap.min.js');
 
-$inline  = '$(".dropdown-toggle").dropdown();';
-$inline .= '$(".tooltips").tooltip();';
-Assets::add_js($inline, 'inline');
+// $inline  = '$(".dropdown-toggle").dropdown();';
+// $inline .= '$(".tooltips").tooltip();';
+// Assets::add_js($inline, 'inline');
 
 ?>
 <!doctype html>
@@ -25,10 +25,10 @@ Assets::add_js($inline, 'inline');
     ?>
     <?php echo Assets::css(); ?>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>favicon.ico">
-	<link href="<?php echo base_url(); ?>css/base.css">
-	<link href="<?php echo base_url(); ?>css/soil.css">
+	<!-- <link href="<?php echo base_url(); ?>css/base.css"> -->
+	<!-- <link href="<?php echo base_url(); ?>css/soil.css"> -->
 </head>
-<body ng-app="AngularBonfire">
+<body ng-app="AngularBonfire" data-nts="noticethisisincluded"><!-- !!!!!!!!!!!!!!!!!!!!!!!!! -->
 <?php //echo theme_view('_sitenav');
 
 
