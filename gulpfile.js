@@ -7,7 +7,7 @@ var gulp = require('gulp')
 ,   order = require('gulp-order')
 
 // Set the Bonfire theme name
-var themeTemplate = 'angularbonfire'
+var themeTemplate = 'soil'
 
 var path = {
 	template : 'public/themes/'+themeTemplate,
@@ -33,21 +33,21 @@ var config = {
 // Require all tasks in gulp/tasks, including subfolders
 // requireDir('gulp/tasks', { recurse: true })
 
-gulp.task('sass', function() {
-	// accepts an array of paths, with a second argument being an object in which the base path is set
-	// currently set to include all files from each module, and then add compiled manifest
-	gulp.src(config.sassGlobOrder, {base: './'})
-	// This give us error handling, it fixes pipes
-	.pipe(plumber())
-	// Sass command with argument object
-	.pipe(sass({
-		errLogToConsole: true}
-	))
-	// Automatically generates vendor prefixes
-	.pipe(prefix('last 2 version', '> 1%', 'ie 8', 'ie 9'))
-	.pipe(concat('angular-bonfire.css'))
-	.pipe(gulp.dest(config.templatePath + '/css'));
-})
+// gulp.task('sass', function() {
+// 	// accepts an array of paths, with a second argument being an object in which the base path is set
+// 	// currently set to include all files from each module, and then add compiled manifest
+// 	gulp.src(config.sassGlobOrder, {base: './'})
+// 	// This give us error handling, it fixes pipes
+// 	.pipe(plumber())
+// 	// Sass command with argument object
+// 	.pipe(sass({
+// 		errLogToConsole: true}
+// 	))
+// 	// Automatically generates vendor prefixes
+// 	.pipe(prefix('last 2 version', '> 1%', 'ie 8', 'ie 9'))
+// 	.pipe(concat('angular-bonfire.css'))
+// 	.pipe(gulp.dest(path.template + '/css'));
+// })
 
 
 gulp.task('ng-bonfire', function() {
@@ -60,17 +60,19 @@ gulp.task('ng-bonfire', function() {
 	.pipe(order(config.jsGlobOrder)) //, { base: './' }))
 	// Automatically generates vendor prefixes
 	.pipe(concat('angular-bonfire.js'))
-	.pipe(gulp.dest(config.templatePath + '/js'));
+	.pipe(gulp.dest(path.template + '/js'));
 })
 
 // Watch scss folder for changes
 gulp.task('watch', function() {
   // Watches the sass folders for all .scss and .sass files
   // If any file changes, run the sass task
-  gulp.watch([path.modules+'/sass/**.*', path.template+'/sass/**.*'], ['sass'])
+  // gulp.watch([path.modules+'/sass/**.*', path.template+'/sass/**.*'], ['sass'])
   // If any file changes, run the ng-bonfire task
   gulp.watch([path.modules+'/ng/**.*', path.template+'/ng/**.*'], ['ng-bonfire'])
 })
 
 // Creating a default task
-gulp.task('default', ['sass', 'ng-bonfire', 'watch']);
+gulp.task('default', [
+	// 'sass', 
+	'ng-bonfire', 'watch']);
