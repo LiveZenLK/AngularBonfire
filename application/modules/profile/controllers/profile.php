@@ -21,7 +21,7 @@
         public function show($username=''){
 
             // totally should be in a modal except I believe that not to be agile
-            $abilities = $this->getAbilities('testtest');
+            $abilities = $this->getAbilities($username);
             $abilities = json_encode($abilities);
             echo $abilities;
         }
@@ -36,7 +36,6 @@
                 where e.username = ?;";
 
             $query = $this->db->query($sql, array($username))->result(); 
-            
             
             return $query;
         }

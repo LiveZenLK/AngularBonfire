@@ -169,16 +169,21 @@
     <script> var csrfTokenName     = '<?php echo $this->security->get_csrf_token_name(); ?>' </script>
     <script> var csrfTokenValue    = '<?php echo $this->security->get_csrf_hash(); ?>' </script>
     <!-- // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script> -->
-    <script src="<?php echo js_path(); ?>angular.js"></script>
-    <script src="<?php echo js_path(); ?>angular-ui-router.js"></script>
-    <script src="<?php echo js_path(); ?>angular-animate.js"></script>
-    <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
-    <script src="<?php echo js_path(); ?>ng-account.js"></script>
-    <script src="<?php echo js_path(); ?>ng-ability.js"></script>
-    <script src="<?php echo js_path(); ?>ng-join.js"></script>
-    <!-- // front end js -->
-    <script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script> -->
+    <!--<script src="<?php //echo js_path(); ?>angular.js"></script>
+    <script src="<?php //echo js_path(); ?>angular-ui-router.js"></script>
+    <script src="<?php //echo js_path(); ?>angular-animate.js"></script>
+    <script src="<?php //echo js_path(); ?>angular-bonfire.js"></script>
+    <script src="<?php //echo js_path(); ?>ng-account.js"></script>
+    <script src="<?php //echo js_path(); ?>ng-ability.js"></script>
+    <script src="<?php //echo js_path(); ?>ng-join.js"></script>
+     // front end js 
+    
+    <script src="<?php //echo js_path(); ?>angular-bonfire.js"></script>
+        // <script src="<?php //echo site_url(); ?>/js/angular-bonfire.js"></script>
+     -->
 
+<?php Assets::add_js(array('angular-bonfire.js'));?>
 
     <?php echo Assets::js(); ?>
 </body>
