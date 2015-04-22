@@ -1,0 +1,16 @@
+The Plan
+
+Okay, so we have our new theme set up. In the last article we set a gulpfile asset pipeline to compile our angular dependancies, the theme files which will act as the main angular module for the user facing part of the app. Finally any codeignitor modules we add will automatically have the js from their ng folder added to the pipeline. This is set up recursively so that it's up to the module developer how they structure their angular code.
+
+As long it extends the main AngularBonfire module, does not try to use any angular plugins that have not been added to both the pipeline and the main module definition then it should work seemlessly. Should. 
+
+Okay, so whats the plan. So far we have an app that handles user registration. The users are able to create 'interests' with descriptions alongside them. So far so useless. For this to be of any use to anyone, we first need a way to show a stripped down version of their information as a public profile. This means returning a query from the database via our codeignitor api which will remove the sensitive information (email, etc), join this to the list of interests and return it as a json object which we can pass to the NgProfileCtrl we are going to construct. 
+
+For this to work we will need several things. We will need to create a mysql query that returns the information we require. We might need more than one query to get all the information we need, but we want it all to be handled within a single ajax request. My opinion on the best way to structure this is to create a standard codeignitor route which hits a controller which accepts an argument of a user name. This controller will call a method on its associated model which will contain an active record query which will make use of sql's join function. The model will return a standard php array to the controller (so it can be reused by parts of the application not making use of Angular JS as it's template engine.) the controller will then convert this to a json object with, assuming the ctrf token is correct will return the requested object as the response to an http get request.
+
+Once our api is configured we will need to construct an angular service to return our object. I usually use factories, as I can never remember which one of the two is a singleton, or what the use case for a singleton or not in this situation is, and they have always done the job adiquately in the past. I hope one day to find a use case for a service, but for now we are going to use a simple factory. It's going to use jquery's post ability as I already understand how to use this with codeignitors ctrf requirements. This will give us a business case to write a unit test for the factory in a later article to confirm our code still works when we swap it out to use angulars native http.get functionality.
+
+This factory (which is still a service) will called in the init function of our controller and the json object it returns assigened to a variable on the scope. The controller will then be able to animate an ng-repeat list of the persons interests when we visit their profile. For this we will probably try out an animation library since this series mostly concerns plumbing and not interior design. 
+
+
+
