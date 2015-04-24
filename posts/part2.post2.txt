@@ -1,0 +1,12 @@
+part2.post2.txt
+
+#Whats supposed to happen
+
+Okay at the moment I have a list of objects returned by a service. I have two views. one of them is a list the other is a div. the list should use an ng-repeat to list all the items in the object. each of these should have a click function attached so that when you click on an item in the list on of the properties of that list displays in the other div. I already all the data in memory so i dont want to make another call for the data when i click the function, it seems wasteful. it would be easy using jquery, because we could simply use the the id from the object as a data attibute and update the view that way. there should be a more angular way to do this.
+
+#whats happening
+
+nothing at the moment. i have the list displaying in the sidebar view. i also have the same list displaying in the alternative view. im thinking ng router might be useful, but possibly i might have to write a directive. we shall see.
+
+
+

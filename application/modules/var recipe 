@@ -1,0 +1,22 @@
+var recipe = [
+	{ingredient:'flour', amount:'300', color:'lightbrown'},
+	{ingredient:'sugar', amount:'300', color:'white'},
+	{ingredient:'choc-chip', amount:'50', color:'darkbrown'},
+	{ingredient:'water', amount:'300', color'lightblue'},
+]
+
+.ingredient {
+	height:1px;
+	width:1px;
+}
+
+var mixture = function(recipe){
+	foreach(recipe as r){
+		var amount = r.amount
+		while(amount > 0){
+			add(r.ingredeint)
+			amount = amount - 1
+			
+		}
+	}
+}

@@ -22,7 +22,7 @@
         // si.te/profile/$username
         public function show($username='testtest'){ // doesn't really accept arguments
         // echo $username; die;
-            // totally should be in a modal except I believe that not to be agile
+
             $abilities = $this->getAbilities($username);
             // $abilities = json_encode($abilities);
 
@@ -38,11 +38,20 @@
             Template::render();
         }
 
+        public function getAbilitiesJson($username)
+        {
+            $abilties = $this->getAbilities($username);
+            $data = json_encode($abilities);
+            return $data;
+        }
+
         public function widget(){
             $viewdata = array('data' => 'hello widget');
             $this->load->view('profile/widget', $viewdata);
         }
 
+
+        // should be moved to the model where it can be tested
         private function getAbilities($username){
 
             // get user abilties
