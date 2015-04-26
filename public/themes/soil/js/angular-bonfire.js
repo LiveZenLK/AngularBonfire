@@ -30023,7 +30023,7 @@ AngularBonfire.directive('activeinterest', function(theService) {
 
         },
         replace: true,
-        template: '<article><h4>{{display.name}}</h4><p>{{display.description}}</p><></article>'
+        template: '<article><h4>{{display.name}}</h4><p>{{display.description}}</p><p>{{display.rating}}</p></article>'
         // template: '<p><h2>{{display.name}}</h2><p>{{display.list}}</p></article>'
     };
 });
