@@ -65,9 +65,13 @@ Route::prefix(SITE_AREA, function(){
     Route::context('settings');
 });
 
-// Profile
 Route::any('users', 'profile/index');
+
+
+
+// Profile
 Route::any('profile/(:any)', 'profile/show/$1');
+Route::any('api/profile/getabilities/(:any)', 'profile/getAbilitiesJson/$1');
 
 
 // Profile

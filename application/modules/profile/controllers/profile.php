@@ -7,15 +7,12 @@
             parent::__construct();
 
             $this->load->model('users/user_model');
-
-
+            $this->load->model('profile/profile_model');
         }
 
-        public function index($profile=FALSE)
+        public function index()
         {
-            echo 'thign';
-            die;
-
+            //throw error code
         }
 
 
@@ -40,9 +37,10 @@
 
         public function getAbilitiesJson($username)
         {
-            $abilties = $this->getAbilities($username);
+            $abilities = $this->profile_model->getAbilities($username);
             $data = json_encode($abilities);
-            return $data;
+            echo $data;die;
+            // return $data;
         }
 
         public function widget(){

@@ -17,6 +17,8 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
   	return deferred.promise
   }
 
+  
+
   factory.addAbility = function (dataObject) {
   	
   	var deferred = $q.defer()

@@ -128,4 +128,14 @@
             $abilities = json_encode($abilities);
             echo $abilities; die;
         }
+
+        // public function get_username_abilites($username){
+            
+        //     $user_id = $this->current_user->id; 
+            
+        //     $abilities = $this->ability_model->get_user_abilities($user_id);
+
+        //     $abilities = json_encode($abilities);
+        //     echo $abilities; die;
+        // }
     }
