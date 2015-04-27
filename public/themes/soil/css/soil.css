@@ -48,9 +48,14 @@ h3.page-context {
 	color:#fff; float:left;
 }
 .standout{
-	color:#CEDD54
+	color:#CEDD54;
+	text-decoration: none;
+	margin-left:10px;
 }
-h1.slogan {
+.standout:hover{
+	color:lightblue;
+}
+.slogan {
 	float: right; 
 	font-weight: 200; 
 	color:#fff; 

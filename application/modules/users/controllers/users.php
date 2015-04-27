@@ -64,7 +64,6 @@ class Users extends Front_Controller
 	public function login()
 	{
         // If the user is already logged in, go home.
-
         if ($this->auth->is_logged_in() !== false) {
             Template::redirect('/');
         }
@@ -92,16 +91,18 @@ class Users extends Front_Controller
             if ($this->settings_lib->item('auth.do_login_redirect')
                 && ! empty($this->auth->login_destination)
             ) {
-						Template::redirect($this->auth->login_destination);
-					}
+						// Template::redirect($this->auth->login_destination);
+							Template::redirect('/');
+                    }
 
             // If possible, send the user to the requested page.
             if (! empty($this->requested_page)) {
-							Template::redirect($this->requested_page);
-						}
+                            // Template::redirect($this->requested_page);
+                            Template::redirect('/');
+                        }
 
             // If there is nowhere else to go, go home.
-							Template::redirect('/');
+                            Template::redirect('/');
 						}
 
         // Prompt the user to login.

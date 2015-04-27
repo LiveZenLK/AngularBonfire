@@ -1,9 +1,12 @@
-<?php
-	$site_open = $this->settings_lib->item('auth.allow_register');
-?>
-<p><br/><a href="<?php echo site_url(); ?>">&larr; <?php echo lang('us_back_to') . $this->settings_lib->item('site.title'); ?></a></p>
+<section id="login" class="container">
+	<div class="row">
+	<div class="col-12 col-desktop-8 push-desktop-2">
 
-<div id="login">
+	<?php 
+		$site_open = $this->settings_lib->item('auth.allow_register');
+	?>
+	<p><br/><a href="<?php echo site_url(); ?>">&larr; <?php echo lang('us_back_to') . $this->settings_lib->item('site.title'); ?></a></p>
+
 	<h2><?php echo lang('us_login'); ?></h2>
 
 	<?php echo Template::message(); ?>
@@ -12,7 +15,7 @@
 		if (validation_errors()) :
 	?>
 	<div class="row-fluid">
-		<div class="span12">
+		<div class="span-12">
 			<div class="alert alert-error fade in">
 			  <a data-dismiss="alert" class="close">&times;</a>
 				<?php echo validation_errors(); ?>
@@ -25,13 +28,13 @@
 
 		<div class="control-group <?php echo iif( form_error('login') , 'error') ;?>">
 			<div class="controls">
-				<input style="width: 95%" type="text" name="login" id="login_value" value="<?php echo set_value('login'); ?>" tabindex="1" placeholder="<?php echo $this->settings_lib->item('auth.login_type') == 'both' ? lang('bf_username') .'/'. lang('bf_email') : ucwords($this->settings_lib->item('auth.login_type')) ?>" />
+				<input  type="text" name="login" id="login_value" value="<?php echo set_value('login'); ?>" tabindex="1" placeholder="<?php echo $this->settings_lib->item('auth.login_type') == 'both' ? lang('bf_username') .'/'. lang('bf_email') : ucwords($this->settings_lib->item('auth.login_type')) ?>" />
 			</div>
 		</div>
 
 		<div class="control-group <?php echo iif( form_error('password') , 'error') ;?>">
 			<div class="controls">
-				<input style="width: 95%" type="password" name="password" id="password" value="" tabindex="2" placeholder="<?php echo lang('bf_password'); ?>" />
+				<input  type="password" name="password" id="password" value="" tabindex="2" placeholder="<?php echo lang('bf_password'); ?>" />
 			</div>
 		</div>
 
@@ -72,5 +75,6 @@
 
 		<br/><?php echo anchor('/forgot_password', lang('us_forgot_your_password')); ?>
 	</p>
-
-</div>
+	</div>
+	</div>
+</section>
