@@ -282,3 +282,69 @@ span.div-link-hack {
 	text-transform: uppercase;
 	/*text-align: center;*/
 }
+
+
+
+/* ###### */
+/* ACCOUNT */
+/* ###### */
+
+
+.modern-account-nav {
+	background:red;
+}
+.interface{
+    background:rgba(0, 0, 0, 0.2);
+    float: left;
+    padding:20px 0 0 20px;
+    box-sizing:border-box;
+    width:340px;
+    margin-bottom:40px;
+}
+.account-menu {
+/*    box-sizing:border-box;
+    border:2px solid gold;
+    text-align: center;
+    padding:15px;
+    height: 60px;
+    margin:0 20px 20px 0;
+    float: left;
+    background:rgba(0, 0, 0, 0.2);
+    */
+    cursor:pointer;
+    background: darkblue;
+    width: 100%;
+    color:#fff;
+    font-size:20px;
+    padding:20px 20px 20px 40px;
+}
+
+.repeater {
+background: #16201E;
+padding: 10px;
+margin-top: 15px;
+color: white;
+}
+.repeater .edithidden {
+    height:100px;
+}
+.repeater .edit {
+    display: block;
+    width: 100%;
+    text-align: right;
+    font-size:12px;
+}
+.repeater .edit-field {
+    margin-top:10px;
+}
+.repeater .top-section {
+    height:34px;
+    overflow: hidden
+}
+
+.thing-leaving {
+    /*background: red;*/
+    font-size: 17px;
+    /*padding: 4px 0;*/
+}
+/*/ Animation Stuff/ */

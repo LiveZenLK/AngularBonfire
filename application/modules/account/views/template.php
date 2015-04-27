@@ -1,16 +1,19 @@
 <!-- This is the routing component -->
 
-<section ng-controller="NgAccountCtrl">
-    <div class="row-fluid">
+<section ng-controller="NgAccountCtrl" class="controller">
+    <div class="row modern-account-nav">
 
-        <div class="span4">
+        <nav>
+                <div class="col-4 desktop-4 should-be-a-link route {{route.image}}" ng-repeat="route in routes" >
+                    <!-- <li > -->
+                    <a  ng-click="doRoute(route.account_route)" class="account-menu">{{route.name}}<span class="div-link-hack"></span></a>
+                </div>
+                <!-- </ul> -->
+        </nav>
+    </div>
+    <div class="row modern">
+        <div class="col-12 col-desktop-4">
 
-            <aside class="interface">
-                <h4>MENU</h4>
-                <h4><a class="route {{route.image}}" ng-repeat="route in routes" ng-click="doRoute(route.account_route)">
-                    <span class="account-menu">{{route.name}}</span>
-                </a></h4>
-            </aside>
 
             <aside class="interface">
                 <h4>SECONDARY ACTIONS</h4>
@@ -27,23 +30,18 @@
             </aside>
 
         </div>
-
-        <div class="span4">
-        
+        <div class="col-12 col-desktop-8">
             <main ui-view="content">
                 ui view content
             </main>
-        
-        </div>
-
-        <div class="span4">
-        
-            <h4>Friends</h4>    
             <aside class="interface">
+            <h4>Friends</h4>    
                 Under Construction
             </aside>
         
         </div>
 
+        
+        
     </div><!-- end row fluid -->
 </section>
