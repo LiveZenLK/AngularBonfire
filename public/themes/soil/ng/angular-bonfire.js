@@ -4,8 +4,8 @@
 // Declare app level module which depends on filters, and services
 var AngularBonfire = angular.module('AngularBonfire', 
 	[
-	'ngAnimate'
-	// 'ui.router'
+	'ngAnimate',
+	'ui.router'
 	// 'NgJoinCtrl'
 	// ,'ngResource','ngAnimate','ui.bootstrap','ngRoute','firebase'
 	]);

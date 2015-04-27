@@ -18,7 +18,8 @@ var path = {
 var config = {
 	jsGlobOrder: [ // You can add your own dependancies here as you build out your app
 	    path.assets  +"/angular/angular.js",
-	    path.assets  +"/angular-ui/build/angular-ui.js",
+	    // path.assets  +"/angular-ui/build/angular-ui.js",
+	    path.assets  +"/angular-ui-router.js",
 	    path.assets  +"/angular-animate/angular-animate.js",
     	path.template+"/ng/angular-bonfire.js",
     	path.template+"/ng/**.js",
