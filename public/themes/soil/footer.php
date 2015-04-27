@@ -44,7 +44,7 @@
 
 
 
-            <div class="row-fluid">
+            <div class="row -fluid">
     <div class="col-desktop-3">
         <h4>Now with Angular JS</h4>
 
