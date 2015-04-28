@@ -22,4 +22,22 @@
             $this->load->view('account/template');
 
         }
+
+        public function ngaboutme() {
+
+            $this->load->view('account/aboutme');
+
+        }
+        
+        public function ngimage() {
+
+            $this->load->view('account/image');
+
+        }
+        
+        public function nglocation() {
+
+            $this->load->view('account/location');
+
+        }
     }

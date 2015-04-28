@@ -36,10 +36,10 @@
             <main ui-view="content">
                 ui view content
             </main>
-            <aside class="interface">
+<!--             <aside class="interface">
             <h4>Friends</h4>    
                 Under Construction
-            </aside>
+            </aside> -->
         
         </div>
 

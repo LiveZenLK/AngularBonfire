@@ -32878,13 +32878,13 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
         name: 'account_route_profile', 
         views:{
             'content':{
-            template: 'profile content' 
+            templateUrl: AngularBonfireUrl+'/account/ngaboutme'
             },
             'status':{
-            template: 'profile status'
+            templateUrl: AngularBonfireUrl+'/account/nglocation'
             },
             'actions':{
-            template: 'profile actions'
+            templateUrl: AngularBonfireUrl+'/account/ngimage'
             }
         }
     }
