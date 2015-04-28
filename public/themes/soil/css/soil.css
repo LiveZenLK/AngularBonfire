@@ -289,9 +289,12 @@ span.div-link-hack {
 /* ACCOUNT */
 /* ###### */
 
+.modern-account {
+	background:lightblue;
+}
 
 .modern-account-nav {
-	background:red;
+	background:#16201e;
 }
 .interface{
     background:rgba(0, 0, 0, 0.2);
@@ -301,7 +304,11 @@ span.div-link-hack {
     width:340px;
     margin-bottom:40px;
 }
-.account-menu {
+a.account-menu.active {
+	background:lightblue;
+	color:#000;
+}
+a.account-menu {
 /*    box-sizing:border-box;
     border:2px solid gold;
     text-align: center;
@@ -312,11 +319,12 @@ span.div-link-hack {
     background:rgba(0, 0, 0, 0.2);
     */
     cursor:pointer;
-    background: darkblue;
+    background: #16201e;
     width: 100%;
     color:#fff;
     font-size:20px;
     padding:20px 20px 20px 40px;
+    margin:0 !important;
 }
 
 .repeater {

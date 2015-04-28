@@ -32831,25 +32831,25 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
   // The routes as used in the menu
   $scope.routes = [
     {
-      "account_route" : "interests",
+      "account_route" : "account_route_interests",
       "name"          : "Interests",
       "image"         : "interests.png"
     },{
-      "account_route" : "items",
-      "name"          : "Items",
-      "image"         : "items.png"
-    },{
-      "account_route" : "character",
-      "name"          : "Character",
+      "account_route" : "account_route_profile",
+      "name"          : "Profile",
       "image"         : "character.png"
+    },{
+      "account_route" : "account_route_social",
+      "name"          : "Social",
+      "image"         : "items.png"
     }
   ]
     
+    $state.go('account_route_profile')
   // Changes the current active route
-  $scope.doRoute = function(actionName){
-    var route = 'account_route_' + actionName
-    $state.go(route)
-  }
+  // $scope.doRoute = function(actionName){
+    // var route = 'account_route_' + actionName
+  // }
 
 }])
 
@@ -32874,32 +32874,32 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
         }
     }
 
-    var account_route_items = { 
-        name: 'account_route_items', 
+    var account_route_profile = { 
+        name: 'account_route_profile', 
         views:{
             'content':{
-            template: 'items content' 
+            template: 'profile content' 
             },
             'status':{
-            template: 'items status'
+            template: 'profile status'
             },
             'actions':{
-            template: 'items actions'
+            template: 'profile actions'
             }
         }
     }
 
-    var account_route_character = { 
-        name: 'account_route_character', 
+    var account_route_social = { 
+        name: 'account_route_social', 
         views:{
             'content':{
-            template: 'character content' 
+            template: 'social content' 
             },
             'status':{
-            template: 'character status'
+            template: 'social status'
             },
             'actions':{
-            template: 'character actions'
+            template: 'social actions'
             }
         }
     }
@@ -32907,8 +32907,8 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
     // Easily allows us to activate/deactive states
     $stateProvider
     .state(account_route_interests) 
-    .state(account_route_items) 
-    .state(account_route_character) 
+    .state(account_route_profile) 
+    .state(account_route_social) 
 
 }])
 
