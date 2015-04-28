@@ -49,11 +49,7 @@ var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scop
     , AccountFactory
     ) {
 
-  // and object to hold our data inside the scope
-  $scope.account = 'dsfdsfd'//{};
-
-  // $scope.abilityFormData = {};
-
+    $scope.account = {}
   $scope.init = function(){
     AccountFactory.show().then(function(data) {
         console.log(data);
@@ -61,14 +57,18 @@ var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scop
     });
   }
   $scope.init(); 
+
 }])
 
 
 var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     '$scope', 
     '$state', 
-    function($scope, $state
+  'AccountFactory',
+    function($scope, $state, AccountFactory
         ) {
+
+        // $scope.abilityFormData = {};
   
   // console.log('NgAccountCtrl')
   
@@ -120,6 +120,7 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
 
     var account_route_profile = { 
         name: 'account_route_profile', 
+        controller: 'NgAccountCtrl',
         views:{
             'content':{
             templateUrl: AngularBonfireUrl+'/account/ngaboutme',

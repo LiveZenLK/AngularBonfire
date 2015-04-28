@@ -56,7 +56,7 @@
             $account = $this->db->
                     where('user_id', $user_id)->
                     get('account')->result();
-
+            $account = $account[0];
             return $account;
 
         }
