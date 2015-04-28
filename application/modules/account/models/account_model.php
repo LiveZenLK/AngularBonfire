@@ -51,15 +51,15 @@
         }
 
         // // Returns the account data for a given user id
-        // public function get_user_account($user_id=NULL) {
+        public function get_user_account($user_id=NULL) {
             
-        //     $account = $this->db->
-        //             where('user_id', $user_id)->
-        //             get('account')->result();
+            $account = $this->db->
+                    where('user_id', $user_id)->
+                    get('account')->result();
 
-        //     return $account;
+            return $account;
 
-        // }
+        }
 
         // public function update_image($data=NULL){
 

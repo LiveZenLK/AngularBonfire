@@ -32819,6 +32819,70 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 
 
 // The routing and layout controller for the Account section
+AngularBonfire.factory("AccountFactory", function($http, $q) {
+  //this runs the first time the service is injected
+  //this creates the service
+  var factory = {}
+
+
+  factory.show = function () {
+
+    var deferred = $q.defer()
+    
+    $http.get(AngularBonfireUrl+'/account/show').then(function(resp) {
+      
+      deferred.resolve(resp.data)
+    })
+
+    return deferred.promise
+  }
+  
+  // factory.updateAbility = function (id, dataObject) {
+
+  //   var deferred = $q.defer();
+
+  //   var post_data = {
+  //     'item_ref'      : id,
+  //     'form_data'     : dataObject, 
+  //     'ci_csrf_token' : ci_csrf_token()
+  //   }
+  
+  //   // so far we have an object we can 'POST' to our form which contains a security token
+  //   $.post(AngularBonfireUrl+'/ability/update', post_data).done(function(sdf){
+  //       console.log('saved', sdf)
+  //       deferred.resolve('done')
+  //   })
+
+  //   return deferred.promise
+
+  // }
+
+  // factory.deleteAbility = function (id) {
+  // }
+
+  return factory
+})
+
+var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scope', '$state', 
+  'AccountFactory',
+  function($scope, $state
+    , AccountFactory
+    ) {
+
+  // and object to hold our data inside the scope
+  $scope.account = 'dsfdsfd'//{};
+
+  // $scope.abilityFormData = {};
+
+  $scope.init = function(){
+    AccountFactory.show().then(function(data) {
+        console.log(data);
+        $scope.account = data;
+    });
+  }
+  $scope.init(); 
+}])
+
 
 var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     '$scope', 
@@ -32878,7 +32942,8 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
         name: 'account_route_profile', 
         views:{
             'content':{
-            templateUrl: AngularBonfireUrl+'/account/ngaboutme'
+            templateUrl: AngularBonfireUrl+'/account/ngaboutme',
+            controller: 'AccountProfileCtrl'
             },
             'status':{
             templateUrl: AngularBonfireUrl+'/account/nglocation'
