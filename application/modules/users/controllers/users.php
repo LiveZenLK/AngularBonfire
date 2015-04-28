@@ -40,7 +40,10 @@ class Users extends Front_Controller
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->load->model('users/user_model');
+        $this->load->model('users/user_model');
+
+        // load the account model
+		$this->load->model('account/account_model');
 
 		$this->load->library('users/auth');
 
@@ -235,6 +238,11 @@ class Users extends Front_Controller
                 $activation = $this->user_model->set_activation($userId);
                 $message = $activation['message'];
                 $error   = $activation['error'];
+
+                // create some boilerplate account data
+                $activation = $this->account_model->create_user_account($userId);
+
+                // /* Call our new function to create account profile */ //
 
                 Template::set_message($message, $error ? 'error' : 'success');
 

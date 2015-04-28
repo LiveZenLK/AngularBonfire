@@ -43,7 +43,7 @@
 
         }
 
-        public function add($user_id=NULL){
+        public function create(){
 
             $data = $data['form_data'];
 
@@ -71,19 +71,20 @@
             return $outcome;
         }
 
-        public function update_image(){
+        // /* Will require a library or helper probably a helper */ //
+        // public function update_image(){
 
-            $data = $this->input->post();
-            $data = $data['form_data'];
+        //     $data = $this->input->post();
+        //     $data = $data['form_data'];
 
-            $mock_ability = array();  
+        //     $mock_ability = array();  
             
-            $mock_ability['user_id'] = $this->current_user->id; ;
-            $mock_ability['image_path'] = 'user-id-profile-image-0001.jpg';
+        //     $mock_ability['user_id'] = $this->current_user->id; ;
+        //     $mock_ability['image_path'] = 'user-id-profile-image-0001.jpg';
 
-            $outcome = $this->ability_model->add_ability($mock_ability);
-            return $outcome;
-        }
+        //     $outcome = $this->ability_model->add_ability($mock_ability);
+        //     return $outcome;
+        // }
 
         // /* To be done  later*/ //
         // public function update_location(){

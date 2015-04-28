@@ -34,35 +34,43 @@
         );
 
         // Accepts an array 
-        public function create_user_account($data=NULL) {
+        public function create_user_account($user_id=NULL) {
+
+            $mock_data = array();     
+            // // add current logged in user id to incoming data
+            $mock_data['user_id'] = $user_id;
+            $mock_data['location'] = 'Aberdeen, Scotland';
+            $mock_data['image_path'] = 'user-id-profile-image-0001.jpg';
+            $mock_data['account_profile'] = '#markdown -list -list -list';
+
             
-            $this->db->insert('account', $data); 
+            $this->db->insert('account', $mock_data); 
             
             return true;
 
         }
 
-        // Returns the account data for a given user id
-        public function get_user_account($user_id=NULL) {
+        // // Returns the account data for a given user id
+        // public function get_user_account($user_id=NULL) {
             
-            $account = $this->db->
-                    where('user_id', $user_id)->
-                    get('account')->result();
+        //     $account = $this->db->
+        //             where('user_id', $user_id)->
+        //             get('account')->result();
 
-            return $account;
+        //     return $account;
 
-        }
+        // }
 
-        public function update_image($data=NULL){
+        // public function update_image($data=NULL){
 
-        }
+        // }
 
-        public function update_user_profile($data=NULL){
+        // public function update_user_profile($data=NULL){
 
-        }
+        // }
 
-        public function update_user_profile($data=NULL){
+        // public function update_user_profile($data=NULL){
 
-        }
+        // }
 
 }
