@@ -1,14 +1,3 @@
-<?php //echo form_open_multipart('account/do_upload');?>
-<!-- <input type="file" name="userfile" size="20" />
-
-<br /><br />
-
-<input type="submit" value="upload" />
-
-<img ng-src="<?php echo site_url();?>/images/yoshi1430318320tweet.png" alt="Description" />
-</form>
-{{account.image -->
-
 <div ng-app="fileUpload" ng-controller="AccountImageCtrl">
 
     <!-- <div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div> -->

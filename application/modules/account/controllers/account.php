@@ -76,9 +76,9 @@
         
             $config['upload_path'] = APPPATH.'../public/assets/images';
             $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = '250';
+            $config['max_size'] = '2500';
             $config['max_width']  = '400';
-            $config['max_height']  = '500';
+            $config['max_height']  = '600';
 
             $this->load->library('upload', $config);
 

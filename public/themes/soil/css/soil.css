@@ -291,20 +291,28 @@ span.div-link-hack {
 
 .modern-account {
 	background:#8AADB8;
+    padding-top:40px;
+    min-height: 500px;
+    background: white;
 }
 
 .modern-account-nav {
 	background:#16201e;
 }
 .interface{
-    background:rgba(0, 0, 0, 0.2);
+    background:#16201e; 
+    /*rgba(0, 0, 0, 0.2);*/
+
     float: left;
-    padding:20px 0 0 20px;
+    padding:20px 20px 20px 20px;
     box-sizing:border-box;
     width:340px;
+    width:100%;
+    display: block;
     margin-bottom:40px;
 }
 a.account-menu.active {
+	/*background:#8AADB8;*/
 	background:#8AADB8;
 	/*lightblue #6E8A93*/
 	color:#000;
