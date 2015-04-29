@@ -67,6 +67,13 @@
             $query = $this->db->update('account', $data);
         }
 
+        public function update_account_profile($account_profile=NULL, $user_id)
+        {
+            $data = array('account_profile'=> $account_profile);
+            $this->db->where('user_id', $user_id);
+            $query = $this->db->update('account', $data);
+        }
+
         // public function update_image($data=NULL){
 
         // }

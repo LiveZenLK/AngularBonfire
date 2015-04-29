@@ -96,6 +96,19 @@
                 print_r($data);die;
             }
         }
+        
+        // public function save_profile()
+        // {
+        //     $user_id = $this->current_user->id; 
+
+        //     $data = $this->input->post();
+        //     $data = $data['form_data'];
+
+        //     $outcome = $this->account_model->update_profile($data, $user_id;
+
+        //     // // validations should go here
+        //     return $outcome;
+        // }
 
         // /* To be done  later*/ //
         // public function update_location(){

@@ -9,7 +9,7 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
 
     var deferred = $q.defer()
     
-    $http.get(AngularBonfireUrl+'/account/show').then(function(resp) {
+    $http.get(AngularBonfireUrl+'/api/account/show').then(function(resp) {
       
       deferred.resolve(resp.data)
     })
@@ -17,28 +17,27 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
     return deferred.promise
   }
   
-  // factory.updateAbility = function (id, dataObject) {
+  factory.updateProfile = function (id, dataObject) {
 
-  //   var deferred = $q.defer();
+    var deferred = $q.defer();
 
-  //   var post_data = {
-  //     'item_ref'      : id,
-  //     'form_data'     : dataObject, 
-  //     'ci_csrf_token' : ci_csrf_token()
-  //   }
+    var post_data = {
+      'account_profile' : dataObject, 
+      'ci_csrf_token'   : ci_csrf_token()
+    }
   
-  //   // so far we have an object we can 'POST' to our form which contains a security token
-  //   $.post(AngularBonfireUrl+'/ability/update', post_data).done(function(sdf){
-  //       console.log('saved', sdf)
-  //       deferred.resolve('done')
-  //   })
+    // so far we have an object we can 'POST' to our form which contains a security token
+    $.post(AngularBonfireUrl+'/api/account/updateprofile', post_data).done(function(sdf){
+        console.log('saved', sdf)
+        deferred.resolve('done')
+    })
 
-  //   return deferred.promise
+    return deferred.promise
 
-  // }
+  }
 
-  // factory.deleteAbility = function (id) {
-  // }
+  factory.deleteAbility = function (id) {
+  }
 
   return factory
 })
@@ -97,7 +96,57 @@ var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scop
   }
   $scope.init(); 
 
+  $scope.updateAccountProfile = function(data) {
+    console.log(data);
+    var dataObject = {
+      account_profile : data
+    } 
+
+    NgAbilityFactory.addAbility(id, dataObject).then(function(data) {
+
+      alert('saved')
+    })
+  }  
+
 }])
+
+
+/* this bit */
+// AngularBonfire.directive('markdownthing', function(theService) {
+//     return {
+//         restrict: 'E',
+//         scope: {username: '@myAttr'},
+//         controller: function($scope, $attrs, $q, theService, mySharedService) {
+//                     // {localName: '@myAttr'},
+//                       // $scope.stuff = theService.getAllByUsername($scope.localN)
+//           var username = $scope.username
+//           var defer = $q.defer() 
+//           defer.resolve(theService.getAllByUsername(username));
+//           defer.promise.then(function (data) {
+//               $scope.data = data;
+//               console.log($scope.data);
+//           $scope.stuff = data //theService.getAllByUsername('testtest')
+//             });
+//           // $scope.stuff = theService.getAllByUsername($scope.localN)
+//           // console.log($scope.stuff);
+//           $scope.doStuff = function(input) {
+//             console.log(input)
+//             mySharedService.prepForBroadcast(input)
+//           }
+//             // $scope.$on('handleBroadcast', function() {
+//               // var index =  mySharedService.message;
+//                  // $scope.display = $scope.list[index] //'Directive: ' + mySharedService.message;
+//             // });
+//         },
+//         replace: true,
+//         // template: '<h1>sdfsdf{{th}}</h1>'
+//         template: '<ul class="vertical-nav list-unstyled"><li ng-repeat="list in stuff track by $index"><a href="#" ng-click="doStuff($index)">{{list.name}}</a></li></ul>'
+//         // template: '<p><h2>{{display.name}}</h2><p>g{{display.list}}</p></article>'
+//     };
+// });
+
+
+
 
 
 var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [

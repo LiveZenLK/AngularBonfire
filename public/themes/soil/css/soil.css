@@ -365,3 +365,16 @@ color: white;
     /*padding: 4px 0;*/
 }
 /*/ Animation Stuff/ */
+
+/*// markdown stuff*/
+.markdown-edit{
+    border:1px solid #999999;
+    width:100%;
+    margin:5px 0;
+    padding:3px;
+    min-height: 400px;
+    overflow-y:scroll;
+}
+.markdown-display{
+
+}
