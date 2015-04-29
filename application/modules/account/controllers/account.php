@@ -13,6 +13,8 @@
             $this->load->library('users/auth');
             $this->set_current_user();
 
+            $this->load->helper(array('form', 'url'));
+
         }
 
         //--------------------------------------------------------------------
@@ -46,22 +48,6 @@
 
         }
 
-        // public function create(){
-
-        //     $data = $data['form_data'];
-
-        //     $mock_ability = array();     
-        //     // // add current logged in user id to incoming data
-        //     $mock_ability['user_id'] = $user_id;
-        //     $mock_ability['location'] = 'Aberdeen, Scotland';
-        //     $mock_ability['image_path'] = 'user-id-profile-image-0001.jpg';
-        //     $mock_ability['account_profile'] = '#markdown -list -list -list';
-
-        //     $outcome = $this->account_model->create($mock_ability);
-
-        //     return $outcome;
-        // }
-
         // called from users/controllers/user.php->register()
         public function update_account_profile(){
 
@@ -85,20 +71,31 @@
             echo $data; die;
         }
 
-        // /* Will require a library or helper probably a helper */ //
-        // public function update_image(){
+        function do_upload($field = 'userfile')
+        {
+        
+            $config['upload_path'] = APPPATH.'../public/assets/images';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '250';
+            $config['max_width']  = '400';
+            $config['max_height']  = '500';
 
-        //     $data = $this->input->post();
-        //     $data = $data['form_data'];
+            $this->load->library('upload', $config);
 
-        //     $mock_ability = array();  
-            
-        //     $mock_ability['user_id'] = $this->current_user->id; ;
-        //     $mock_ability['image_path'] = 'user-id-profile-image-0001.jpg';
+            if ( ! $this->upload->do_upload())
+            {
+                $error = array('error' => $this->upload->display_errors());
+                print_r($error);die;
+            }
+            else
+            {
+                $data = $this->upload->data();
+                $user_id = $this->current_user->id;
 
-        //     $outcome = $this->ability_model->add_ability($mock_ability);
-        //     return $outcome;
-        // }
+                $this->account_model->update_image($data['file_name'], $user_id);
+                print_r($data);die;
+            }
+        }
 
         // /* To be done  later*/ //
         // public function update_location(){

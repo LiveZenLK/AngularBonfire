@@ -58,7 +58,13 @@
                     get('account')->result();
             $account = $account[0];
             return $account;
+        }
 
+        public function update_image($image=NULL, $user_id)
+        {
+            $data = array('image_path'=> $image);
+            $this->db->where('user_id', $user_id);
+            $query = $this->db->update('account', $data);
         }
 
         // public function update_image($data=NULL){

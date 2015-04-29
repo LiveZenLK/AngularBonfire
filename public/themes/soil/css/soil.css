@@ -290,7 +290,7 @@ span.div-link-hack {
 /* ###### */
 
 .modern-account {
-	background:lightblue;
+	background:#8AADB8;
 }
 
 .modern-account-nav {
@@ -305,7 +305,8 @@ span.div-link-hack {
     margin-bottom:40px;
 }
 a.account-menu.active {
-	background:lightblue;
+	background:#8AADB8;
+	/*lightblue #6E8A93*/
 	color:#000;
 }
 a.account-menu {
