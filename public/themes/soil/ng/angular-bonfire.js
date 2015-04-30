@@ -9,9 +9,6 @@ var AngularBonfire = angular.module('AngularBonfire',
 	'ngFileUpload',
 	'ngSanitize',
 	'hc.marked'
-	 // 'btford.markdown'
-	// 'NgJoinCtrl'
-	// ,'ngResource','ngAnimate','ui.bootstrap','ngRoute','firebase'
 	]);
 
 
