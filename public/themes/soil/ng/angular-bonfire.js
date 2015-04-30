@@ -6,7 +6,10 @@ var AngularBonfire = angular.module('AngularBonfire',
 	[
 	'ngAnimate',
 	'ui.router',
-	'ngFileUpload'
+	'ngFileUpload',
+	'ngSanitize',
+	'hc.marked'
+	 // 'btford.markdown'
 	// 'NgJoinCtrl'
 	// ,'ngResource','ngAnimate','ui.bootstrap','ngRoute','firebase'
 	]);

@@ -17,12 +17,12 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
     return deferred.promise
   }
   
-  factory.updateProfile = function (id, dataObject) {
+  factory.updateProfile = function (data) {
 
     var deferred = $q.defer();
 
     var post_data = {
-      'account_profile' : dataObject, 
+      'account_profile' : data, 
       'ci_csrf_token'   : ci_csrf_token()
     }
   
@@ -81,69 +81,110 @@ var AccountImageCtrl = AngularBonfire.controller('AccountImageCtrl', ['$scope', 
     };
 }]);
 
-var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scope', '$state', 
+var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scope', '$state', '$timeout',
   'AccountFactory',
-  function($scope, $state
+  function($scope, $state, $timeout
     , AccountFactory
     ) {
 
     $scope.account = {}
+    $scope.saved = '';
   $scope.init = function(){
     AccountFactory.show().then(function(data) {
         console.log(data);
         $scope.account = data;
+        // $scope.account.account_profile = "This is line 1\nThis is line 2"
     });
   }
   $scope.init(); 
 
-  $scope.updateAccountProfile = function(data) {
+  $scope.save = function(data) {
     console.log(data);
     var dataObject = {
       account_profile : data
     } 
 
-    NgAbilityFactory.addAbility(id, dataObject).then(function(data) {
+    AccountFactory.updateProfile(data).then(function(data) {
 
-      alert('saved')
+      $scope.saved = 'saved'
+      $timeout(function(){ $scope.saved = ''; }, 3000);
     })
   }  
 
 }])
 
 
+
+
+
 /* this bit */
-// AngularBonfire.directive('markdownthing', function(theService) {
-//     return {
-//         restrict: 'E',
-//         scope: {username: '@myAttr'},
-//         controller: function($scope, $attrs, $q, theService, mySharedService) {
-//                     // {localName: '@myAttr'},
-//                       // $scope.stuff = theService.getAllByUsername($scope.localN)
-//           var username = $scope.username
-//           var defer = $q.defer() 
-//           defer.resolve(theService.getAllByUsername(username));
-//           defer.promise.then(function (data) {
-//               $scope.data = data;
-//               console.log($scope.data);
-//           $scope.stuff = data //theService.getAllByUsername('testtest')
-//             });
-//           // $scope.stuff = theService.getAllByUsername($scope.localN)
-//           // console.log($scope.stuff);
-//           $scope.doStuff = function(input) {
-//             console.log(input)
-//             mySharedService.prepForBroadcast(input)
-//           }
-//             // $scope.$on('handleBroadcast', function() {
-//               // var index =  mySharedService.message;
-//                  // $scope.display = $scope.list[index] //'Directive: ' + mySharedService.message;
-//             // });
-//         },
-//         replace: true,
-//         // template: '<h1>sdfsdf{{th}}</h1>'
-//         template: '<ul class="vertical-nav list-unstyled"><li ng-repeat="list in stuff track by $index"><a href="#" ng-click="doStuff($index)">{{list.name}}</a></li></ul>'
-//         // template: '<p><h2>{{display.name}}</h2><p>g{{display.list}}</p></article>'
-//     };
-// });
+AngularBonfire.directive('markdowndisplay', function(theService) {
+    return {
+        restrict: 'E',
+        // scope: {username: '@myAttr'},
+        controller: function($scope, $attrs, $q, AccountFactory, markdownBroadcast) {
+          // This is an antipattern i found useful the last time i did this
+          $scope.list = 'tempdata'
+          var defer = $q.defer() 
+          // I think this show method on the factory is only called once
+          defer.resolve(AccountFactory.show());
+          // this because reasons
+          defer.promise.then(function (data) {
+              $scope.data = data;
+          
+              console.log($scope.data);
+              $scope.list = data.account_profile;
+              console.log(data.account_profile);
+              // $scope.list = marked(data.account_profile);
+              // 
+          });
+
+          // console.log($scope.list);
+
+            // $scope.$on('handleBroadcast', function() {
+              // var index =  mySharedService.message;
+                 // $scope.display = $scope.list[index] //'Directive: ' + mySharedService.message;
+            // });
+
+        },
+        replace: true,
+        template: '<article ng-bind-html="list"></article>'
+        // template: '<p><h2>{{display.name}}</h2><p>{{display.list}}</p></article>'
+    };
+});
+
+AngularBonfire.factory('markdownBroadcast', function($rootScope) {
+    var sharedService = {};
+
+    sharedService.message = '';
+
+    sharedService.prepForBroadcast = function(msg) {
+        this.message = msg;
+        this.broadcastItem();
+    };
+
+    sharedService.broadcastItem = function() {
+        $rootScope.$broadcast('handleBroadcast');
+    };
+
+    return sharedService;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -69,7 +69,9 @@
 
         public function update_account_profile($account_profile=NULL, $user_id)
         {
+            // print_r($account_profile);die;
             $data = array('account_profile'=> $account_profile);
+            // print_r($data);die;
             $this->db->where('user_id', $user_id);
             $query = $this->db->update('account', $data);
         }

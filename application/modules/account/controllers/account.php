@@ -50,16 +50,15 @@
 
         // called from users/controllers/user.php->register()
         public function update_account_profile(){
-
             $data = $this->input->post();
-            $mock_ability = array();  
-
-            $mock_ability['user_id'] = $this->current_user->id; ;
-            $mock_ability['account_profile'] = $data['form_data'];
-
-            $outcome = $this->ability_model->update($mock_ability);
+            $user_id = $this->current_user->id; ;
+            $outcome = $this->account_model->update_account_profile($data['account_profile'], $user_id);
             return $outcome;
         }
+
+
+
+
 
         public function show(){
 

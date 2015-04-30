@@ -37,7 +37,7 @@ h1,h2,h3,h4,h5,h6,p {margin:0; padding:0;}
 	/*margin-right: 0;*/
 }
 h2.company-name {
-	color:#fff; 
+	color:darkbrown; 
 	font-size: 60px; 
 	line-height: 1; 
 	font-weight: 800;
@@ -376,5 +376,61 @@ color: white;
     overflow-y:scroll;
 }
 .markdown-display{
+
+}
+
+
+/* ###### */
+/* PROFILE */
+/* ###### */
+
+.modern-profile {
+	background:#8AADB8;
+	background:rgba(22, 32, 30, 1);
+    /*padding-top:40px;*/
+    min-height: 500px;
+    /*background: rgba(138, 173, 184, 1);*/
+}
+
+.modern-account-nav {
+	background:#16201e;
+}
+.interface{
+    background:#16201e; 
+    /*rgba(0, 0, 0, 0.2);*/
+
+    float: left;
+    padding:20px 20px 20px 20px;
+    box-sizing:border-box;
+    width:340px;
+    width:100%;
+    display: block;
+    margin-bottom:40px;
+}
+a.account-menu.active {
+	/*background:#8AADB8;*/
+	background:#8AADB8;
+	/*lightblue #6E8A93*/
+	color:#000;
+}
+
+.modern-profile-title{
+	color:#76c2b2;
+	font-weight: 800;
+	font-size: 22px;
+}
+
+.account-profile-preview h1,
+.account-profile-preview h2,
+.account-profile-preview h3
+.account-profile-preview h4,
+.account-profile-preview h5,
+.account-profile-preview h6,
+.account-profile-preview p
+.account-profile-preview ul li,
+.account-profile-preview ul li a,
+.account-profile-preview a
+ {
+	color:#76c2b2;
 
 }
