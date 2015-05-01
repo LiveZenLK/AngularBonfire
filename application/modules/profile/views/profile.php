@@ -1,4 +1,6 @@
- <section ng-controller="NgProfileCtrl" class="controller">
+ <section 
+ class="controller">
+ <!-- ng-controller="NgProfileCtrl"  -->
     <div class="row modern-account-nav">
         
         <nav>
@@ -6,7 +8,6 @@
               <!--   <div class="col-4 desktop-4 should-be-a-link route {{route.image}}" ng-repeat="route in routes" >
                     <a href="#" ui-sref="{{route.account_route}}" class="account-menu" ui-sref-active-eq="active">{{route.name}}<span class="div-link-hack"></span></a>
                 </div> -->
-                 <?php //echo Modules::run('profile/widget', 1); ?>
         </nav>
     </div>
     <div class="row modern-profile">
@@ -18,6 +19,7 @@
                     <interestlist my-attr="<?php echo $username;?>"></interestlist>          
                 </div>
                 <h3 class="modern-profile-title"><?php echo $username;?>'s Interests</h3>
+                 <?php echo Modules::run('chat/widget', $username); ?>
             </aside>
         </article>
         <article class="col-12 col-desktop-3">
