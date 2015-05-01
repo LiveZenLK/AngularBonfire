@@ -19,6 +19,21 @@ AngularBonfire.factory("ChatWidgetFactory", function($http, $q) {
 
     return deferred.promise
   }
+})
+AngularBonfire.factory("ChatFactory", function($http, $q) {
+  var factory = {}
+
+  factory.messages = function () {
+
+    var deferred = $q.defer()
+  
+    $http.get(AngularBonfireUrl+'/api/chat/messages').then(function(resp) {
+      
+      deferred.resolve(resp.data)
+    })
+
+    return deferred.promise
+  }
 
   return factory
 })
@@ -67,4 +82,23 @@ var ChatWidgetCtrl = AngularBonfire.controller('ChatWidgetCtrl',
        $timeout(function(){ $scope.success = ''; }, 3000)
     })
   } 
+}])
+
+
+
+var ChatCtrl = AngularBonfire.controller('ChatCtrl', 
+  ['$scope', '$state', '$timeout','ChatFactory',
+  function($scope, $state, $timeout, ChatFactory) {
+
+  console.log('go')
+  $scope.messages = {}
+
+  var init = function() {
+    ChatFactory.messages().then(function(data) {
+      console.log(data)
+      $scope.messages = data //'Message Delivered'
+       // $timeout(function(){ $scope.success = ''; }, 3000)
+    })
+  } 
+  init();
 }])

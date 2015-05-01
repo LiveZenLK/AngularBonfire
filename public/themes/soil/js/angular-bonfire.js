@@ -36039,7 +36039,7 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     }
   ]
     
-    $state.go('account_route_profile')
+    $state.go('account_route_social')
   // Changes the current active route
   // $scope.doRoute = function(actionName){
     // var route = 'account_route_' + actionName
@@ -36087,6 +36087,7 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
 
     var account_route_social = { 
         name: 'account_route_social', 
+        controller: 'ChatCtrl',
         views:{
             'content':{
             template: 'social content' 
@@ -36095,7 +36096,7 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
             template: 'social status'
             },
             'actions':{
-            template: 'social actions'
+            templateUrl: AngularBonfireUrl+'/chat/inbox'
             }
         }
     }
@@ -36126,6 +36127,21 @@ AngularBonfire.factory("ChatWidgetFactory", function($http, $q) {
   
     console.log(post_data)
     $.post(AngularBonfireUrl+'/api/chat/sendmessage', post_data).then(function(resp) {
+      
+      deferred.resolve(resp.data)
+    })
+
+    return deferred.promise
+  }
+})
+AngularBonfire.factory("ChatFactory", function($http, $q) {
+  var factory = {}
+
+  factory.messages = function () {
+
+    var deferred = $q.defer()
+  
+    $http.get(AngularBonfireUrl+'/api/chat/messages').then(function(resp) {
       
       deferred.resolve(resp.data)
     })
@@ -36180,6 +36196,25 @@ var ChatWidgetCtrl = AngularBonfire.controller('ChatWidgetCtrl',
        $timeout(function(){ $scope.success = ''; }, 3000)
     })
   } 
+}])
+
+
+
+var ChatCtrl = AngularBonfire.controller('ChatCtrl', 
+  ['$scope', '$state', '$timeout','ChatFactory',
+  function($scope, $state, $timeout, ChatFactory) {
+
+  console.log('go')
+  $scope.messages = {}
+
+  var init = function() {
+    ChatFactory.messages().then(function(data) {
+      console.log(data)
+      $scope.messages = data //'Message Delivered'
+       // $timeout(function(){ $scope.success = ''; }, 3000)
+    })
+  } 
+  init();
 }])
 console.log('your module js')
 

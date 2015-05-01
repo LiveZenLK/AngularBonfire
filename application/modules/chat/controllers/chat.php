@@ -47,6 +47,13 @@
         //     echo $data;die;
         //     // return $data;
         // }
+        public function inbox($username=NULL){
+                // $current_user = $this->current_user->id;
+                // $viewdata = array('data' => 'hello widget');
+                // $viewdata = array('username' => $username );
+                // $viewdata = array('current_user' => $current_user );
+                $this->load->view('inbox');//, $viewdata);
+        }
 
         public function widget($username=NULL){
                 $current_user = $this->current_user->id;
@@ -55,7 +62,12 @@
                 $viewdata = array('current_user' => $current_user );
                 $this->load->view('widget', $viewdata);
         }
-    
+        
+        public function all_messages(){
+
+            $messages = $this->chat_model->get_messages($this->current_user->id );
+            echo json_encode($messages);die;
+        }
         // api/chat/sendmessage
         public function send_message(){
             // get the data from the http POST

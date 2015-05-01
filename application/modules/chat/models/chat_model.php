@@ -26,12 +26,21 @@
 
         public function get_messages($user_id=NULL)
         {
+        	$sql = "SELECT u.username, sender_id, recipient_id, message, checked
+                FROM bf_users u  
+                LEFT JOIN bf_chat t 
+                ON u.id=t.sender_id
+                where t.recipient_id = ?;";
 
-        	$messages = $this->db->
-                    where('username', $user_id)->
-                    get('chat')->result();
+            $query = $this->db->query($sql, array($user_id))->result(); 
+            
+            return $query;
 
-            return $messages;
+        	// $messages = $this->db->
+         //            where('recipient_id', $user_id)->
+         //            get('chat')->result();
+
+         //    return $messages;
         }
 
         public function get_new_message($username)

@@ -80,6 +80,7 @@ Route::any('api/account/updateprofile', 'account/update_account_profile');
 
 // Chat
 Route::any('api/chat/sendmessage', 'chat/send_message');
+Route::any('api/chat/messages', 'chat/all_messages');
 
 
 // Profile
