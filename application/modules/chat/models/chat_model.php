@@ -33,8 +33,18 @@
                 where t.recipient_id = ?;";
 
             $query = $this->db->query($sql, array($user_id))->result(); 
-            
-            return $query;
+
+            // check for empty return value
+            $query = array_filter($query);
+
+			if (!empty($query)) {
+
+            	return $query;
+			}
+			else {
+				return FALSE;
+			}
+			            
 
         	// $messages = $this->db->
          //            where('recipient_id', $user_id)->

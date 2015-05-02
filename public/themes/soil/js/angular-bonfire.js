@@ -36215,6 +36215,10 @@ var ChatCtrl = AngularBonfire.controller('ChatCtrl',
     })
   } 
   init();
+
+  $scope.reply = function(destination){
+    console.log(destination);
+  }
 }])
 console.log('your module js')
 
