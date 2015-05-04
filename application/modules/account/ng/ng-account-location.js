@@ -16,7 +16,7 @@ var AccountLocationCtrl = AngularBonfire.controller('AccountLocationCtrl', ['$sc
     }
     $scope.init(); 
 
-  $scope.save = function(data) {
+  $scope.saveLocation = function(data) {
     console.log(data);
     var dataObject = {
       location : data
@@ -54,7 +54,7 @@ AngularBonfire.directive( 'weather', function(
     }
         //
 
-  });
+  })
 
 // var WeatherDirectiveCtrl = function(scope, elem, attrs){
 theOnlyGlobal.WeatherDirectiveCtrl = function(scope, elem, attrs){
