@@ -11,7 +11,8 @@ var AngularBonfire = angular.module('AngularBonfire',
 	'hc.marked'
 	])
 
-var theOnlyGlobal = {
+var theOnlyGlobal = function(
+	return {
 	purpose: function(){ 
 		console.log('around the application, a namespace create') 
 	},
@@ -22,6 +23,7 @@ var theOnlyGlobal = {
     	if(!this.isDarkside && this.isStrong){
     		this.purpose()
     	}
+  }
   }
 }
 
