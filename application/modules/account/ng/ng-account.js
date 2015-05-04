@@ -92,7 +92,7 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     }
   ]
     
-    $state.go('account_route_profile')
+    $state.go('account_route_social')
   // Changes the current active route
   // $scope.doRoute = function(actionName){
     // var route = 'account_route_' + actionName
@@ -149,7 +149,7 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
         controller: 'ChatCtrl',
         views:{
             'content':{
-            template: 'social content' 
+            templateUrl: AngularBonfireUrl+'/chat/reply'
             },
             'status':{
             template: 'social status'

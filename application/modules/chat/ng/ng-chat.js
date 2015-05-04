@@ -19,6 +19,9 @@ AngularBonfire.factory("ChatWidgetFactory", function($http, $q) {
 
     return deferred.promise
   }
+
+  return factory
+
 })
 AngularBonfire.factory("ChatFactory", function($http, $q) {
   var factory = {}
@@ -28,6 +31,25 @@ AngularBonfire.factory("ChatFactory", function($http, $q) {
     var deferred = $q.defer()
   
     $http.get(AngularBonfireUrl+'/api/chat/messages').then(function(resp) {
+      
+      deferred.resolve(resp.data)
+    })
+
+    return deferred.promise
+  }
+
+    factory.sendReply = function (recipient, message) {
+
+    var deferred = $q.defer()
+
+    var post_data = {
+        'recipient'     : recipient, 
+        'message'       :   message, 
+        'ci_csrf_token' : ci_csrf_token() // a built globabl function defined by CI_Bonfire
+    }
+  
+    console.log(post_data)
+    $.post(AngularBonfireUrl+'/api/chat/sendreply', post_data).then(function(resp) {
       
       deferred.resolve(resp.data)
     })
@@ -87,11 +109,12 @@ var ChatWidgetCtrl = AngularBonfire.controller('ChatWidgetCtrl',
 
 
 var ChatCtrl = AngularBonfire.controller('ChatCtrl', 
-  ['$scope', '$state', '$timeout','ChatFactory',
-  function($scope, $state, $timeout, ChatFactory) {
+  ['$scope', '$state', '$timeout','ChatFactory','ChatReplyService',
+  function($scope, $state, $timeout, ChatFactory, ChatReplyService) {
 
   console.log('go')
   $scope.messages = {}
+  $scope.replyDestination = ''
 
   var init = function() {
     ChatFactory.messages().then(function(data) {
@@ -103,11 +126,87 @@ var ChatCtrl = AngularBonfire.controller('ChatCtrl',
   init();
 
   $scope.reply = function(destination){
-    console.log(destination);
+    ChatReplyService.prepForBroadcast(destination)
+    ChatReplyService.broadcastItem()
+  }
+  $scope.send = function(destination, message){
+    console.log(destination, message);
+      ChatFactory.sendReply(destination, message).then(function(data) {
+       $scope.success = 'Message Delivered'
+       $timeout(function(){ $scope.success = ''; ChatReplyService.broadcastSent()}, 3000)
+    })
   }
 }])
 
 
+/* this bit */
+AngularBonfire.directive('owl', function(theService) {
+    return {
+        restrict: 'E',
+        scope: {username: '@myAttr'},
+        controller: function($scope, $attrs, $q, ChatReplyService) {
+          // var username = $scope.username
+          // var defer = $q.defer() 
+          // defer.resolve(theService.getAllByUsername(username));
+          // defer.promise.then(function (data) {
+              // $scope.data = data;
+              // console.log($scope.data);
+          // $scope.list = data 
+          // });
+          console.log($scope);
+
+            $scope.$on('handleBroadcast', function() {
+                $scope.destination = ChatReplyService.message;
+                  //'Directive: ' + mySharedService.message;
+                  console.log($scope.destination)
+            });
+            $scope.$on('handleSent', function() {
+                $scope.destination = '';
+                $scope.message = '';
+                  //'Directive: ' + mySharedService.message;
+                  console.log($scope.destination)
+            });
+
+        },
+        replace: true,
+        template: theOnlyGlobal.owlTemplate//'<article><h4>You are replying to {{destination}}</h4></article>'
+        // template: '<p><h2>{{display.name}}</h2><p>{{display.list}}</p></article>'
+    };
+});
+
+theOnlyGlobal.owlTemplate = 
+
+'<form >'
++'<article class="owl"><h4>You are replying to <input type="text" ng-model="destination"  value="destination" ></h4>'
++''
++'<textarea placeholder="message to {{destination}}" ng-model="message"></textarea>'
++'<input ng-controller="ChatCtrl" ng-click="send(destination, message)" type="submit" class="button" value="Send"/>'
++'</form><h2>{{success}}</h2></article>'
+
+AngularBonfire.factory('ChatReplyService', function($rootScope) {
+    var sharedService = {};
+
+    sharedService.message = '';
+
+    sharedService.prepForBroadcast = function(msg) {
+        this.message = msg;
+        // this.broadcastItem();
+    };
+
+    sharedService.broadcastSent = function(msg) {
+        $rootScope.$broadcast('handleSent');
+    };
+
+    sharedService.broadcastItem = function() {
+        $rootScope.$broadcast('handleBroadcast');
+    };
+
+    // sharedService.data = ''
+
+    return sharedService;
+});
+
+// AngularBonfire.factory('ChatOwls', function())
 
 // first 
 
