@@ -48,20 +48,25 @@ AngularBonfire.directive( 'weather', function(
       // chain: function(data){ calledFunction.chain(calledFunction(replace: calleddFunction.eg())} 
       template: '<div id="weather" class="show-weather">unknown, location</div>',
       scope: {
-        details: '@details'
+        details: '@details' //'Aberdeen, Scotland'
       },
-    
+      link: function(scope, elem, attrs){ theOnlyGlobal.WeatherDirectiveCtrl(scope, elem, attrs) }
+    }
+        //
 
-      link: function(scope, elem, attrs) {
-        // console.log('weather: ',scope);
-        var location = ''//scope.details;
-        // console.log(location);
-         // observing interpolated attributes
-        attrs.$observe('details',function(){
-          console.log(' notice where this logs:',attrs.details);
-         location = attrs.details
-        consolei.log(location);
-        $.simpleWeather({
+  });
+
+// var WeatherDirectiveCtrl = function(scope, elem, attrs){
+theOnlyGlobal.WeatherDirectiveCtrl = function(scope, elem, attrs){
+    console.log('weather: ',scope);
+    var location = ''//scope.details;
+    // console.log(location);
+    // observing interpolated attributes
+    attrs.$observe('details',function(){
+      console.log(' notice where this logs:',attrs.details);
+      location = attrs.details
+      console.log(location);
+      $.simpleWeather({
             location: location,
             //     woeid: '',
             unit: 'f',
@@ -76,18 +81,8 @@ AngularBonfire.directive( 'weather', function(
             error: function(error) {
               $(".show-weather").html('<p>'+error+'</p>');
             }
-          });
-        })
-
-      }
-
-
-    }
-
-  });
-
-window.theOnlyGlobal.prototype.WeatherDirectiveCtrl = function(scope, elem, attrs){
-
+      }) //*$.simpleWeather*/
+    }) //*attrs.$observe
 }
 
 // Docs at http://simpleweatherjs.com

@@ -35804,19 +35804,22 @@ var AngularBonfire = angular.module('AngularBonfire',
 	'hc.marked'
 	])
 
-var theOnlyGlobal = function{
-	purpose: function(){ 
-		console.log('around the application, a namespace create') 
-	},
-    isDarkside: true,
-    isStrong: true,
-    useYoda: function(){
-    	this.isDarkside = !this.isDarkside;
-    	if(!this.isDarkside && this.isStrong){
-    		this.purpose()
-    	}
-  }
+var theOnlyGlobal = function(){
+	return {
+		purpose: function(){ 
+			console.log('around the application, a namespace create') 
+		},
+	    isDarkside: true,
+	    isStrong: true,
+	    useYoda: function(){
+	    	this.isDarkside = !this.isDarkside;
+	    	if(!this.isDarkside && this.isStrong){
+	    		this.purpose()
+	    	}
+	    }
+	}
 }
+
 
 console.log('soil js')
 
@@ -36069,20 +36072,25 @@ AngularBonfire.directive( 'weather', function(
       // chain: function(data){ calledFunction.chain(calledFunction(replace: calleddFunction.eg())} 
       template: '<div id="weather" class="show-weather">unknown, location</div>',
       scope: {
-        details: '@details'
+        details: '@details' //'Aberdeen, Scotland'
       },
-    
+      link: function(scope, elem, attrs){ theOnlyGlobal.WeatherDirectiveCtrl(scope, elem, attrs) }
+    }
+        //
 
-      link: function(scope, elem, attrs) {
-        // console.log('weather: ',scope);
-        var location = ''//scope.details;
-        // console.log(location);
-         // observing interpolated attributes
-        attrs.$observe('details',function(){
-          console.log(' notice where this logs:',attrs.details);
-         location = attrs.details
-        consolei.log(location);
-        $.simpleWeather({
+  });
+
+// var WeatherDirectiveCtrl = function(scope, elem, attrs){
+theOnlyGlobal.WeatherDirectiveCtrl = function(scope, elem, attrs){
+    console.log('weather: ',scope);
+    var location = ''//scope.details;
+    // console.log(location);
+    // observing interpolated attributes
+    attrs.$observe('details',function(){
+      console.log(' notice where this logs:',attrs.details);
+      location = attrs.details
+      console.log(location);
+      $.simpleWeather({
             location: location,
             //     woeid: '',
             unit: 'f',
@@ -36097,18 +36105,8 @@ AngularBonfire.directive( 'weather', function(
             error: function(error) {
               $(".show-weather").html('<p>'+error+'</p>');
             }
-          });
-        })
-
-      }
-
-
-    }
-
-  });
-
-window.theOnlyGlobal.prototype.WeatherDirectiveCtrl = function(scope, elem, attrs){
-
+      }) //*$.simpleWeather*/
+    }) //*attrs.$observe
 }
 
 // Docs at http://simpleweatherjs.com

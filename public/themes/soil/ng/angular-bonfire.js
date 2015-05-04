@@ -11,19 +11,19 @@ var AngularBonfire = angular.module('AngularBonfire',
 	'hc.marked'
 	])
 
-var theOnlyGlobal = function(
+var theOnlyGlobal = function(){
 	return {
-	purpose: function(){ 
-		console.log('around the application, a namespace create') 
-	},
-    isDarkside: true,
-    isStrong: true,
-    useYoda: function(){
-    	this.isDarkside = !this.isDarkside;
-    	if(!this.isDarkside && this.isStrong){
-    		this.purpose()
-    	}
-  }
-  }
+		purpose: function(){ 
+			console.log('around the application, a namespace create') 
+		},
+	    isDarkside: true,
+	    isStrong: true,
+	    useYoda: function(){
+	    	this.isDarkside = !this.isDarkside;
+	    	if(!this.isDarkside && this.isStrong){
+	    		this.purpose()
+	    	}
+	    }
+	}
 }
 
