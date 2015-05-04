@@ -3,7 +3,7 @@
 	<article ng-repeat="message in messages">
 		<a href="#" ng-click="open = !open">{{message.username}}</a>
 		<div class="message-body" ng-hide="!open">{{message.message}}
-			<a href="#" ng-click="reply(message)">reply</a>
+			<a href="#" ng-click="reply(message.username)">reply</a>
 		</div>
 	</article>
 	</div>

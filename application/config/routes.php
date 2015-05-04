@@ -81,6 +81,7 @@ Route::any('api/account/updatelocation', 'account/update_account_location');
 
 // Chat
 Route::any('api/chat/sendmessage', 'chat/send_message');
+Route::any('api/chat/sendreply', 'chat/send_reply');
 Route::any('api/chat/messages', 'chat/all_messages');
 
 

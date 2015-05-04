@@ -54,6 +54,13 @@
                 // $viewdata = array('current_user' => $current_user );
                 $this->load->view('inbox');//, $viewdata);
         }
+        public function reply(){
+                // $current_user = $this->current_user->id;
+                // $viewdata = array('data' => 'hello widget');
+                // $viewdata = array('username' => $username );
+                // $viewdata = array('current_user' => $current_user );
+                $this->load->view('reply');//, $viewdata);
+        }
 
         public function widget($username=NULL){
                 $current_user = $this->current_user->id;
@@ -84,6 +91,32 @@
             $mock_message = array(
                 'sender_id'    =>  $sender_id,   
                 'recipient_id' => $form_data['recipient_id'],
+                'message'      => $form_data['message'],
+                'timestamp'     => $timestamp,
+                'checked'      => 0
+            );
+
+            $outcome = $this->chat_model->create_message($mock_message);
+
+            echo $outcome;die;  // we could use this for error messages on the front end
+        }
+
+        public function send_reply(){
+            // get the data from the http POST
+            $data = $this->input->post();
+        print_r($data);die;
+            // and seperate out the form data 
+            $form_data = $data['form_data'];
+            
+            // using the inbuilt auth library loaded in the constructer
+            $sender_id = $this->current_user->id; 
+
+            // uses a native php function to record the data/time
+            $timestamp = time();
+
+            $mock_message = array(
+                'sender_id'    =>  $sender_id,   
+                'recipient_id' => $form_data['recipient'],
                 'message'      => $form_data['message'],
                 'timestamp'     => $timestamp,
                 'checked'      => 0
