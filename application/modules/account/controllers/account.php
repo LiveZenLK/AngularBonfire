@@ -65,7 +65,8 @@
         // called from users/controllers/user.php->register()
         public function update_account_location(){
             $data = $this->input->post();
-            $user_id = $this->current_user->id; ;
+            $user_id = $this->current_user->id; 
+            // print_r($data['location']);die;
             $outcome = $this->account_model->update_account_profile($data['location'], $user_id);
             return $outcome;
         }

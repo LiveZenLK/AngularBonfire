@@ -36040,8 +36040,8 @@ var AccountLocationCtrl = AngularBonfire.controller('AccountLocationCtrl', ['$sc
     }
     $scope.init(); 
 
-  $scope.save = function(data) {
-    console.log(data);
+  $scope.saveLocation = function(data) {
+    console.log('location scope', data);
     var dataObject = {
       location : data
     } 
@@ -36078,7 +36078,7 @@ AngularBonfire.directive( 'weather', function(
     }
         //
 
-  });
+  })
 
 // var WeatherDirectiveCtrl = function(scope, elem, attrs){
 theOnlyGlobal.WeatherDirectiveCtrl = function(scope, elem, attrs){
@@ -36276,6 +36276,7 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
       'location' : data, 
       'ci_csrf_token'   : ci_csrf_token()
     }
+    console.log('updateLocation post_data: ',post_data)
   
     // so far we have an object we can 'POST' to our form which contains a security token
     $.post(AngularBonfireUrl+'/api/account/updatelocation', post_data).done(function(sdf){

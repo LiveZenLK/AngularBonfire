@@ -17,7 +17,7 @@ var AccountLocationCtrl = AngularBonfire.controller('AccountLocationCtrl', ['$sc
     $scope.init(); 
 
   $scope.saveLocation = function(data) {
-    console.log(data);
+    console.log('location scope', data);
     var dataObject = {
       location : data
     } 

@@ -44,6 +44,7 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
       'location' : data, 
       'ci_csrf_token'   : ci_csrf_token()
     }
+    console.log('updateLocation post_data: ',post_data)
   
     // so far we have an object we can 'POST' to our form which contains a security token
     $.post(AngularBonfireUrl+'/api/account/updatelocation', post_data).done(function(sdf){
