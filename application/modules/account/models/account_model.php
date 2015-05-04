@@ -74,6 +74,13 @@
             $query = $this->db->update('account', $data);
         }
 
+        public function update_account_location($location=NULL, $user_id)
+        {
+            $data = array('location'=> $account_profile);
+            $this->db->where('user_id', $user_id);
+            $query = $this->db->update('account', $data);
+        }
+
         // public function update_image($data=NULL){
 
         // }

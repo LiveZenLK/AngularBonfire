@@ -77,6 +77,7 @@ Route::any('api/profile/getabilities/(:any)', 'profile/getAbilitiesJson/$1');
 // Account
 Route::any('api/account/show', 'account/show');
 Route::any('api/account/updateprofile', 'account/update_account_profile');
+Route::any('api/account/updatelocation', 'account/update_account_location');
 
 // Chat
 Route::any('api/chat/sendmessage', 'chat/send_message');

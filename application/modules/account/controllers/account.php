@@ -48,11 +48,25 @@
 
         }
 
+        public function ngdocuments() {
+
+            $this->load->view('account/documents');
+
+        }
+
         // called from users/controllers/user.php->register()
         public function update_account_profile(){
             $data = $this->input->post();
             $user_id = $this->current_user->id; ;
             $outcome = $this->account_model->update_account_profile($data['account_profile'], $user_id);
+            return $outcome;
+        }
+
+        // called from users/controllers/user.php->register()
+        public function update_account_location(){
+            $data = $this->input->post();
+            $user_id = $this->current_user->id; ;
+            $outcome = $this->account_model->update_account_profile($data['location'], $user_id);
             return $outcome;
         }
 

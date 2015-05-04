@@ -34340,6 +34340,120 @@ angular.module('ngSanitize').filter('linky', ['$sanitize', function($sanitize) {
 
 })(window, window.angular);
 
+/*! simpleWeather v3.0.2 - http://simpleweatherjs.com */
+(function($) {
+  "use strict";
+
+  function getAltTemp(unit, temp) {
+    if(unit === 'f') {
+      return Math.round((5.0/9.0)*(temp-32.0));
+    } else {
+      return Math.round((9.0/5.0)*temp+32.0);
+    }
+  }
+
+  $.extend({
+    simpleWeather: function(options){
+      options = $.extend({
+        location: '',
+        woeid: '',
+        unit: 'f',
+        success: function(weather){},
+        error: function(message){}
+      }, options);
+
+      var now = new Date();
+      var weatherUrl = 'https://query.yahooapis.com/v1/public/yql?format=json&rnd='+now.getFullYear()+now.getMonth()+now.getDay()+now.getHours()+'&diagnostics=true&callback=?&q=';
+      if(options.location !== '') {
+        weatherUrl += 'select * from weather.forecast where woeid in (select woeid from geo.placefinder where text="'+options.location+'" and gflags="R" limit 1) and u="'+options.unit+'"';
+      } else if(options.woeid !== '') {
+        weatherUrl += 'select * from weather.forecast where woeid='+options.woeid+' and u="'+options.unit+'"';
+      } else {
+        options.error({message: "Could not retrieve weather due to an invalid location."});
+        return false;
+      }
+
+      $.getJSON(
+        encodeURI(weatherUrl),
+        function(data) {
+          if(data !== null && data.query !== null && data.query.results !== null && data.query.results.channel.description !== 'Yahoo! Weather Error') {
+            var result = data.query.results.channel,
+                weather = {},
+                forecast,
+                compass = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'],
+                image404 = "https://s.yimg.com/os/mit/media/m/weather/images/icons/l/44d-100567.png";
+
+            weather.title = result.item.title;
+            weather.temp = result.item.condition.temp;
+            weather.code = result.item.condition.code;
+            weather.todayCode = result.item.forecast[0].code;
+            weather.currently = result.item.condition.text;
+            weather.high = result.item.forecast[0].high;
+            weather.low = result.item.forecast[0].low;
+            weather.text = result.item.forecast[0].text;
+            weather.humidity = result.atmosphere.humidity;
+            weather.pressure = result.atmosphere.pressure;
+            weather.rising = result.atmosphere.rising;
+            weather.visibility = result.atmosphere.visibility;
+            weather.sunrise = result.astronomy.sunrise;
+            weather.sunset = result.astronomy.sunset;
+            weather.description = result.item.description;
+            weather.city = result.location.city;
+            weather.country = result.location.country;
+            weather.region = result.location.region;
+            weather.updated = result.item.pubDate;
+            weather.link = result.item.link;
+            weather.units = {temp: result.units.temperature, distance: result.units.distance, pressure: result.units.pressure, speed: result.units.speed};
+            weather.wind = {chill: result.wind.chill, direction: compass[Math.round(result.wind.direction / 22.5)], speed: result.wind.speed};
+
+            if(result.item.condition.temp < 80 && result.atmosphere.humidity < 40) {
+              weather.heatindex = -42.379+2.04901523*result.item.condition.temp+10.14333127*result.atmosphere.humidity-0.22475541*result.item.condition.temp*result.atmosphere.humidity-6.83783*(Math.pow(10, -3))*(Math.pow(result.item.condition.temp, 2))-5.481717*(Math.pow(10, -2))*(Math.pow(result.atmosphere.humidity, 2))+1.22874*(Math.pow(10, -3))*(Math.pow(result.item.condition.temp, 2))*result.atmosphere.humidity+8.5282*(Math.pow(10, -4))*result.item.condition.temp*(Math.pow(result.atmosphere.humidity, 2))-1.99*(Math.pow(10, -6))*(Math.pow(result.item.condition.temp, 2))*(Math.pow(result.atmosphere.humidity,2));
+            } else {
+              weather.heatindex = result.item.condition.temp;
+            }
+
+            if(result.item.condition.code == "3200") {
+              weather.thumbnail = image404;
+              weather.image = image404;
+            } else {
+              weather.thumbnail = "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/"+result.item.condition.code+"ds.png";
+              weather.image = "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/"+result.item.condition.code+"d.png";
+            }
+
+            weather.alt = {temp: getAltTemp(options.unit, result.item.condition.temp), high: getAltTemp(options.unit, result.item.forecast[0].high), low: getAltTemp(options.unit, result.item.forecast[0].low)};
+            if(options.unit === 'f') {
+              weather.alt.unit = 'c';
+            } else {
+              weather.alt.unit = 'f';
+            }
+
+            weather.forecast = [];
+            for(var i=0;i<result.item.forecast.length;i++) {
+              forecast = result.item.forecast[i];
+              forecast.alt = {high: getAltTemp(options.unit, result.item.forecast[i].high), low: getAltTemp(options.unit, result.item.forecast[i].low)};
+
+              if(result.item.forecast[i].code == "3200") {
+                forecast.thumbnail = image404;
+                forecast.image = image404;
+              } else {
+                forecast.thumbnail = "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/"+result.item.forecast[i].code+"ds.png";
+                forecast.image = "https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/"+result.item.forecast[i].code+"d.png";
+              }
+
+              weather.forecast.push(forecast);
+            }
+
+            options.success(weather);
+          } else {
+            options.error({message: "There was an error retrieving the latest weather information. Please try again.", error: data.query.results.channel.item.title});
+          }
+        }
+      );
+      return this;
+    }
+  });
+})(jQuery);
+
 /**
  * marked - a markdown parser
  * Copyright (c) 2011-2014, Christopher Jeffrey. (MIT Licensed)
@@ -35688,9 +35802,21 @@ var AngularBonfire = angular.module('AngularBonfire',
 	'ngFileUpload',
 	'ngSanitize',
 	'hc.marked'
-	]);
+	])
 
-
+var theOnlyGlobal = function{
+	purpose: function(){ 
+		console.log('around the application, a namespace create') 
+	},
+    isDarkside: true,
+    isStrong: true,
+    useYoda: function(){
+    	this.isDarkside = !this.isDarkside;
+    	if(!this.isDarkside && this.isStrong){
+    		this.purpose()
+    	}
+  }
+}
 
 console.log('soil js')
 
@@ -35819,6 +35945,293 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 
 
 
+var AccountDocumentCtrl = AngularBonfire.controller('AccountDocumentCtrl', ['$scope', 'Upload', 'AccountFactory', function ($scope, Upload, AccountFactory) {
+    $scope.$watch('files', function () {
+        $scope.upload($scope.files)
+    });
+
+    $scope.location = {}
+    
+    $scope.init = function(){
+      AccountFactory.show().then(function(data) {
+        console.log(data)
+        $scope.location = data.location
+      });
+    }
+    $scope.init();
+
+    $scope.upload = function (files) {
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                Upload.upload({
+                    url: AngularBonfireUrl+'/account/do_upload',
+                    headers: {'Content-Type': file.type},
+                    method: 'POST',
+                    fileFormDataName: 'userfile', 
+                    fields: {ci_csrf_token: ci_csrf_token(), userfile: file},
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total)
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name)
+                }).success(function (data, status, headers, config) {
+                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data)
+
+                })
+            }
+        }
+    }
+}])
+var AccountImageCtrl = AngularBonfire.controller('AccountImageCtrl', ['$scope', 'Upload', 'AccountFactory', function ($scope, Upload, AccountFactory) {
+    $scope.$watch('files', function () {
+        $scope.upload($scope.files);
+    });
+
+    $scope.image = {}
+    
+    $scope.init = function(){
+      AccountFactory.show().then(function(data) {
+        console.log(data);
+        $scope.image = data.image_path
+      });
+    }
+    $scope.init();
+
+    $scope.upload = function (files) {
+        if (files && files.length) {
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                Upload.upload({
+                    url: AngularBonfireUrl+'/account/do_upload',
+                    headers: {'Content-Type': file.type},
+                    method: 'POST',
+                    fileFormDataName: 'userfile', 
+                    fields: {ci_csrf_token: ci_csrf_token(), userfile: file},
+                    file: file
+                }).progress(function (evt) {
+                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                }).success(function (data, status, headers, config) {
+                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+
+                });
+            }
+        }
+    };
+}]);
+var AccountLocationCtrl = AngularBonfire.controller('AccountLocationCtrl', ['$scope', '$state', '$timeout',
+  'AccountFactory',
+  function($scope, $state, $timeout
+    , AccountFactory
+    ) {
+
+    $scope.location = {}
+    $scope.saved = '';
+  
+    $scope.init = function(){
+      AccountFactory.show().then(function(data) {
+          console.log(data);
+          $scope.location = data.location;
+          // $scope.account.account_profile = "This is line 1\nThis is line 2"
+      });
+    }
+    $scope.init(); 
+
+  $scope.save = function(data) {
+    console.log(data);
+    var dataObject = {
+      location : data
+    } 
+
+    AccountFactory.updateLocation(data).then(function(data) {
+
+      $scope.saved = 'saved'
+      $timeout(function(){ $scope.saved = ''; }, 3000);
+    })
+  }  
+
+}])
+
+
+
+AngularBonfire.directive( 'weather', function(
+  $stateParams
+  ) {
+    // here, it returns an object
+    return {
+      // each key value of an object is called a property
+      restrict: 'AE',
+      // they can be used to set configurations
+      replace: true,
+      // they can reference
+      // eg: function(data){ this.replace || !this.replace; if (this.replace){/*game*/'is useful place to use a semi colon' },
+      // and become pasta. They remind me of _
+      // chain: function(data){ calledFunction.chain(calledFunction(replace: calleddFunction.eg())} 
+      template: '<div id="weather" class="show-weather">unknown, location</div>',
+      scope: {
+        details: '@details'
+      },
+    
+
+      link: function(scope, elem, attrs) {
+        // console.log('weather: ',scope);
+        var location = ''//scope.details;
+        // console.log(location);
+         // observing interpolated attributes
+        attrs.$observe('details',function(){
+          console.log(' notice where this logs:',attrs.details);
+         location = attrs.details
+        consolei.log(location);
+        $.simpleWeather({
+            location: location,
+            //     woeid: '',
+            unit: 'f',
+            success: function(weather) {
+              // html = '<div class=<h2><i class="icon-'+weather.code+'"></i> </h2><p>'+weather.temp+'&deg;'+weather.units.temp+'</p>'
+              html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>'
+              // html += '<ul><li>'+weather.city+', '+weather.region+'</li>'
+              // html += '<li class="currently">'+weather.currently+'</li>'
+              // html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>'
+              $(".show-weather").html(html);
+            },
+            error: function(error) {
+              $(".show-weather").html('<p>'+error+'</p>');
+            }
+          });
+        })
+
+      }
+
+
+    }
+
+  });
+
+window.theOnlyGlobal.prototype.WeatherDirectiveCtrl = function(scope, elem, attrs){
+
+}
+
+// Docs at http://simpleweatherjs.com
+// $(document).ready(function() {
+//   $.simpleWeather({
+//     location: 'Austin, TX',
+//     woeid: '',
+//     unit: 'f',
+//     success: function(weather) {
+//       html = '<h2><i class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+//       html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+//       html += '<li class="currently">'+weather.currently+'</li>';
+//       html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
+  
+//       $("#weather").html(html);
+//     },
+//     error: function(error) {
+//       $("#weather").html('<p>'+error+'</p>');
+//     }
+//   });
+// });
+
+
+/*
+  Docs at http://http://simpleweatherjs.com
+
+  Look inspired by http://www.degreees.com/
+  Used for demo purposes.
+
+  Weather icon font from http://fonts.artill.de/collection/artill-weather-icons
+
+  DO NOT hotlink the assets/font included in this demo. If you wish to use the same font icon then download it to your local assets at the link above. If you use the links below odds are at some point they will be removed and your version will break.
+*/
+
+var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scope', '$state', '$timeout',
+  'AccountFactory',
+  function($scope, $state, $timeout
+    , AccountFactory
+    ) {
+
+    $scope.account = {}
+    $scope.saved = '';
+  $scope.init = function(){
+    AccountFactory.show().then(function(data) {
+        console.log(data);
+        $scope.account = data;
+        // $scope.account.account_profile = "This is line 1\nThis is line 2"
+    });
+  }
+  $scope.init(); 
+
+  $scope.save = function(data) {
+    console.log(data);
+    var dataObject = {
+      account_profile : data
+    } 
+
+    AccountFactory.updateProfile(data).then(function(data) {
+
+      $scope.saved = 'saved'
+      $timeout(function(){ $scope.saved = ''; }, 3000);
+    })
+  }  
+
+}])
+
+
+// /* this bit */
+// AngularBonfire.directive('markdowndisplay', function(theService) {
+//     return {
+//         restrict: 'E',
+//         // scope: {username: '@myAttr'},
+//         controller: function($scope, $attrs, $q, AccountFactory, markdownBroadcast) {
+//           // This is an antipattern i found useful the last time i did this
+//           $scope.list = 'tempdata'
+//           var defer = $q.defer() 
+//           // I think this show method on the factory is only called once
+//           defer.resolve(AccountFactory.show());
+//           // this because reasons
+//           defer.promise.then(function (data) {
+//               $scope.data = data;
+          
+//               console.log($scope.data);
+//               $scope.list = data.account_profile;
+//               console.log(data.account_profile);
+//               // $scope.list = marked(data.account_profile);
+//               // 
+//           });
+
+//           // console.log($scope.list);
+
+//             // $scope.$on('handleBroadcast', function() {
+//               // var index =  mySharedService.message;
+//                  // $scope.display = $scope.list[index] //'Directive: ' + mySharedService.message;
+//             // });
+
+//         },
+//         replace: true,
+//         template: '<article ng-bind-html="list"></article>'
+//         // template: '<p><h2>{{display.name}}</h2><p>{{display.list}}</p></article>'
+//     };
+// });
+
+// AngularBonfire.factory('markdownBroadcast', function($rootScope) {
+//     var sharedService = {};
+
+//     sharedService.message = '';
+
+//     sharedService.prepForBroadcast = function(msg) {
+//         this.message = msg;
+//         this.broadcastItem();
+//     };
+
+//     sharedService.broadcastItem = function() {
+//         $rootScope.$broadcast('handleBroadcast');
+//     };
+
+//     return sharedService;
+// });
+
+
+
+
 // The routing and layout controller for the Account section
 AngularBonfire.factory("AccountFactory", function($http, $q) {
   //this runs the first time the service is injected
@@ -35857,157 +36270,30 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
 
   }
 
+  factory.updateLocation = function (data) {
+
+    var deferred = $q.defer();
+
+    var post_data = {
+      'location' : data, 
+      'ci_csrf_token'   : ci_csrf_token()
+    }
+  
+    // so far we have an object we can 'POST' to our form which contains a security token
+    $.post(AngularBonfireUrl+'/api/account/updatelocation', post_data).done(function(sdf){
+        console.log('saved', sdf)
+        deferred.resolve('done')
+    })
+
+    return deferred.promise
+
+  }
+
   factory.deleteAbility = function (id) {
   }
 
   return factory
 })
-
-
-var AccountImageCtrl = AngularBonfire.controller('AccountImageCtrl', ['$scope', 'Upload', 'AccountFactory', function ($scope, Upload, AccountFactory) {
-    $scope.$watch('files', function () {
-        $scope.upload($scope.files);
-    });
-
-    $scope.image = {}
-    
-    $scope.init = function(){
-      AccountFactory.show().then(function(data) {
-        console.log(data);
-        $scope.image = data.image_path
-      });
-    }
-    $scope.init();
-
-    $scope.upload = function (files) {
-        if (files && files.length) {
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                Upload.upload({
-                    url: AngularBonfireUrl+'/account/do_upload',
-                    headers: {'Content-Type': file.type},
-                    method: 'POST',
-                    fileFormDataName: 'userfile', 
-                    fields: {ci_csrf_token: ci_csrf_token(), userfile: file},
-                    file: file
-                }).progress(function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                }).success(function (data, status, headers, config) {
-                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-
-                });
-            }
-        }
-    };
-}]);
-
-var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scope', '$state', '$timeout',
-  'AccountFactory',
-  function($scope, $state, $timeout
-    , AccountFactory
-    ) {
-
-    $scope.account = {}
-    $scope.saved = '';
-  $scope.init = function(){
-    AccountFactory.show().then(function(data) {
-        console.log(data);
-        $scope.account = data;
-        // $scope.account.account_profile = "This is line 1\nThis is line 2"
-    });
-  }
-  $scope.init(); 
-
-  $scope.save = function(data) {
-    console.log(data);
-    var dataObject = {
-      account_profile : data
-    } 
-
-    AccountFactory.updateProfile(data).then(function(data) {
-
-      $scope.saved = 'saved'
-      $timeout(function(){ $scope.saved = ''; }, 3000);
-    })
-  }  
-
-}])
-
-
-
-
-
-/* this bit */
-AngularBonfire.directive('markdowndisplay', function(theService) {
-    return {
-        restrict: 'E',
-        // scope: {username: '@myAttr'},
-        controller: function($scope, $attrs, $q, AccountFactory, markdownBroadcast) {
-          // This is an antipattern i found useful the last time i did this
-          $scope.list = 'tempdata'
-          var defer = $q.defer() 
-          // I think this show method on the factory is only called once
-          defer.resolve(AccountFactory.show());
-          // this because reasons
-          defer.promise.then(function (data) {
-              $scope.data = data;
-          
-              console.log($scope.data);
-              $scope.list = data.account_profile;
-              console.log(data.account_profile);
-              // $scope.list = marked(data.account_profile);
-              // 
-          });
-
-          // console.log($scope.list);
-
-            // $scope.$on('handleBroadcast', function() {
-              // var index =  mySharedService.message;
-                 // $scope.display = $scope.list[index] //'Directive: ' + mySharedService.message;
-            // });
-
-        },
-        replace: true,
-        template: '<article ng-bind-html="list"></article>'
-        // template: '<p><h2>{{display.name}}</h2><p>{{display.list}}</p></article>'
-    };
-});
-
-AngularBonfire.factory('markdownBroadcast', function($rootScope) {
-    var sharedService = {};
-
-    sharedService.message = '';
-
-    sharedService.prepForBroadcast = function(msg) {
-        this.message = msg;
-        this.broadcastItem();
-    };
-
-    sharedService.broadcastItem = function() {
-        $rootScope.$broadcast('handleBroadcast');
-    };
-
-    return sharedService;
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -36039,7 +36325,7 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     }
   ]
     
-    $state.go('account_route_social')
+    $state.go('account_route_profile')
   // Changes the current active route
   // $scope.doRoute = function(actionName){
     // var route = 'account_route_' + actionName
@@ -36077,10 +36363,16 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
             controller: 'AccountProfileCtrl'
             },
             'status':{
-            templateUrl: AngularBonfireUrl+'/account/nglocation'
+            templateUrl: AngularBonfireUrl+'/account/nglocation',
+            controller: 'AccountLocationCtrl'
             },
             'actions':{
-            templateUrl: AngularBonfireUrl+'/account/ngimage'
+            templateUrl: AngularBonfireUrl+'/account/ngimage',
+            controller: 'AccountImageCtrl'
+            },
+           'secondary-actions':{
+            templateUrl: AngularBonfireUrl+'/account/ngdocuments',
+            controller: 'AccountImageCtrl'
             }
         }
     }
@@ -36220,6 +36512,186 @@ var ChatCtrl = AngularBonfire.controller('ChatCtrl',
     console.log(destination);
   }
 }])
+
+
+
+// first 
+
+// border-top:
+
+// each square is a div of 8X8
+// k
+
+// lets try 100 of them
+
+// .square.top-row.left.top.{ 2px,0px,0px,2px;}
+// .square.top-row.left.top.{ 0px,0px,0px,2px;}
+// .square.top-row.left.top.right{ 
+// .square.top-row.left.top.bottom
+// .square.top-row.left.top.right.bottom{
+// .square.top.row.right
+// .square.top.row.right.top
+// .square.top.row.right.top.bottom
+// .square.top-row.top.{
+// .square.top-row.top.bottom{
+// .square.top-row.bottom{
+
+
+
+// .square.top-row.bottom.full{
+//   border-top:2px;
+
+
+
+
+// if a1 {x,x,x,x,}
+// abcdefgh
+//   top:    [a1, a2, a3, a4, a5, a6, a7, a8]  
+//   bottom: [h1, h2, h3, h4, h5, h6, h7, h8]
+//   left:   [a1, b1, c1, d1, e1, f1, g1, h1]
+//   right:  [a8, b8, c8, d8, e8, f8, g8, h8] 
+
+
+// #The Board
+// ```
+// [a1, a2, a3, a4, a5, a6, a7, a8]
+// [b1, b2, b3, b4, b5, b6, b7, b8]
+// [c1, c2, c3, c4, c5, c6, c7, c8]
+// [d1, d2, d3, d4, d5, d6, d7, d8]
+// [e1, e2, e3, e4, e5, e6, e7, e8]
+// [f1, f2, f3, f4, f5, f6, f7, f8]
+// [g1, g2, g3, g4, g5, g6, g7, g8]
+// [h1, h2, h3, h4, h5, h6, h7, h8]
+// ```
+
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+// .#..#..#..#..#..#..#..#.
+
+// #\\#\\#\\#\\#\\#\\#\\#\\ 
+// \\#\\#\\#\\#\\#\\#\\#\\#
+// #\\#\\#\\#\\#\\#\\#\\#\\ 
+// \\#\\#\\#\\#\\#\\#\\#\\#
+// #\\#\\#\\#\\#\\#\\#\\#\\ 
+// \\#\\#\\#\\#\\#\\#\\#\\#
+// #\\#\\#\\#\\#\\#\\#\\#\\ 
+// \\#\\#\\#\\#\\#\\#\\#\\#
+// #\\#\\#\\#\\#\\#\\#\\#\\
+
+
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][-] [-]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+
+// XXX X=X XXX XXX
+// XXX XXX XX= =XX
+// XXX XXX XXX X=X
+
+// XXX XXX XXX XXX
+// XX= =XX XXX XXX
+// X=X XXX XXX X=X
+
+// X== XXX XXX X=X
+// XX= =X= =XX XX=
+// XXX XXX XXX XXX
+
+// XXX X=X XXX XXX
+// XXX XXX XX= =X=
+// X=X X=X X=X XXX
+
+// X=X X=X X=X XXX
+// =X= =XX XX= =X=
+// X=X X=X X=X X=X
+
+
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][=] [=][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][=][=][=][=][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X]
+
+// [X] [X][X][=][=][=][=][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][=] [=]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+
+// [X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][=] [=]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][=] [=]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][=] [=]
+// [-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-] [-][-][-][-][-][-][-] [-][-][-][-][-][-][-][-][=] [=]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X]
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X]
+
+// [X] [X][X][-][-][-][-][X][X] [X][X][-][-][-][-][x][X] [X][X][-][-][-][-][x][X] [X][X][=][=][=][=][x][X] [X]
+
+
+
+
+
 console.log('your module js')
 
 

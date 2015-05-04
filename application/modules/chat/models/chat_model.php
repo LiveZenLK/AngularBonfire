@@ -45,12 +45,6 @@
 				return FALSE;
 			}
 			            
-
-        	// $messages = $this->db->
-         //            where('recipient_id', $user_id)->
-         //            get('chat')->result();
-
-         //    return $messages;
         }
 
         public function get_new_message($username)

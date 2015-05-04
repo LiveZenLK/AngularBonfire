@@ -36,157 +36,30 @@ AngularBonfire.factory("AccountFactory", function($http, $q) {
 
   }
 
+  factory.updateLocation = function (data) {
+
+    var deferred = $q.defer();
+
+    var post_data = {
+      'location' : data, 
+      'ci_csrf_token'   : ci_csrf_token()
+    }
+  
+    // so far we have an object we can 'POST' to our form which contains a security token
+    $.post(AngularBonfireUrl+'/api/account/updatelocation', post_data).done(function(sdf){
+        console.log('saved', sdf)
+        deferred.resolve('done')
+    })
+
+    return deferred.promise
+
+  }
+
   factory.deleteAbility = function (id) {
   }
 
   return factory
 })
-
-
-var AccountImageCtrl = AngularBonfire.controller('AccountImageCtrl', ['$scope', 'Upload', 'AccountFactory', function ($scope, Upload, AccountFactory) {
-    $scope.$watch('files', function () {
-        $scope.upload($scope.files);
-    });
-
-    $scope.image = {}
-    
-    $scope.init = function(){
-      AccountFactory.show().then(function(data) {
-        console.log(data);
-        $scope.image = data.image_path
-      });
-    }
-    $scope.init();
-
-    $scope.upload = function (files) {
-        if (files && files.length) {
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                Upload.upload({
-                    url: AngularBonfireUrl+'/account/do_upload',
-                    headers: {'Content-Type': file.type},
-                    method: 'POST',
-                    fileFormDataName: 'userfile', 
-                    fields: {ci_csrf_token: ci_csrf_token(), userfile: file},
-                    file: file
-                }).progress(function (evt) {
-                    var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                }).success(function (data, status, headers, config) {
-                    console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-
-                });
-            }
-        }
-    };
-}]);
-
-var AccountProfileCtrl = AngularBonfire.controller('AccountProfileCtrl', ['$scope', '$state', '$timeout',
-  'AccountFactory',
-  function($scope, $state, $timeout
-    , AccountFactory
-    ) {
-
-    $scope.account = {}
-    $scope.saved = '';
-  $scope.init = function(){
-    AccountFactory.show().then(function(data) {
-        console.log(data);
-        $scope.account = data;
-        // $scope.account.account_profile = "This is line 1\nThis is line 2"
-    });
-  }
-  $scope.init(); 
-
-  $scope.save = function(data) {
-    console.log(data);
-    var dataObject = {
-      account_profile : data
-    } 
-
-    AccountFactory.updateProfile(data).then(function(data) {
-
-      $scope.saved = 'saved'
-      $timeout(function(){ $scope.saved = ''; }, 3000);
-    })
-  }  
-
-}])
-
-
-
-
-
-/* this bit */
-AngularBonfire.directive('markdowndisplay', function(theService) {
-    return {
-        restrict: 'E',
-        // scope: {username: '@myAttr'},
-        controller: function($scope, $attrs, $q, AccountFactory, markdownBroadcast) {
-          // This is an antipattern i found useful the last time i did this
-          $scope.list = 'tempdata'
-          var defer = $q.defer() 
-          // I think this show method on the factory is only called once
-          defer.resolve(AccountFactory.show());
-          // this because reasons
-          defer.promise.then(function (data) {
-              $scope.data = data;
-          
-              console.log($scope.data);
-              $scope.list = data.account_profile;
-              console.log(data.account_profile);
-              // $scope.list = marked(data.account_profile);
-              // 
-          });
-
-          // console.log($scope.list);
-
-            // $scope.$on('handleBroadcast', function() {
-              // var index =  mySharedService.message;
-                 // $scope.display = $scope.list[index] //'Directive: ' + mySharedService.message;
-            // });
-
-        },
-        replace: true,
-        template: '<article ng-bind-html="list"></article>'
-        // template: '<p><h2>{{display.name}}</h2><p>{{display.list}}</p></article>'
-    };
-});
-
-AngularBonfire.factory('markdownBroadcast', function($rootScope) {
-    var sharedService = {};
-
-    sharedService.message = '';
-
-    sharedService.prepForBroadcast = function(msg) {
-        this.message = msg;
-        this.broadcastItem();
-    };
-
-    sharedService.broadcastItem = function() {
-        $rootScope.$broadcast('handleBroadcast');
-    };
-
-    return sharedService;
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -218,7 +91,7 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     }
   ]
     
-    $state.go('account_route_social')
+    $state.go('account_route_profile')
   // Changes the current active route
   // $scope.doRoute = function(actionName){
     // var route = 'account_route_' + actionName
@@ -256,10 +129,16 @@ AngularBonfire.config(['$stateProvider', '$urlRouterProvider',
             controller: 'AccountProfileCtrl'
             },
             'status':{
-            templateUrl: AngularBonfireUrl+'/account/nglocation'
+            templateUrl: AngularBonfireUrl+'/account/nglocation',
+            controller: 'AccountLocationCtrl'
             },
             'actions':{
-            templateUrl: AngularBonfireUrl+'/account/ngimage'
+            templateUrl: AngularBonfireUrl+'/account/ngimage',
+            controller: 'AccountImageCtrl'
+            },
+           'secondary-actions':{
+            templateUrl: AngularBonfireUrl+'/account/ngdocuments',
+            controller: 'AccountImageCtrl'
             }
         }
     }

@@ -17,6 +17,11 @@
                 </div>
             </aside>
             <aside class="interface">
+                <div ui-view="secondary-actions">
+                    ui view content
+                </div>
+            </aside>
+            <aside class="interface">
                 <div ui-view="status">
                     ui view content
                 </div>

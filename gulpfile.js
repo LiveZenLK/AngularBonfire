@@ -23,6 +23,7 @@ var config = {
 	    path.assets  +"/angular-animate/angular-animate.js",
 	    path.assets  +"/ng-file-upload/ng-file-upload-all.js",
 	    path.assets  +"/angular-sanitize/angular-sanitize.js",
+	    path.assets  +"/jquery-simple-weather.js",
 	    // path.assets  +"/showdown/src/showdown.js",
 	    // path.assets  +"/showdown/src/ng-showdown.js",
 	    // path.assets  +"/angular-markdown-directive/markdown.js",
