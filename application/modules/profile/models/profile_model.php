@@ -16,4 +16,18 @@
             
             return $query;
         }
+
+        public function getProfile($username){
+
+            // get user abilties
+            $sql = " SELECT user_id, account_profile, location, image_path 
+                FROM bf_users e 
+                LEFT JOIN bf_account t
+                ON e.id=t.user_id
+                where e.username = ?;";
+
+            $query = $this->db->query($sql, array($username))->result(); 
+            
+            return $query[0];
+        }
     }

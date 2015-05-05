@@ -92,7 +92,7 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     }
   ]
     
-    $state.go('account_route_social')
+    $state.go('account_route_profile')
   // Changes the current active route
   // $scope.doRoute = function(actionName){
     // var route = 'account_route_' + actionName

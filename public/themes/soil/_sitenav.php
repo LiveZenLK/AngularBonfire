@@ -1,6 +1,4 @@
 <ul class="slogan list-inline">
-    
-
     <?php if (!empty($current_user)) :?>
     <li>Hi <?php echo $current_user->username;?></li>
     <li <?php echo check_class('home'); ?>><a href="<?php echo site_url(); ?>" class="standout">Explore<?php //e(lang('bf_home')); ?></a></li>

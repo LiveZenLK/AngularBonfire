@@ -72,6 +72,7 @@ Route::any('users', 'profile/index');
 // Profile
 Route::any('profile/(:any)', 'profile/show/$1');
 Route::any('api/profile/getabilities/(:any)', 'profile/getAbilitiesJson/$1');
+Route::any('api/profile/getprofile/(:any)', 'profile/getProfileJson/$1');
 
 
 // Account

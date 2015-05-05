@@ -36043,18 +36043,18 @@ var AccountLocationCtrl = AngularBonfire.controller('AccountLocationCtrl', ['$sc
     }
     $scope.init(); 
 
-  $scope.saveLocation = function(data) {
-    console.log('location scope', data);
-    var dataObject = {
-      location : data
-    } 
+    $scope.saveLocation = function(data) {
+      console.log('location scope', data);
+      var dataObject = {
+        location : data
+      } 
 
-    AccountFactory.updateLocation(data).then(function(data) {
+      AccountFactory.updateLocation(data).then(function(data) {
 
-      $scope.saved = 'saved'
-      $timeout(function(){ $scope.saved = ''; }, 3000);
-    })
-  }  
+        $scope.saved = 'saved'
+        $timeout(function(){ $scope.saved = ''; }, 3000);
+      })
+    }  
 
 }])
 
@@ -36327,7 +36327,7 @@ var NgAccountCtrl = AngularBonfire.controller('NgAccountCtrl', [
     }
   ]
     
-    $state.go('account_route_social')
+    $state.go('account_route_profile')
   // Changes the current active route
   // $scope.doRoute = function(actionName){
     // var route = 'account_route_' + actionName
@@ -36795,7 +36795,6 @@ AngularBonfire.factory('ChatReplyService', function($rootScope) {
 
 console.log('your module js')
 
-
 console.log('ng-profile.js')
 
 // AngularBonfire.factory('theService', function() {
@@ -36914,3 +36913,56 @@ AngularBonfire.factory('mySharedService', function($rootScope) {
 
     return sharedService;
 });
+
+
+AngularBonfire.factory('ProfileFactory', function($http, $q) {
+
+  var factory = {}
+
+  factory.getProfile = function (username) {
+
+    var deferred = $q.defer()
+    var username = username
+    
+    // return $http.get(AngularBonfireUrl+'/api/profile/getabilities/'+username)//.then(function(resp) {
+    $http.get(AngularBonfireUrl+'/api/profile/getprofile/'+username).then(function(resp) {
+      console.log(resp.data)
+      deferred.resolve(resp.data)
+    })
+  //   .catch(function(error) {
+  //       deferred.reject('profile not found');
+  //     });
+  // } else {
+  //   // deferred.reject("No template or templateUrl has been specified.");
+  // // }
+
+    return deferred.promise
+  }
+
+  return factory
+
+})
+
+var ProfileCtrl = AngularBonfire.controller('ProfileCtrl', [
+    '$scope', 
+    '$state', 
+    'ProfileFactory',
+    function($scope, $state, ProfileFactory
+        ) {
+
+      $scope.th = 'thdjfsk'
+      $scope.username = ''
+      $scope.profile = {}
+
+      $scope.userInit = function(username) {
+                     $scope.username = username;
+        ProfileFactory.getProfile(username).then(function(data){
+          console.log(data)
+          $scope.profile = data
+
+        })
+                     // $scope.user = uid;
+                     // Get a list of projects for user
+        // $scope.projectList($scope.user);
+      }
+}])

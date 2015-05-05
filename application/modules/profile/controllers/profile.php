@@ -44,6 +44,14 @@
             // return $data;
         }
 
+        public function getProfileJson($username)
+        {
+            $abilities = $this->profile_model->getProfile($username);
+            $data = json_encode($abilities);
+            echo $data;die;
+            // return $data;
+        }
+
         public function widget(){
             $viewdata = array('data' => 'hello widget');
             $this->load->view('profile/widget', $viewdata);
