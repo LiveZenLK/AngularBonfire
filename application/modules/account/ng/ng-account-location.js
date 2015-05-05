@@ -16,18 +16,18 @@ var AccountLocationCtrl = AngularBonfire.controller('AccountLocationCtrl', ['$sc
     }
     $scope.init(); 
 
-  $scope.saveLocation = function(data) {
-    console.log('location scope', data);
-    var dataObject = {
-      location : data
-    } 
+    $scope.saveLocation = function(data) {
+      console.log('location scope', data);
+      var dataObject = {
+        location : data
+      } 
 
-    AccountFactory.updateLocation(data).then(function(data) {
+      AccountFactory.updateLocation(data).then(function(data) {
 
-      $scope.saved = 'saved'
-      $timeout(function(){ $scope.saved = ''; }, 3000);
-    })
-  }  
+        $scope.saved = 'saved'
+        $timeout(function(){ $scope.saved = ''; }, 3000);
+      })
+    }  
 
 }])
 

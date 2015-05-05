@@ -18,6 +18,7 @@
 
         // si.te/profile/$username
         public function show($username='testtest'){ // doesn't really accept arguments
+            $this->set_current_user();
         // echo $username; die;
 
             $abilities = $this->getAbilities($username);
