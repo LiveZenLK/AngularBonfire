@@ -8,9 +8,11 @@ var AngularBonfire = angular.module('AngularBonfire',
 	'ui.router',
 	'ngFileUpload',
 	'ngSanitize',
-	'hc.marked'
+	'hc.marked',
+	'angular-underscore'
 	])
 
+var AngularBonfireUrl;
 // var theOnlyGlobal = function(){
 var theOnlyGlobal = 
 	// return {
