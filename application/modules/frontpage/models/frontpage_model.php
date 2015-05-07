@@ -18,4 +18,25 @@
             // return true;
 
         }
+        public function get_stuff(){
+            $sql ="
+            SELECT name, user_id
+            FROM bf_abilities";
+            $result = array();
+            $query = $this->db->query($sql)->result();
+            foreach($query as $key => $value)
+            {
+                $res[$value->user_id]['username'] = $value->user_id;
+                $res[$value->user_id]['skills'][] = array('name' => $value->name);
+                // array_push($res[$value->user_id]['skills'], $value->name);
+            }
+            // echo'<pre>';print_r($res);echo'</pre>';
+            foreach ($res as $key => $value) {
+                array_push($result, $value);
+            }
+            // echo'<pre>';print_r(json_encode($result));echo'</pre>';
+            // $array =  (array) $res;d
+            return $result;
+            // die;
+        }
     }

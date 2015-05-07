@@ -86,7 +86,8 @@ Route::any('api/chat/sendreply', 'chat/send_reply');
 Route::any('api/chat/messages', 'chat/all_messages');
 
 
-// Profile
+// Frontpage
+Route::any('api/frontpage/getstuff', 'frontpage/get_stuff');
 
 
 // Account 

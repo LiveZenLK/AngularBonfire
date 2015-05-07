@@ -29,7 +29,14 @@
             $this->load->view('frontpage/template');
 
         }
+        public function get_stuff()
+        {
+            $stuff = $this->frontpage_model->get_stuff();
+            $stuff = json_encode($stuff);
+            echo $stuff;die;
 
+
+        }
         // called from users/controllers/user.php->register()
         // public function update_account_profile(){
         //     $data = $this->input->post();
