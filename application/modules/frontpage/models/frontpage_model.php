@@ -42,7 +42,7 @@
 
                 // array_push($res[$value->user_id]['skills'], $value->name);
             }
-            echo'<pre>';print_r($res);echo'</pre>';die;
+            // echo'<pre>';print_r($res);echo'</pre>';die;
             foreach ($res as $key => $value) {
 
                 array_push($result, $value);
