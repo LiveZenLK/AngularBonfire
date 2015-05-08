@@ -95,34 +95,36 @@ gulp.task('ng-bonfire', function() {
         // .pipe(ngAnnotate())
         // .pipe(uglify())
 
-gulp.task('ngb-karma', function() {
-	var glob    = config.jsGlobOrder
-	// bonfire already has jquery
-	var ci_deps = [path.assets+"/jquery/dist/jquery.js"]
-	// so we add it to the front of AngularBonfire deps
-    glob.unshift.apply( glob, ci_deps );
-    // then we add the specs from our template
-    glob.push(path.template+"/ngspec/**.js")
-    // then we add the specs from our modules
-    glob.push(path.modules +"/ngspec/**.js")
-	console.log(glob)
-	console.log('its a start')
-	karma.start({
-    	configFile: __dirname + '/karma.conf.js',
-    	singleRun: false,
-    	files: glob
-  	});
-})
+// gulp.task('ngb-karma', function() {
+// 	var glob    = config.jsGlobOrder
+// 	// bonfire already has jquery
+// 	var ci_deps = [path.assets+"/jquery/dist/jquery.js"]
+// 	// so we add it to the front of AngularBonfire deps
+//     glob.unshift.apply( glob, ci_deps );
+//     // then we add the specs from our template
+//     glob.push(path.template+"/ngspec/**.js")
+//     // then we add the specs from our modules
+//     glob.push(path.modules +"/ngspec/**.js")
+// 	console.log(glob)
+// 	console.log('its a start')
+// 	karma.start({
+//     	configFile: __dirname + '/karma.conf.js',
+//     	singleRun: false,
+//     	files: glob
+//   	});
+// })
 
 gulp.task('watch', function() {
   // If any file changes, run the sass task
   // gulp.watch([path.modules+'/sass/**.*', path.template+'/sass/**.*'], ['sass'])
   
   // If any of the file change, run the ng-bonfire task and the karma task
-  gulp.watch([path.modules+'/ng/**.*', path.template+'/ng/**.*'], ['ng-bonfire', 'ngb-karma'])
+  gulp.watch([path.modules+'/ng/**.*', path.template+'/ng/**.*'], ['ng-bonfire',
+   // 'ngb-karma'
+   ])
   
   // If any of the tests change run the karma task
-  gulp.watch([path.modules+'/ngspec/**.*', path.template+'/ngspec/**.*'], [' ngb-karma'])
+  // gulp.watch([path.modules+'/ngspec/**.*', path.template+'/ngspec/**.*'], [' ngb-karma'])
 
 })
 
@@ -145,5 +147,7 @@ gulp.task('watch', function() {
 
 // 	])
 
-gulp.task('default', ['ng-bonfire','ngb-karma','watch'] )
+gulp.task('default', ['ng-bonfire',
+	// 'ngb-karma',
+	'watch'] )
 

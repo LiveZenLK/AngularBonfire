@@ -33,7 +33,7 @@
         {
             $stuff = $this->frontpage_model->get_stuff();
             $stuff = json_encode($stuff);
-            echo $stuff;die;
+            echo '<pre>'.$stuff.'</pre>';die;
 
 
         }

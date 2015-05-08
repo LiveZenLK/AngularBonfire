@@ -215,6 +215,10 @@ span.div-link-hack {
     padding-top:40px;
 }
 
+.footer p {
+	color:#493333;
+}
+
 .footer-nav { 
 	float:right; 
 	width:100%;
@@ -243,8 +247,10 @@ span.div-link-hack {
 }
 
 .footer hr{
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #888;
+ border-top: 1px solid #3F3C3C;
+  border-bottom: 1px solid #898585;
+  height: 0px;
+
 
 }
 
@@ -280,7 +286,8 @@ span.div-link-hack {
 	color:#76c2b2;
 	line-height: 1.1;
 	text-transform: uppercase;
-	/*text-align: center;*/
+
+	text-align: center;
 }
 
 
@@ -642,4 +649,28 @@ i {
 .skills-list {
 	width: 100%;
 	min-height: 1px;
+}
+
+
+/*####*/
+/*HOME*/
+/*####*/
+.panel-default p {
+	font-size: 40px;
+	line-height: 1.4em;
+	color:#c3c3c3;
+	padding:30px;
+	margin-top:30px;
+}
+.panel-default img{
+	  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+
+.panel-default h4 {
+	color:white;
+	text-align: center;
+
 }

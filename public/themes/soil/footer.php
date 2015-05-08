@@ -4,7 +4,7 @@
 
 
 
-  <aside class="container">
+<!--   <aside class="container minimal-modern">
     <div class="row additional">
       <div class="col-12 col-desktop-3">
         <article class="should-be-a-link">
@@ -35,7 +35,7 @@
         </article>
       </div>
     </div>
-  </aside>
+  </aside> -->
 
 <div class="footer">
   <footer class="container">

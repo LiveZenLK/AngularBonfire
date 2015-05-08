@@ -20,18 +20,31 @@
         }
         public function get_stuff(){
             $sql ="
-            SELECT name, user_id
-            FROM bf_abilities";
+            SELECT name, user_id, username
+            FROM bf_abilities a
+            join bf_users u 
+                on u.id = a.user_id";
             $result = array();
             $query = $this->db->query($sql)->result();
+                // echo'<pre>'; print_r($query);echo'</pre>';die;
+            $res = [];
             foreach($query as $key => $value)
             {
-                $res[$value->user_id]['username'] = $value->user_id;
+                // echo $value->name;
+                if(!isset($res[$value->user_id]['username'])){
+                // echo $value->user_id;
+                // echo $value->username;
+                    // echo 'count<br/>';
+                    $res[$value->user_id]['username'] = $value->username;
+                }
                 $res[$value->user_id]['skills'][] = array('name' => $value->name);
+
+
                 // array_push($res[$value->user_id]['skills'], $value->name);
             }
-            // echo'<pre>';print_r($res);echo'</pre>';
+            echo'<pre>';print_r($res);echo'</pre>';die;
             foreach ($res as $key => $value) {
+
                 array_push($result, $value);
             }
             // echo'<pre>';print_r(json_encode($result));echo'</pre>';
