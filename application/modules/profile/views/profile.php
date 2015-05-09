@@ -4,7 +4,7 @@
             <aside class="interface">
                 <div class="row">
                   <div class="col-6">
-                    <weather details="{{location}}"></weather>
+                    <weather details="{{profile.location}}"></weather>
                   </div>
                   <div class="col-6">
                     <img class="thumb" ng-src="<?php echo site_url();?>/images/{{profile.image_path}}">

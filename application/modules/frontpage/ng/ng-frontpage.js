@@ -30,6 +30,8 @@ var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', '$
 	$scope.debug = 'CloudCtrl';
 	$scope.loading = true;
 
+	$scope.maxReset
+
  
 	// if word inArray is truthy push array to array
 
@@ -44,7 +46,8 @@ var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', '$
 		console.log('init')
 		FrontpageFactory.getAll().then(function(data){
 			$scope.users = data; // cache users object
-			console.log($scope.users)
+			// console.log($scope.users.length)
+			// $scope.maxReset = $scope.users.length
 			$scope.gatherSkills($scope.users)
 			$rootScope.$broadcast('loaded');
 		})
@@ -74,7 +77,7 @@ var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', '$
 		console.log('all skills', $scope.skills)
 	};
 
-			// $scope.gatherSkills($scope.users );
+	// $scope.gatherSkills($scope.users );
 	// Checks to see if the skill exists
 	// if false adds the skill to the array
 	// if true increments the counter for the skill
@@ -138,6 +141,7 @@ var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', '$
 					result.push(user)
 			}
 		})
+
 		$scope.activeUsers = result;
 		// console.log('6', $scope.activeUsers)
 		$scope.gatherSkills(result);
