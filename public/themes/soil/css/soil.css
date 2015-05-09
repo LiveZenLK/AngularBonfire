@@ -38,7 +38,7 @@ h1,h2,h3,h4,h5,h6,p {margin:0; padding:0;}
 }
 h2.company-name {
 	color:darkbrown; 
-	font-size: 60px; 
+	font-size: 40px; 
 	line-height: 1; 
 	font-weight: 800;
 }
@@ -289,7 +289,13 @@ span.div-link-hack {
 
 	text-align: center;
 }
+.hello-world {
+  color: rgb(177, 144, 179);
+  font-size: 97px;
+  text-align: center;
+  line-height: 1.6em;
 
+}
 
 
 /* ###### */
@@ -604,8 +610,8 @@ i {
 /*#####*/
 /*CLOUD*/
 /*#####*/
-.tc {padding:7px 5px ;margin:3px; border:none;}
-.tc.tc-10 {
+.tc {padding:7px 5px ;margin:3px; border:none; background:none; color:#c3c3c3; font-size: 8px; font-weight:500;}
+/*.tc.tc-10 {
 	font-size: 8px;
 	font-weight:200;
 }
@@ -620,26 +626,26 @@ i {
 .tc.tc-7 {
 	font-size: 14px;
 	font-weight:400;
-}
+}*/
 .tc.tc-6 {
-	font-size: 16px;
-	font-weight:500;
+	font-size: 8px;
+	font-weight:100;
 }
 .tc.tc-5 {
-	font-size: 18px;
-	font-weight:600;
+	font-size: 10px;
+	font-weight:200;
 }
 .tc.tc-4 {
-	font-size: 20px;
-	font-weight:700;
+	font-size: 14px;
+	font-weight:600;
 }
 .tc.tc-3 {
-	font-size: 22px;
-	font-weight:800;
+	font-size: 18px;
+	font-weight:700;
 }
 .tc.tc-2 {
-	font-size: 24px;
-	font-weight:900;
+	font-size: 22px;
+	font-weight:800;
 }
 .tc.tc-1 {
 	font-size: 26px;
@@ -673,4 +679,69 @@ i {
 	color:white;
 	text-align: center;
 
+}
+
+
+.well, 
+.well:before {
+	width: 100%;
+	/*box-sizing:border-box;*/
+}
+.well {
+	min-height: 50px;
+	padding:30px;
+	float: left;
+	background-color:#888;
+}
+.well:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    left: 0;
+	background-color:#888;
+}
+.main-candidates {
+	height:100%;
+}
+
+.well {
+	height:100%;
+}
+.well-title {
+	padding:10px 30px;
+	background-color: #777;
+	color:#e5beef;
+}
+.well ul {
+	padding:0;
+	list-style: none;
+	margin: 0;
+}
+.well ul li{
+	background: darkgreen;
+	padding:15px;
+	margin-bottom:5px;
+}
+.well ul li a {
+	color:pink;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.well button.btn-primary {
+	background: darkred;
+	padding:15px;
+	color:pink;
+	font-weight: bold;
+	text-decoration: none;
+	border: none;
+	width: 100%;
+	margin-bottom:5px;
+
+}
+
+.conversation-filter {
+	padding:50px 0;
 }

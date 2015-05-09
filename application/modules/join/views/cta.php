@@ -1,7 +1,6 @@
 <div class="jumbotron lead-image " text-align="center" >
 	<div class="fixed-for">
 	  <div class="check-element animate-show blah one thing-leaving" ng-hide="editswitch">
-	    <h1>AngularBonfire</h1>
 	    <a href="#" class="btn btn-large btn-success" ng-click="editswitch = !editswitch">register</a>
 	  </div>
 	  <div class="check-element animate-show blah two thing-appearing" ng-hide="!editswitch">

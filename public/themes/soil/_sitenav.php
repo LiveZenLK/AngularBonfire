@@ -12,5 +12,6 @@
     <?php else : ?>
     <li <?php echo check_class('home'); ?>><a href="<?php echo site_url(); ?>" class="standout">Explore<?php //e(lang('bf_home')); ?></a></li>
     <li><a href="<?php echo site_url(LOGIN_URL); ?>" class="standout">Sign In</a></li>
+    <li><a href="<?php echo site_url(); ?>/register" class="standout">Register</a></li>
     <?php endif; ?>
 </ul>

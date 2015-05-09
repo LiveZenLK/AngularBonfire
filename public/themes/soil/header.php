@@ -36,13 +36,13 @@ Assets::add_css(array('base.css', 'soil.css'));
     <div class="row fix-header-alignment"> 
     <div class="header">
       <div class="col-12 col-desktop-6">
-        <h2 class="company-name">SOIL</h2>
-        <h3 class="page-context"><span class="standout">code</span> test</h3>
+        <h2 class="company-name">unstructured-networking.com</h2>
+        <!-- <h3 class="page-context"><span class="standout">code</span> test</h3> -->
       </div>
       <div class="col-12 col-desktop-6">
         <?php echo theme_view('_sitenav');?>
         
-        <img src="img/logo.png" class="logo"/>
+        <!-- <img src="img/logo.png" class="logo"/> -->
     </div><!-- end header -->
       </div>
     </div>

@@ -1,4 +1,3 @@
-// console.log('ng-abiltiy');
 AngularBonfire.factory("FrontpageFactory", function($http, $q) {
   //this runs the first time the service is injected
   //this creates the service
@@ -25,12 +24,16 @@ console.log('moving')
 var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope','FrontpageFactory',
     function($scope, FrontpageFactory
     	) {
+	
 	// $scope.keepArray = false; //{skill:'',value:'0'}
+	
 	$scope.debug = 'CloudCtrl';
 
  
 	// if word inArray is truthy push array to array
-console.log(_)
+
+	console.log(_)
+	
 	// $scope.activeFilters = [];
 
 	// $scope.users =  [
@@ -76,7 +79,7 @@ console.log(_)
 	// 			]
 	// 		}
 	// 	];
-	// test 1
+
 	$scope.activeUsers = []
 	$scope.skills = [];
 	$scope.filters = [];

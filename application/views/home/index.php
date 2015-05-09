@@ -3,16 +3,15 @@
 	<div class="col-12 col-desktop-12 left-modern">
 		<article class="modern">
 		<h1 class="goodbye-world">unstructured<br/>-networking</h1>
+		<h2 class="hello-world">A new way to discover conversations</h2>
 		</article>
-		<?php echo Modules::run('join/cta', 1); ?>
 	</div>
 </div>
-<div class="row">
-	<div class="col-12 col-desktop-8 right-modern"> 
-	<!-- style="background-image:url('<?php //echo site_url(); ?>/images/gardenpace.png')"> -->
+</main>
+<main class="minimal-modern">
 		<?php echo Modules::run('frontpage/template'); ?>
-	</div>
-</div>
+</main>
+<main class="container minimal-modern">
 <div class="row">
 	<div class="col-5">
 		<div class="panel panel-default">

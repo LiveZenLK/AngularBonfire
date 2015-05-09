@@ -78,11 +78,15 @@
         <hr/>
         <h4>A Growing Community</h4>
     </div>
-    <div class="col-desktop-6">
+    <div class="col-desktop-3">
+        <p>Sometimes interpersonal skills and life experience are far more important that the pieces of paper and rote industry learning. Yes you do need people that know what they are talking about and can do the job but sometimes it's the way they do the job that's equally important</p>
         <hr/>
-        <h4>Built-in Flexibility</h4>
-
-        <p>Due to some bug inherent in my architecture which was possibly inherited from the previous dev team (Mum and Dad), or somewhere during a sprint in my early lifecycle I am completely unable to self edit. That is to say I am a highly capable editor, but whenever I fall into the trap of self editing I get stuck in a infinate loop of refining the minuate of details, or like looking up words in the dictorionary. This means in five years as a developer I have never managed to get more than two articles into a blog. That and I have never really felt like i have useful opinion on anything before. So this time round I'm just writing as I go, all mistakes are my own, all errors are learning tools for the reader, and hoping that it's useful for someone. </p>
+        <p>If you are looking for a new employee maybe that construction worker with one GSCE in accounting could be exactly what your tech startup needs for a dynamic project manager</p>
+    </div>
+    <div class="col-desktop-3">
+        <p>It doesn't matter how able or clever someone is, if they are not in a job they love, somebody else could be doing it better</p>
+        <hr/>
+        <p>We are founded on the notion that everyone has a passion, yet many people are prevented from working in that field by outdated notions of what makes someone qualified</p>    
     </div>
 
 </div>
