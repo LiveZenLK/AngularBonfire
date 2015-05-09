@@ -40841,7 +40841,6 @@ AngularBonfire.factory('ChatReplyService', function($rootScope) {
 
 console.log('your module js')
 
-// console.log('ng-abiltiy');
 AngularBonfire.factory("FrontpageFactory", function($http, $q) {
   //this runs the first time the service is injected
   //this creates the service
@@ -40865,15 +40864,19 @@ AngularBonfire.factory("FrontpageFactory", function($http, $q) {
 
   
 console.log('moving')
-var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope','FrontpageFactory',
-    function($scope, FrontpageFactory
+var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', 'FrontpageFactory',
+    function($scope, $animate, FrontpageFactory
     	) {
+	
 	// $scope.keepArray = false; //{skill:'',value:'0'}
+	
 	$scope.debug = 'CloudCtrl';
 
  
 	// if word inArray is truthy push array to array
-console.log(_)
+
+	console.log(_)
+	
 	// $scope.activeFilters = [];
 
 	// $scope.users =  [
@@ -40919,7 +40922,7 @@ console.log(_)
 	// 			]
 	// 		}
 	// 	];
-	// test 1
+
 	$scope.activeUsers = []
 	$scope.skills = [];
 	$scope.filters = [];

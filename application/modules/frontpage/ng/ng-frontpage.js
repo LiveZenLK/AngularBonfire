@@ -21,8 +21,8 @@ AngularBonfire.factory("FrontpageFactory", function($http, $q) {
 
   
 console.log('moving')
-var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope','FrontpageFactory',
-    function($scope, FrontpageFactory
+var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', 'FrontpageFactory',
+    function($scope, $animate, FrontpageFactory
     	) {
 	
 	// $scope.keepArray = false; //{skill:'',value:'0'}

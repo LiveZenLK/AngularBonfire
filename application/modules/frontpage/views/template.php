@@ -4,7 +4,7 @@
 		<div class="well">
 			<button class="btn btn-primary" 
 				ng-click="removeFilter(skill)" 
-				ng-repeat="skill in filters">
+				ng-repeat="skill in filters" ng-animate=" 'animate' ">
 				{{skill}}
 			</button>
 		</div>
@@ -27,7 +27,7 @@
 		<h4 class="well-title">Candidates</h4>
 		<div class="well">
 			<ul>
-				<li ng-repeat="candidate in activeUsers">
+				<li ng-repeat="candidate in activeUsers" ng-animate=" 'animate' ">
 					<a href="<?php echo site_url();?>/profile/{{candidate.username}}" class="btn btn-success" 
 					>{{candidate.username}}</a>
 				</li>
