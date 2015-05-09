@@ -32,3 +32,26 @@ var theOnlyGlobal =
 	// }
 // }
 
+var AngularBonfireLoader = '<article ng-hide="show" class="row loader-wrap">'
+AngularBonfireLoader +=    		'<div class="col-12">'
+AngularBonfireLoader += 			'<div class="loader">Loading...</div>'
+AngularBonfireLoader += 		'</div>'
+AngularBonfireLoader += 	'</article>'
+
+AngularBonfire.directive('systemloader', function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        // scope: {show: '@featureInit'},
+        controller: function($scope, $attrs, $rootScope) {
+          	var show = false;
+        	$rootScope.$on('loaded', function() { 
+				$scope.show = true;
+				console.log('off')
+			});
+        	console.log('showing the:   ',show)
+		},
+        template: AngularBonfireLoader
+    }
+})
+

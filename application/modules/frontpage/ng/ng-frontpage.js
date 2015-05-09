@@ -21,13 +21,14 @@ AngularBonfire.factory("FrontpageFactory", function($http, $q) {
 
   
 console.log('moving')
-var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', 'FrontpageFactory',
-    function($scope, $animate, FrontpageFactory
+var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', '$rootScope', 'FrontpageFactory',
+    function($scope, $animate, $rootScope, FrontpageFactory
     	) {
 	
 	// $scope.keepArray = false; //{skill:'',value:'0'}
 	
 	$scope.debug = 'CloudCtrl';
+	$scope.loading = true;
 
  
 	// if word inArray is truthy push array to array
@@ -35,50 +36,6 @@ var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', 'F
 	console.log(_)
 	
 	// $scope.activeFilters = [];
-
-	// $scope.users =  [
-
-	// 		{	"username": "franz-kafka",
-	// 			"skills": [
-	// 			{"name":"polite"},
-	// 			{"name":"javascript"},
-	// 			{"name":"insurance broker"},
-	// 			{"name":"design"}
-	// 			]
-	// 		},
-	// 		{	"username":"me",
-	// 			"skills": [
-	// 			{"name":"hardworking"},
-	// 			{"name":"sewing"},
-	// 			{"name":"javascript"},
-	// 			{"name":"information architecture"}
-	// 			]
-	// 		},
-	// 		{
-	// 			"username": "another-user",
-	// 			"skills": [
-	// 			{"name":"hardworking"},
-	// 			{"name":"design"},
-	// 			{"name":"italian"},
-	// 			{"name":"javascript"},
-	// 			]
-	// 		},
-	// 		{
-	// 			"username": "more-data",
-	// 			"skills": [
-	// 			{"name":"hardworking"},
-	// 			{"name":"design"},
-	// 			]
-	// 		},
-	// 		{
-	// 			"username": "even-more",
-	// 			"skills": [
-	// 			{"name":"javascript"},
-	// 			{"name":"design"},
-	// 			{"name":"polite"}
-	// 			]
-	// 		}
-	// 	];
 
 	$scope.activeUsers = []
 	$scope.skills = [];
@@ -89,6 +46,7 @@ var CloudCtrl = AngularBonfire.controller('CloudCtrl', ['$scope', '$animate', 'F
 			$scope.users = data; // cache users object
 			console.log($scope.users)
 			$scope.gatherSkills($scope.users)
+			$rootScope.$broadcast('loaded');
 		})
 	};
 
