@@ -23,7 +23,7 @@
 	<div class="col-7">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>It doesn't matter how able or clever someone is, if they are not in a job they love, somebody else could be doing it better</p>
+				<p>Whether your looking for a loud mouthed accounts assistant who understands the scaffolding industry, or a conversation about Discworld with someone who understands theoretical physics, you're in the right place</p>
 			</div>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 	<div class="col-7">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>We are founded on the notion that everyone has a passion, yet many people are prevented from working in that field by outdated notions of what makes someone qualified</p>
+				<p>The idea is that often it's difficult to find just the right person to talk to. Your close friends might not share your hidden passion, and most web forums tend to be opinionated, or snarky, or simply too niche.</p>
 			</div>
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 	<div class="col-7">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>Sometimes interpersonal skills and life experience are far more important that the pieces of paper and rote industry learning. Yes you do need people that know what they are talking about and can do the job but sometimes it's the way they do the job that's equally important</p> 
+				<p>To get started simply create your account. As your. Or as a newly invented you. Whatever. Then just start adding your interests. Popular interests will be small, unusual things big.</p> 
 			</div>
 		</div>
 	</div>
@@ -64,7 +64,7 @@
 	<div class="col-7">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>If you are looking for a new employee maybe that construction worker with one GSCE in accounting could be exactly what your tech startup needs for a dynamic project manager</p>
+				<p>The results are shuffled. If you only add 'Books' as an interest you probably won't get found amongst all the other people who also list books. Equally if you only list Anton C. Zijderveld, you risk not getting found at all by the other book loving socialologists out there.</p>
 			</div>
 		</div>
 	</div>

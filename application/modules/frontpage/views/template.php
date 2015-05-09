@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	<div class="col-2">
-		<h4 class="well-title">Candidates</h4>
+		<h4 class="well-title">People</h4>
 		<div class="well" ng-show="loading">
 			<ul>
 				<li ng-repeat="candidate in activeUsers" ng-animate=" 'animate' ">

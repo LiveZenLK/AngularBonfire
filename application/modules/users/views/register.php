@@ -14,7 +14,8 @@ p.already-registered {
     text-align: center;
 }
 </style>
-<section id="register">
+<main class="container minimal-modern">
+<section id="register" class="sing">
     <!-- <h1 class="page-header"><?php // echo lang('us_sign_up'); ?></h1> -->
     <?php //if ($validation_errors) : ?>
 	<!-- <div class="alert alert-error fade in"> -->
@@ -25,10 +26,11 @@ p.already-registered {
         <!-- <h4 class="alert-heading"><?php //echo lang('bf_required_note'); ?></h4> -->
         <?php //if (isset($password_hints)) { echo $password_hints; } ?>
     <!-- </div> -->
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-12 col-desktop-3">&nbsp;</div>
+        <div class="col-12 col-desktop-6">
             <?php echo form_open( site_url(REGISTER_URL), array('class' => "form-horizontal", 'autocomplete' => 'off')); ?>
-				<?php Template::block('user_fields', 'user_fields', $fieldData); ?>
+                <?php Template::block('user_fields', 'user_fields', $fieldData); ?>
                 <?php
                 // Allow modules to render custom fields
                 Events::trigger('render_user_form');
@@ -47,5 +49,7 @@ p.already-registered {
                 <?php //echo anchor(LOGIN_URL, lang('bf_action_login')); ?>
             </p>
         </div>
+        <div class="col-12 col-desktop-3">&nbsp;</div>
     </div>
 </section>
+</main>

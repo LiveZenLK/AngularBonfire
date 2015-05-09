@@ -1,8 +1,9 @@
-<section id="login" class="container">
-	<div class="row">
-	<div class="col-12 col-desktop-8 push-desktop-2">
+<main class="container minimal-modern">
+<section id="register" class="sing row">
+	<div class="col-12 col-desktop-3">&nbsp;</div>
+	<div class="col-12 col-desktop-6">
 
-	<?php 
+	<?php
 		$site_open = $this->settings_lib->item('auth.allow_register');
 	?>
 	<p><br/><a href="<?php echo site_url(); ?>">&larr; <?php echo lang('us_back_to') . $this->settings_lib->item('site.title'); ?></a></p>
@@ -38,6 +39,7 @@
 			</div>
 		</div>
 
+<br/>
 		<?php if ($this->settings_lib->item('auth.allow_remember')) : ?>
 			<div class="control-group">
 				<div class="controls">
@@ -48,10 +50,10 @@
 				</div>
 			</div>
 		<?php endif; ?>
-
+<br/>
 		<div class="control-group">
 			<div class="controls">
-				<input class="btn btn-large btn-primary" type="submit" name="log-me-in" id="submit" value="<?php e(lang('us_let_me_in')); ?>" tabindex="5" />
+				<input class="button" type="submit" name="log-me-in" id="submit" value="<?php e(lang('us_let_me_in')); ?>" tabindex="5" />
 			</div>
 		</div>
 	<?php echo form_close(); ?>
@@ -78,3 +80,4 @@
 	</div>
 	</div>
 </section>
+</main>
