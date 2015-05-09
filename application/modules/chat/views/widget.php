@@ -1,7 +1,7 @@
 <hr/>
-<?php echo $username;?>
-<h4>Contact This User</h4>
-<?php if (empty($current_user)) : ?>
+
+<h4>Contact This <?php echo $username;?></h4>
+<?php if ($current_user = FALSE) : ?>
 	You must be <a href="<?php echo site_url(); ?>">registered</a> to reach out to people. 
 <?php else : ?>
 	<form ng-controller="ChatWidgetCtrl" ng-submit="send()">

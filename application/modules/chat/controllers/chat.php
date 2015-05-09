@@ -63,7 +63,11 @@
         }
 
         public function widget($username=NULL){
-                $current_user = $this->current_user->id;
+                if(isset($this->current_user->id)){
+                    $current_user = $this->current_user->id;
+                }else{
+                    $current_user = FALSE;
+                }
                 $viewdata = array('data' => 'hello widget');
                 $viewdata = array('username' => $username );
                 $viewdata = array('current_user' => $current_user );
