@@ -1,6 +1,6 @@
 # AngularBonfire ignores
-node_modules
-public/bower_components
+#node_modules
+#public/bower_components
 npm-debug.log
 # AngularBonfire includes
 !public/themes/angular-bonfire/*
@@ -9,3 +9,5 @@ npm-debug.log
 !bower.json
 !package.json
 !create-theme.sh
+application/config/database/*
+application/config/database.php
