@@ -37,7 +37,7 @@
                     edit</a>
                 </span>
                 <span ng-hide="!editswitch">
-                    <a href="#" class="btn btn-small btn-error" ng-click="editswitch = !editswitch" class="edit">
+                    <a href="#" class="button" ng-click="editswitch = !editswitch" class="edit">
                     close</a>
                 </span>
             </div>

@@ -20,12 +20,12 @@
               <div marked="profile.account_profile"></div>
             </main>
         </section>
-        <section class="col-12 col-desktop-2">
+        <section class="col-6 col-desktop-2">
             <nav class="interface">
               <interestlist my-attr="<?php echo $username;?>"></interestlist> 
             </nav>         
         </section>
-        <section class="col-12 col-desktop-3">
+        <section class="col-6 col-desktop-3">
             <article class="interface">
               <activeinterest my-attr="<?php echo $username;?>"></activeinterest>
             </article>

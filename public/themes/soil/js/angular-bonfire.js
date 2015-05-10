@@ -39964,8 +39964,9 @@ AngularBonfire.factory("NgAbilityFactory", function($http, $q) {
 var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 	'$scope', 
 	'$state', 
+  '$rootScope',
 	'NgAbilityFactory', 
-	function($scope, $state
+	function($scope, $state, $rootScope
 		, NgAbilityFactory
 		) {
 
@@ -39977,22 +39978,28 @@ var NgAbilityCtrl = AngularBonfire.controller('NgAbilityCtrl', [
 		NgAbilityFactory.getAll().then(function(data) {
 		    console.log(data);
 		    $scope.abilities = data;
-		});
+    });
   }
   $scope.init(); 
+
+  $rootScope.$on('abilityAdded', function(){
+    $scope.abilities = $scope.abilities
+  });
 
   $scope.addAbility = function() {
 
     console.log($scope.abilityFormData)
-    	
-  	// add to front of array
-  	$scope.abilities.unshift($scope.abilityFormData)
+      
+    // add to front of array
+    $scope.abilities.unshift($scope.abilityFormData)
 
     NgAbilityFactory.addAbility($scope.abilityFormData).then(function(data) {
 
-		  console.log('saved', data)
-    	// reset the form
-    	$scope.abilityFormData = {}
+      console.log('saved', data)
+      // reset the form
+      $scope.abilityFormData = {}
+      $rootScope.$broadcast('abilityAdded');
+
 		})
   }
 
@@ -40595,7 +40602,7 @@ var ChatCtrl = AngularBonfire.controller('ChatCtrl',
 
   var init = function() {
     ChatFactory.messages().then(function(data) {
-      console.log(data)
+      console.log('messages',data)
       $scope.messages = data //'Message Delivered'
        // $timeout(function(){ $scope.success = ''; }, 3000)
     })

@@ -3,7 +3,7 @@
 
 			<form ng-submit="addAbility()">
 
-				<input type="text" ng-model="abilityFormData.name" placeholder="Ability">
+				<input type="text" ng-model="abilityFormData.name" placeholder="Interest">
 				<input class="btn-primary" type="submit" value="add">
 
 			</form>

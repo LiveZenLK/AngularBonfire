@@ -32,7 +32,7 @@
 	<div class="col-7">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<p>The idea is that often it's difficult to find just the right person to talk to. Your close friends might not share your hidden passion, and most web forums tend to be opinionated, or snarky, or simply too niche.</p>
+				<p>The idea is that often it's difficult to find just the right person to talk to. Your close friends might not share your hidden passion, and many web forums tend to be opinionated, intimidating, too niche or simply just lacking the relaxed intimacy of a one to one discussion.</p>
 			</div>
 		</div>
 	</div>

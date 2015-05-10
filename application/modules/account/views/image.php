@@ -6,7 +6,7 @@
     	<div class="col-6">
     	<div ngf-drop ng-model="files" class="drop-box" 
         	ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-        	ngf-accept="'.jpg,.png,.pdf'">Drop Images</div>
+        	ngf-accept="'.jpg,.png,.pdf'">Drop Images 800x800 max</div>
     		<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
     	</div>
     	<div class="col-6">

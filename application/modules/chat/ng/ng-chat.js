@@ -118,7 +118,7 @@ var ChatCtrl = AngularBonfire.controller('ChatCtrl',
 
   var init = function() {
     ChatFactory.messages().then(function(data) {
-      console.log(data)
+      console.log('messages',data)
       $scope.messages = data //'Message Delivered'
        // $timeout(function(){ $scope.success = ''; }, 3000)
     })

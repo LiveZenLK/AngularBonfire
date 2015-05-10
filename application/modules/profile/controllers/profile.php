@@ -30,6 +30,7 @@
             // $this->load->view('profile/profile', $viewdata);
             */
             Template::set('username', $username);
+            Template::set('current_user', $this->set_current_user());
             Template::set('abilities', $abilities);
 
             Template::set_view('profile');
